@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.yedam.example.control.testControl;
+import com.yedam.mypage.control.MypageControl;
 
 //@WebServlet("*.do")
 public class FrontController extends HttpServlet {
@@ -26,6 +27,10 @@ public class FrontController extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		// control 추가
 		map.put("/main.do", new testControl());
+		
+		// 마이페이지 연결
+		map.put("/mypage.do", new MypageControl());
+		
 	}
 	
 	@Override

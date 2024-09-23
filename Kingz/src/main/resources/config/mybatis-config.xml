@@ -24,5 +24,6 @@
   </environments>
   <mappers>
     <!-- mapper 추가 -->
+    <mapper resource="com/yedam/mypage/mapper/MypageMapper.xml" />
   </mappers>
 </configuration>
