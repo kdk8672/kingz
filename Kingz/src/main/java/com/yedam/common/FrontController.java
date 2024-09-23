@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.yedam.admin.control.AdminUserListControl;
 import com.yedam.example.control.testControl;
 
 //@WebServlet("*.do")
@@ -26,6 +27,9 @@ public class FrontController extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		// control 추가
 		map.put("/main.do", new testControl());
+		
+		// 관리자 관련 기능
+		map.put("/userList.do", new AdminUserListControl()); // 전체 유저 정보 조회
 	}
 	
 	@Override
