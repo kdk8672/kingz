@@ -36,15 +36,15 @@
         <![endif]-->
 
     <!-- header-start -->
-    	<tiles:insertAttribute name="header" />
+    <tiles:insertAttribute name="header" />
     <!-- header-end -->
 
     <!-- slider_area_start -->
-    	<tiles:insertAttribute name="body"/>
+    <%-- <tiles:insertAttribute name="body"/> --%>
     <!-- instragram_area_end -->
 
     <!-- footer -->
-    	<tiles:insertAttribute name="footer"/>
+    <tiles:insertAttribute name="footer"/>
 
     <!-- link that opens popup -->
 
