@@ -1,0 +1,7 @@
+/build/
+/target/
+/.settings/
+/Javaprogram/
+/bin/
+.classpath
+.project
