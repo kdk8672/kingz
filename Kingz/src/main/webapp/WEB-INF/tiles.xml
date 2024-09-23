@@ -10,6 +10,10 @@
     <put-attribute name="footer" value="/WEB-INF/layout/footer.jsp" />
   </definition>  
   
+  <definition name="WILDCARD:admin/*" extends="myapp.kingz">
+  	<put-attribute name="body" value="/WEB-INF/admin/{1}.jsp" />
+  </definition>
+  
   <definition name="WILDCARD:*/*" extends="myapp.kingz">
   	<put-attribute name="body" value="/WEB-INF/{1}/{2}.jsp" />
   </definition>
