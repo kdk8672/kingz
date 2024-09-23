@@ -10,7 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.yedam.contact.contactControl;
 import com.yedam.example.control.testControl;
+import com.yedam.facilities.facilitiesControl;
+import com.yedam.hotel.hotelListControl;
 
 //@WebServlet("*.do")
 public class FrontController extends HttpServlet {
@@ -26,6 +29,15 @@ public class FrontController extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		// control 추가
 		map.put("/main.do", new testControl());
+		
+		// 부대시설 페이지 (조민성)
+		map.put("/facilities.do", new facilitiesControl());
+		
+		// 호텔리스트 페이지 (조민성)
+		map.put("/hotelList.do", new hotelListControl());
+		
+		// 오시는 길 페이지 (조민성)
+		map.put("/contact.do", new contactControl());
 	}
 	
 	@Override
