@@ -26,6 +26,7 @@ public class FrontController extends HttpServlet {
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		// control 추가
+
 		map.put("/main.do", new TestControl());
 		
 		// [박진석] 예약 관련 URI 매핑
