@@ -9,15 +9,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-<<<<<<< HEAD
 
-import com.yedam.example.control.testControl;
 import com.yedam.mypage.control.MypageControl;
-=======
 
 import com.yedam.example.control.TestControl;
 import com.yedam.reservation.control.ReservControl;
->>>>>>> refs/remotes/origin/main
 
 //@WebServlet("*.do")
 public class FrontController extends HttpServlet {
