@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class HotelVO {
-	private int roomId;
+	private String roomId;
 	private String roomType;
 	private String roomName;
 	private String roomContent;
@@ -15,4 +15,5 @@ public class HotelVO {
 	private String roomView;
 	private String roomDetail;
 	private String roomBed;
+	private String imageUrl;
 }

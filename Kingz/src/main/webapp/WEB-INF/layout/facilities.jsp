@@ -45,7 +45,7 @@
 							<div class="main-menu  d-none d-lg-block">
 								<nav>
 									<ul id="navigation">
-										<li><a class="active" href="#">호텔<i
+										<li><a href="hotelList.do">호텔<i
 												class="ti-angle-down"></i></a>
 											<ul class="submenu">
 												<li><a href="superior.do">슈페리어</a></li>
@@ -59,7 +59,7 @@
 												<li><a href="royalsuite.do">로얄 스위트</a></li>
 												<li><a href="presidentialsuite.do">프레지덴셜 스위트</a></li>
 											</ul></li>
-										<li><a href="#">부대시설<i class="ti-angle-down"></i></a>
+										<li><a class="active" href="#">부대시설<i class="ti-angle-down"></i></a>
 											<ul class="submenu">
 												<li><a href="facilities.do">호텔 실내 수영장</a></li>
 												<li><a href="facilities.do">호텔 야외 수영장</a></li>
@@ -141,7 +141,7 @@
 							<span>문의 : 010-1234-5678</span> <span>위치 : 호텔 1층</span> <span>운영시간
 								: 06:30-22:00</span>
 							<h3>호텔 실내 수영장</h3>
-							<a class="line-button">유아용 풀과 자쿠지, 실내외 수영장이 연결된 수문으로 더욱 편리하고
+							<a class="card-hover-text">유아용 풀과 자쿠지, 실내외 수영장이 연결된 수문으로 더욱 편리하고
 								여유로운 스위밍을 즐겨보세요.</a>
 						</div>
 					</div>
@@ -156,7 +156,7 @@
 							<span>문의 : 010-1234-5678</span> <span>위치 : 호텔 야외</span> <span>운영시간
 								: 09:00-22:00</span>
 							<h3>호텔 야외 수영장</h3>
-							<a class="line-button">히팅펌프 시스템으로 사계절 내내 따뜻한 풀에서 제주도 파도 소리를
+							<a class="card-hover-text">히팅펌프 시스템으로 사계절 내내 따뜻한 풀에서 제주도 파도 소리를
 								들으며 로맨틱한 여행의 추억을 만드세요.</a>
 						</div>
 					</div>
@@ -170,7 +170,7 @@
 						<div class="room_heading_inner">
 							<span>위치 : 리조트 야외</span> <span>운영시간 : 13:00-22:00</span>
 							<h3>리조트 야외 수영장</h3>
-							<a class="line-button">사계절 온수풀로 새 단장한 야외 수영장에서 파도 소리와 함께 여유로운
+							<a class="card-hover-text">사계절 온수풀로 새 단장한 야외 수영장에서 파도 소리와 함께 여유로운
 								휴식을 완성하세요.</a>
 						</div>
 					</div>
@@ -185,7 +185,7 @@
 							<span>문의 : 010-1234-5678</span> <span>위치 : 남자 사우나 1층, 여자
 								사우나 2층</span> <span>운영시간 : 06:30-22:00</span>
 							<h3>사우나</h3>
-							<a class="line-button">물 좋은 제주도의 따뜻한 천연 암반수에 몸을 담그며 여행의 피로를
+							<a class="card-hover-text">물 좋은 제주도의 따뜻한 천연 암반수에 몸을 담그며 여행의 피로를
 								말끔히 풀어보세요.</a>
 						</div>
 					</div>
@@ -200,7 +200,7 @@
 							<span>문의 : 010-1234-5678</span> <span>위치 : 호텔 2층</span> <span>운영시간
 								: 06:30-22:00</span>
 							<h3>피트니스센터</h3>
-							<a class="line-button">최신 트레이닝 기구와 요가 운동 프로그램으로 몸과 마음에 활기를
+							<a class="card-hover-text">최신 트레이닝 기구와 요가 운동 프로그램으로 몸과 마음에 활기를
 								되찾아 보세요.</a>
 						</div>
 					</div>
@@ -215,7 +215,7 @@
 							<span>문의 : 010-1234-5678</span> <span>위치 : 호텔 2층</span> <span>운영시간
 								: 13:00~22:00 (사전예약 필수)</span>
 							<h3>스파 아라</h3>
-							<a class="line-button">맞춤 에센스를 블렌딩하여 만든 단 하나뿐인 케어로 청명한 제주 자연
+							<a class="card-hover-text">맞춤 에센스를 블렌딩하여 만든 단 하나뿐인 케어로 청명한 제주 자연
 								속 나만의 힐링을 누려보세요.</a>
 						</div>
 					</div>
@@ -230,7 +230,7 @@
 							<span>문의 : 010-1234-5678</span> <span>위치 : 호텔 왼쪽 정문</span> <span>운영시간
 								: 09:00~21:00 사전문의 요망</span>
 							<h3>테니스코트</h3>
-							<a class="line-button">제주의 신선한 공기를 마시며 테니스를 즐겨보세요.</a>
+							<a class="card-hover-text">제주의 신선한 공기를 마시며 테니스를 즐겨보세요.</a>
 						</div>
 					</div>
 				</div>
@@ -260,7 +260,7 @@
 							<span>문의 : 010-1234-5678</span> <span>위치 : 리조트 지하 1층</span> <span>운영시간
 								: 10:00 -22:00</span>
 							<h3>놀이터</h3>
-							<a class="line-button">어린이용 클라이밍과 에어포켓이 마련된 키즈 놀이터에서 미취학 어린이들도 즐겁게 뛰어놀 수 있습니다.</a>
+							<a class="card-hover-text">어린이용 클라이밍과 에어포켓이 마련된 키즈 놀이터에서 미취학 어린이들도 즐겁게 뛰어놀 수 있습니다.</a>
 						</div>
 					</div>
 				</div>
@@ -274,7 +274,7 @@
 							<span>문의 : 010-1234-5678</span> <span>위치 : 리조트 지하 1층</span> <span>운영시간
 								: 10:00-22:00</span>
 							<h3>엔터테인먼트 존</h3>
-							<a class="line-button">추억을 자극하는 게임기로 모두 함께 즐겨보세요.</a>
+							<a class="card-hover-text">추억을 자극하는 게임기로 모두 함께 즐겨보세요.</a>
 						</div>
 					</div>
 				</div>
@@ -296,14 +296,14 @@
 		<div class="rooms_here">
 			<div class="single_rooms">
 				<div class="room_thumb">
-					<img src="img/rooms2.png" alt="">
+					<img src="img/rooms/2.png" alt="">
 					<div
 						class="room_heading d-flex justify-content-between align-items-center">
 						<div class="room_heading_inner">
 							<span>문의 : 010-1234-5678</span> <span>위치 : 호텔 1층</span> <span>운영시간
 								: 24시간 운영</span>
 							<h3>비즈니스센터</h3>
-							<a class="line-button">비즈니스 고객분들을 위한 사무 장비가 완벽하게 갖춰진 다기능
+							<a class="card-hover-text">비즈니스 고객분들을 위한 사무 장비가 완벽하게 갖춰진 다기능
 								사무공간을 24시간 이용하세요.</a>
 						</div>
 					</div>
@@ -318,7 +318,7 @@
 							<span>문의 : 010-1234-5678</span> <span>위치 : 리조트 지하 1층</span> <span>운영시간
 								: 24시간운영</span>
 							<h3>편의점</h3>
-							<a class="line-button">식료품, 생활용품 등 여행에 필요한 다양한 제품을 판매합니다.</a>
+							<a class="card-hover-text">식료품, 생활용품 등 여행에 필요한 다양한 제품을 판매합니다.</a>
 						</div>
 					</div>
 				</div>

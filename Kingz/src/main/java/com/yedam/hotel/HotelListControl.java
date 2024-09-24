@@ -9,15 +9,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.yedam.common.Control;
 
-public class hotelListControl implements Control {
+public class HotelListControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HotelService svc = new HotelServiceImpl();
 		List<HotelVO> list = svc.getHotelList();
 		
-		request.setAttribute("hotelList", list);
-		request.getRequestDispatcher("kingz/hotelList.tiles").forward(request, response);
+		request.setAttribute("list", list);
+		request.getRequestDispatcher("layout/hotelList.tiles").forward(request, response);
 	}
 
 }

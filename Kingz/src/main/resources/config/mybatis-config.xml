@@ -24,5 +24,7 @@
   </environments>
   <mappers>
     <!-- mapper 추가 -->
+    <mapper resource="com/yedam/review/mapper/ReviewMapper.xml" />
+    <mapper resource="com/yedam/hotel/mapper/HotelMapper.xml" />
   </mappers>
 </configuration>
