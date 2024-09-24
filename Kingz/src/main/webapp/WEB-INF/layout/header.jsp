@@ -21,7 +21,7 @@
                         </div>
                         <div class="col-xl-2 col-lg-2">
                             <div class="logo-img">
-                                <a href="index.html">
+                                <a href="main.do">
                                     <img src="img/kingz_logo.png" alt="">
                                 </a>
                             </div>
@@ -35,7 +35,7 @@
                                         <ul id="navigation">
                                             <li><a href="#">로그인</a></li>
                                             <li><a href="#">회원가입</a></li>
-                                            <li><a href="#">마이페이지</a></li>
+                                            <li><a href="mypage.do">마이페이지</a></li>
                                         </ul>
                                     </nav>
                                 </div>

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.yedam.admin.control.AdminUserListControl;
+import com.yedam.mypage.control.MypageControl;
 import com.yedam.example.control.TestControl;
 import com.yedam.reservation.control.ReservControl;
 
@@ -27,6 +28,10 @@ public class FrontController extends HttpServlet {
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		// control 추가
+		
+		// 마이페이지 연결
+		map.put("/mypage.do", new MypageControl());
+
 		map.put("/main.do", new TestControl());
 		
 		// [박진석] 예약 관련 URI 매핑
