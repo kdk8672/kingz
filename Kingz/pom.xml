@@ -22,6 +22,16 @@
 			</plugin>
 		</plugins>
 	</build>
+	
+	<!-- [박진석 | 24.09.24] 결제 관련 라이브러리 추가 -->
+	<repositories>
+		<repository>
+		    <id>jitpack.io</id>
+		    <url>https://jitpack.io</url>
+		</repository>
+	</repositories>
+	<!-- [박진석 | 24.09.24] 결제 관련 라이브러리 추가 끝 -->
+	
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
 		<dependency>
@@ -87,6 +97,12 @@
 		    <version>2.11.0</version>
 		</dependency>
 
+		<!-- [박진석 | 24.09.24] 결제 관련 의존성 추가 -->
+		<dependency>
+		    <groupId>com.github.iamport</groupId>
+		    <artifactId>iamport-rest-client-java</artifactId>
+		    <version>0.2.22</version>
+		</dependency>
 
 	</dependencies>
 </project>
