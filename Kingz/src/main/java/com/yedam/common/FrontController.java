@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.yedam.admin.control.AdminUserListControl;
 import com.yedam.example.control.TestControl;
 import com.yedam.reservation.control.ReservControl;
 
@@ -26,20 +27,22 @@ public class FrontController extends HttpServlet {
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		// control 추가
-
 		map.put("/main.do", new TestControl());
 		
 		// [박진석] 예약 관련 URI 매핑
 		map.put("/reserv.do", new ReservControl());
+		
+		// 관리자 기능 관련
+		map.put("/userList.do", new AdminUserListControl());
 	}
 	
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8"); // 요청방식이 POST 일 경우에 body 포함된 문자열 인코딩
 		
-		String uri = req.getRequestURI(); // /BoardWeb/main.do
-		String context = req.getContextPath(); // /BoardWeb
-		String page = uri.substring(context.length()); // /main.do
+		String uri = req.getRequestURI();
+		String context = req.getContextPath(); 
+		String page = uri.substring(context.length());
 		System.out.println(page);
 		
 		Control control = map.get(page);
