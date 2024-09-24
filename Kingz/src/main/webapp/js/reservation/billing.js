@@ -7,12 +7,14 @@ function KGpay() {
 	var IMP = window.IMP; // 생략 가능
 	let key = "imp24027004";
 	//console.log(key);
+	
+	/*
 	IMP.init(key);	// 판매자 코드
 	
 	IMP.request_pay({
 	    pg : 'html5_inicis.INIpayTest',
 	    pay_method : 'card',
-	    merchant_uid: "order_no_0009", // TODO [박진석 | 24.09.24] 상점에서 관리하는 주문 번호: 적절하게 값을 바꾸는 로직이 필요!!
+	    merchant_uid: "order_no_0010"	, // TODO [박진석 | 24.09.24] 상점에서 관리하는 주문 번호: 적절하게 값을 바꾸는 로직이 필요!!
 	    name : '주문명:결제테스트',
 	    amount : 100,
 	    buyer_email : 'iamport@siot.do',
@@ -26,16 +28,14 @@ function KGpay() {
             let msg = '결제가 완료되었습니다.';
             alert(msg);
             
-            const successHtp = new XMLHttpRequest();
+            const successHtp = new XMLHttpRequest();			
             successHtp.open('get', 'reservComplete.do');
             successHtp.send();
             
-            // TODO [박진석 | 24.09.24] 예약 확정페이지를 새로 만들지 않고 기존 화면을 지우고 새 화면을 출력?
-            // reply.js 참고
             
 			
 	    	//[1] 서버단에서 결제정보 조회를 위해 jQuery ajax로 imp_uid 전달하기
-	    	/*
+	    	
 	    	jQuery.ajax({
 	    		//url: "/payments/complete", //cross-domain error가 발생하지 않도록 주의해주세요
 	    		url: "/reservComplete.do",
@@ -61,7 +61,7 @@ function KGpay() {
 	    			//[4] 결제된 금액이 요청한 금액과 달라 결제를 자동취소처리하였습니다.
 	    		}
 	    	});
-	    	*/
+	    	
 	    	console.log(rsp);
 	    } else {
 	        var msg = '결제에 실패하였습니다.';
@@ -72,26 +72,26 @@ function KGpay() {
 	    }
 	});
 	
-	
-	/*IMP.request_pay({
-	    pg : 'html5_inicis',
-	    pay_method : 'card',
-	    merchant_uid: "order_no_0001", // 상점에서 관리하는 주문 번호를 전달
-	    name : '주문명:결제테스트',
-	    amount : 14000,
-	    buyer_email : 'iamport@siot.do',
-	    buyer_name : '구매자이름',
-	    buyer_tel : '010-1234-5678',
-	    buyer_addr : '서울특별시 강남구 삼성동',
-	    buyer_postcode : '123-456'
-	    //m_redirect_url : '{모바일에서 결제 완료 후 리디렉션 될 URL}' // 예: https://www.my-service.com/payments/complete/mobile
-	}, function(response) {
-		//결제 후 호출되는 callback함수
-		if ( response.success ) { //결제 성공
-			console.log(response);
-		} else {
-			alert('결제실패 : ' + response.error_msg);
-			console.log(response)
-		}
-	})*/
+	*/
+    
+    
+    //let href = "/Kingz/reservComplete.do";
+    /*
+    const successHtp = new XMLHttpRequest();			
+    successHtp.open('get', 'reservComplete.do');
+    */
+   	let imp_uid = "A001";
+   	let total_paid = 500;
+   
+    fetch('reservComplete.do', {													// GET 방식이 아닌 POST 방식으로 통신하려고 할 때는 
+		 method: 'post',													// fetch의 두번째 매개변수로 객체를 건네야 함.
+		 headers: {'Content-Type': 'application/x-www-form-urlencoded'},	// 객체의 세부 내용은 왼쪽과 동일하게 입력하면 되며
+		 body: 'imp_uid=' + imp_uid + '&total_paid=' + total_paid		// POST는 전달할 값을 URL이 아닌 body에 담아 전송하므로
+		 																	// 'body'의 value 값으로 해당 내용을 집어넣으면 됨.
+	 })		/// 주소표시줄 addReply.do?bno=148&reply=...&replyer=user01
+	 .then(resolve => resolve.json)
+	 .then(result => {
+		 console.log("=============[addReply.do] fetch의 result ===========");
+		 console.log(result);		// result의 형태를 반드시 확인하는것이 좋음!
+	 })
 }

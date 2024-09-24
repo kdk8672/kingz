@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-   
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
  
 <!-- 결제 정보 입력 시 최소한 아래와 같은 정보가 필요함. -->
 <form name="pgForm">
@@ -19,40 +19,6 @@
 <!-- iamport.payment.js -->
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 <script type="text/javascript" src="js/reservation/billing.js"></script>
-
-<!--  
-<script type="text/javascript">
-	var IMP = window.IMP; // 생략 가능
-	IMP.init("imp24027004");
-	
-    function requestPay() {
-        IMP.request_pay({
-            pg : 'html5_inicis.INIpayTest',
-            pay_method : 'card',
-            merchant_uid: "57008833-33007", 
-            name : '당근 10kg',
-            amount : 100,
-            buyer_email : 'Iamport@chai.finance',
-            buyer_name : '포트원 기술지원팀',
-            buyer_tel : '010-1234-5678',
-            buyer_addr : '서울특별시 강남구 삼성동',
-            buyer_postcode : '123-456'
-        }, function (rsp) { // callback
-            if (rsp.success) {
-                console.log(rsp);
-                var msg = '결제가 완료되었습니다.';
-                alert(msg);
-            } else {
-                console.log(rsp);
-                var msg = '결제에 실패하였습니다.';
-                msg += '에러내용 : ' + rsp.error_msg;
-                alert(msg);
-            }
-        });
-    }
-</script>
-
--->
 <!-- [박진석 | 24.09.24] 결제 API 끝 -->
 
 <div class="body-main-container">
@@ -264,6 +230,55 @@
                 <!-- [박진석 | 24.09.24] 오른쪽 메인 레이아웃 -->
                 <div class="col-lg-8 mb-5 mb-lg-0">
                     <div class="blog_left_sidebar">
+                    
+                    
+                    
+                    
+                     <!-- --------------------------- -->
+                    <!-- 하나의 객실 보여주는 폼 묶음 -->
+                    	<article class="room-item" style="background-color: lightgrey;" style="width: 90%; margin: 10px auto;">
+                    		<form action=".addReserv.do" method="post">
+                    			<div class="first-col">
+                    				<img class="card-img rounded-0" src="img/blog/single_blog_1.png" alt="" style="width: 200px">
+                    			</div>
+                    			<div class="second-col">
+	                    			<input value="슈페리어 방1"> <br>
+	                    			조식: <input value="5000">
+                    			</div>
+                    			<div class="third-col">
+                    				<small>1박 1객실</small><br>
+                    				<input value="200000">원 ~<br>
+                    			</div>
+                    			<button>예약하기</button>
+                    			
+                    			<!-- 상세정보 폼 묶음 시작 -->
+                    			<div class=" room-detail">
+                    				<div class="first-col-detail">
+	                    				<h3>옵션사항</h3><br>
+	                    				조식여부: <input value="false"><br>
+	                    				추가 요청사항:<br>
+	                    				<textarea></textarea>
+                    				</div>
+                    				<div class="second-col-detail">
+                    					<h3>가격</h3><br>
+                    					<input value="400000">원 ~<br>
+                    					<input value="2">박<br>
+                    					<h4>옵션</h4><br>
+                    					조식 <input value="50000">원<br>
+                    					<h2>총 예약금액</h2><input value="450000">원
+                    				</div>
+                    			</div>
+                    			<!-- 상세정보 폼 묶음 끝 -->
+                    			
+                    		</form>
+                        </article>
+                    <!-- 하나의 객실 폼 묶음 끝 -->
+                    <!-- ----------------------- -->
+                    
+                    
+                    
+                    
+                    <!-- 
                         <article class="blog_item">
                             <div class="blog_item_img">
                                 <img class="card-img rounded-0" src="img/blog/single_blog_1.png" alt="">
@@ -374,7 +389,10 @@
                                 </ul>
                             </div>
                         </article>
-
+						-->
+						
+						
+						
                         <nav class="blog-pagination justify-content-center d-flex">
                             <ul class="pagination">
                                 <li class="page-item">
@@ -405,22 +423,4 @@
     <!--================Blog Area =================-->
 </div>
 
-<!-- <script>
-import * as PortOne from "@portone/browser-sdk/v2";
-function KGpay() {
-	PortOne.requestPayment({
-    storeId: "store-9e941c84-0cb9-4c88-b3c7-3738ae9e3543", // 고객사 storeId로 변경해주세요.
-    channelKey: "channel-key-78fa932e-7513-4046-9ae0-8b780425fae5", // 콘솔 결제 연동 화면에서 채널 연동 시 생성된 채널 키를 입력해주세요.
-    paymentId: `payment${crypto.randomUUID()}`,
-    orderName: "나이키 와플 트레이너 2 SD",
-    totalAmount: 1000,
-    currency: "CURRENCY_KRW",
-    payMethod: "CARD",
-    customer: {
-      fullName: "포트원",
-      phoneNumber: "010-0000-1234",
-      email: "test@portone.io",
-    },
-  });
-}
-</script> -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
