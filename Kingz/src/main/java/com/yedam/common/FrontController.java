@@ -10,9 +10,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.yedam.mypage.control.MypageControl;
-
 import com.yedam.example.control.TestControl;
+import com.yedam.mypage.control.ModifyFormControl;
+import com.yedam.mypage.control.ModifyMypageControl;
+import com.yedam.mypage.control.MyReservationControl;
+import com.yedam.mypage.control.MyReviewInfoControl;
+import com.yedam.mypage.control.MypageControl;
 import com.yedam.reservation.control.ReservControl;
 
 //@WebServlet("*.do")
@@ -28,14 +31,24 @@ public class FrontController extends HttpServlet {
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		// control 추가
+		map.put("/main.do", new TestControl());
 		
-		// 마이페이지 연결
+		// [승원] 마이페이지(첫화면 내 정보) 연결
 		map.put("/mypage.do", new MypageControl());
 		
-		map.put("/main.do", new TestControl());
+		// [승원] 내 정보 수정 연결
+		map.put("/modifymypage.do", new ModifyMypageControl());
+		map.put("/modifyform.do", new ModifyFormControl());
+		
+		// [승원] 예약내용 연결
+		map.put("/myreservation.do", new MyReservationControl());
+		
+		// [승원] 리뷰내역 연결
+		map.put("/reviewinfo.do", new MyReviewInfoControl());
 		
 		// [박진석] 예약 관련 URI 매핑
 		map.put("/reserv.do", new ReservControl());
+		
 	}
 	
 	@Override

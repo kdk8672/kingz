@@ -18,4 +18,8 @@
   	<put-attribute name="body" value="/WEB-INF/{1}/{2}.jsp" />
   </definition>
   
+  <definition name="WILDCARD:mypage/*" extends="myapp.kingz">
+  	<put-attribute name="body" value="/WEB-INF/mypage/{1}.jsp" />
+  </definition>
+  
 </tiles-definitions>

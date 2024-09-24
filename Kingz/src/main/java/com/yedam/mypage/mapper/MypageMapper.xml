@@ -5,9 +5,52 @@
 
 <mapper namespace="com.yedam.mypage.mapper.MypageMapper">
 
-	<select id="memberList" resultType="com.yedam.mypage.vo.MypageVO">
-		select *
+	<select id="memberList"
+		resultType="com.yedam.mypage.vo.MypageVO">
+		select member_id,
+		password,
+		name,
+		email,
+		phone,
+		grade
 		from member
 	</select>
-
+	<select id="reservList"
+		resultType="com.yedam.mypage.vo.MypageVO">
+		-- 예약내역 조회 --
+		select DISTINCT re.checkin,
+						re.member_id,
+						re.checkout,
+						re.headcount,
+						re.breakfast,
+						ro.room_type,
+						ro.room_price,
+						r.image_url,
+						p.payment_amount,
+						p.payment_point
+		from reservation re
+		JOIN room ro ON re.room_id = ro.room_id
+		JOIN room_image r ON ro.room_id = r.room_id
+		JOIN payment p On re.reserve_id = p.reserve_id
+		where re.member_id = 'mdorosario1'
+	</select>
+	
+	<select id="reviewList" resultType="com.yedam.mypage.vo.MypageVO">
+		select member_id,
+		password,
+		name,
+		email,
+		phone,
+		grade
+		from member
+	</select>
+	
+	<update id="modifymypage" parameterType="com.yedam.mypage.vo.MypageVO">
+		update member
+		set password = #{password},
+		    email = #{email},
+		    phone = #{phone} 
+		where member_id = #{memberId}
+	</update>
+	
 </mapper>
