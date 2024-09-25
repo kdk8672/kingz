@@ -22,4 +22,9 @@ public class HotelServiceImpl implements HotelService {
 		return mapper.selectHotel(roomId);
 	}
 
+	// [박진석 | 24.09.25] 예약 페이지에 사용할 객실 종류 조회
+	@Override
+	public List<HotelVO> getHotelRoomTypeList() {
+		return mapper.selectRoomType();
+	}
 }

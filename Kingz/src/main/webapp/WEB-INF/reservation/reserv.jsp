@@ -34,14 +34,14 @@
                                 	<!-- [박진석 | 24.09.24] 호텔 방 셀렉트 폼 -->
 	                                <div class="input-group-icon mt-10">
 										<div class="icon"><i class="fa fa-plane" aria-hidden="true"></i></div>
-										<div class="form-select" id="default-select"">
-													<select>
-														<option value=" 1">City</option>
-											<option value="1">Dhaka</option>
-											<option value="1">Dilli</option>
-											<option value="1">Newyork</option>
-											<option value="1">Islamabad</option>
-											<!-- room 테이블에서 room_type와 room_id 값 가져와 위 option 값에 뿌리기 -->
+										<div class="form-select" id="default-select">
+											<select>
+												<option value=" 1">City</option>
+												<option value="1">Dhaka</option>
+												<option value="1">Dilli</option>
+												<option value="1">Newyork</option>
+												<option value="1">Islamabad</option>
+												<!-- room 테이블에서 room_type와 room_id 값 가져와 위 option 값에 뿌리기 -->
 											</select>
 										</div>
 									</div>
@@ -106,45 +106,6 @@
                             </ul>
                         </aside>
 
-                        <aside class="single_sidebar_widget popular_post_widget">
-                            <h3 class="widget_title">Recent Post</h3>
-                            <div class="media post_item">
-                                <img src="img/post/post_1.png" alt="post">
-                                <div class="media-body">
-                                    <a href="single-blog.html">
-                                        <h3>From life was you fish...</h3>
-                                    </a>
-                                    <p>January 12, 2019</p>
-                                </div>
-                            </div>
-                            <div class="media post_item">
-                                <img src="img/post/post_2.png" alt="post">
-                                <div class="media-body">
-                                    <a href="single-blog.html">
-                                        <h3>The Amazing Hubble</h3>
-                                    </a>
-                                    <p>02 Hours ago</p>
-                                </div>
-                            </div>
-                            <div class="media post_item">
-                                <img src="img/post/post_3.png" alt="post">
-                                <div class="media-body">
-                                    <a href="single-blog.html">
-                                        <h3>Astronomy Or Astrology</h3>
-                                    </a>
-                                    <p>03 Hours ago</p>
-                                </div>
-                            </div>
-                            <div class="media post_item">
-                                <img src="img/post/post_4.png" alt="post">
-                                <div class="media-body">
-                                    <a href="single-blog.html">
-                                        <h3>Asteroids telescope</h3>
-                                    </a>
-                                    <p>01 Hours ago</p>
-                                </div>
-                            </div>
-                        </aside>
                     </div>
                 </div>
                 <!-- [박진석 | 24.09.24] 왼쪽 검색 레이아웃 끝 -->

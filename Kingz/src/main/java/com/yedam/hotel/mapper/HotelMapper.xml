@@ -25,4 +25,11 @@
 		where 		b.room_id = #{roomId}
 	</select>
 	
+	<!-- [박진석 | 24.09.25] 객실 종류 검색 -->
+	<select id="selectRoomType" resultType="com.yedam.hotel.HotelVO">
+		SELECT	room_id,
+				room_type
+		FROM	room
+	</select>
+	
 </mapper>
