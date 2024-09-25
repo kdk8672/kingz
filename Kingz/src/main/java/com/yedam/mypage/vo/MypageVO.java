@@ -11,3 +11,4 @@ public class MypageVO {
 	private String phone;
 	private String grade;
 }
+

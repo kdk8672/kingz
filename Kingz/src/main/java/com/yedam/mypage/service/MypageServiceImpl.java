@@ -1,3 +1,4 @@
+
 package com.yedam.mypage.service;
 
 import java.util.List;
@@ -7,6 +8,8 @@ import org.apache.ibatis.session.SqlSession;
 import com.yedam.common.DataSource;
 import com.yedam.mypage.mapper.MypageMapper;
 import com.yedam.mypage.vo.MypageVO;
+import com.yedam.mypage.vo.ReservVO;
+import com.yedam.mypage.vo.ReviewVO;
 
 public class MypageServiceImpl implements MypageService{
 	
@@ -16,6 +19,21 @@ public class MypageServiceImpl implements MypageService{
 	@Override
 	public List<MypageVO> getMembers() {
 		return mapper.memberList();
+	}
+
+	@Override
+	public List<ReservVO> getId() {
+		return mapper.reservList();
+	}
+
+	@Override
+	public List<ReviewVO> getRoomId() {
+		return mapper.reviewList();
+	}
+
+	@Override
+	public boolean modifyMypage(MypageVO memberId) {
+		return mapper.modifymypage(memberId) == 1;
 	}
 	
 

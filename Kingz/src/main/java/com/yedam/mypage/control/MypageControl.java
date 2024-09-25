@@ -21,7 +21,7 @@ public class MypageControl implements Control {
 		
 		request.setAttribute("MypageList", list);
 		
-		request.getRequestDispatcher("mypage/mypage.tiles").forward(request, response);
+		request.getRequestDispatcher("mypage/body.tiles").forward(request, response);
 	}
 
 }
