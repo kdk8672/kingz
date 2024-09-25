@@ -1,0 +1,146 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.banner {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.banner-image {
+  width: 100%;
+  height: 12rem;
+  object-fit: cover;
+}
+
+.banner-title {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  font-size: 2.25rem;
+  color: white;
+  font-weight: bold;
+}
+
+.welcome-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.tabs-container {
+  width: 100%;
+}
+
+.tabs-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+}
+
+.tab-trigger {
+  padding: 0.5rem;
+  background-color: lightgray;
+  color: black;
+  border: none;
+  cursor: pointer;
+}
+
+.tab-trigger.active {
+  background-color: black;
+  color: white;
+  font-weight: bold;
+}
+
+.tab-content {
+  margin-top: 1rem;
+}
+
+.card {
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+.card-header {
+  padding: 1.5rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.card-content {
+  padding: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.25rem;
+}
+
+.button {
+  padding: 0.5rem 1rem;
+  background-color: #3b82f6;
+  color: white;
+  border-radius: 0.25rem;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+}
+
+.button-outline {
+  background-color: transparent;
+  border: 1px solid #3b82f6;
+  color: #3b82f6;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  padding: 0.5rem;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.accordion-trigger {
+  width: 100%;
+  padding: 0.5rem;
+  text-align: left;
+  background-color: #f3f4f6;
+  border: none;
+  cursor: pointer;
+}
+
+.accordion-content {
+  padding: 1rem;
+  display: none;
+}

@@ -9,6 +9,4 @@ public class ReservServiceImpl implements ReservService {
 	SqlSession sqlSession = DataSource.getInstance().openSession(true);
 	ReservMapper mapper = sqlSession.getMapper(ReservMapper.class);
 	
-	
-	
 }
