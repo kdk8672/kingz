@@ -14,5 +14,59 @@
 				grade
 		from    member		
 	</select>
+	
+	<delete id="deleteUser" parameterType="string">
+		delete from member
+		where  member_id = #{memberId}
+	</delete>
+	
+	<delete id="deleteReviewImage" parameterType="string">
+		delete from review_image
+		where review_id in(
+			select review_id
+			from review
+			where member_id = #{memberId}
+		)
+	</delete>
+	
+	<delete id="deleteReview" parameterType="string">
+		delete from review
+		where member_id = #{memberId}
+	</delete>
+	
+	<delete id="deleteReservation" parameterType="string">
+		delete from reservation
+		where member_id = #{memberId}
+	</delete>
+	
+	<delete id="deletePointHistory" parameterType="string">
+		delete from point_history
+		where member_id = #{memberId}
+	</delete>
+	
+	<delete id="deletePayment" parameterType="string">
+		delete from payment
+		where reserve_id in (
+			select reserve_id
+			from reservation
+			where member_id = #{memberId}
+		)
+	</delete>
+	
+	<select id="selectBalance" resultType="admin" parameterType="int">
+		select to_char(payment_date, 'YYYY/MM') as payment_month,
+		       sum(payment_amount) as total_amount
+		from payment
+		where payment_date between to_date(concat(#{pyear}, '/01/01'), 'YYYY/MM/DD') 
+		                      and to_date(concat(#{pyear}, '/12/31'), 'YYYY/MM/DD')
+		group by to_char(payment_date, 'YYYY/MM')
+		order by payment_month
+	</select>
+	
+	<select id="selectBalanceYear" resultType="admin">
+		select distinct to_char(payment_date, 'yyyy') as pyear 
+		from payment 
+		order by pyear
+	</select>
   
 </mapper>
