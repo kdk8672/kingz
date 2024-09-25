@@ -31,18 +31,6 @@ public class RoomDetailControl implements Control {
 		List<ReviewVO> list = rvc.getReviewList(Integer.parseInt(roomId));
 		request.setAttribute("list", list);
 		
-//		String content = request.getParameter("content");
-//		String rating = request.getParameter("rating");
-//
-//		rvo.setReviewContent(content);
-//		rvo.setRating(Integer.parseInt(rating));
-//
-//		if (rvc.addReview(rvo)) {
-//			response.sendRedirect("roomDetail.do?roomId=" + roomId);
-//		} else {
-//			request.getRequestDispatcher("layout/roomDetail.tiles").forward(request, response);
-//		}
-		
 		request.getRequestDispatcher("layout/roomDetail.tiles").forward(request, response);
 	}
 

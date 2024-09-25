@@ -41,6 +41,7 @@ public class FrontController extends HttpServlet {
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		// control 추가
+		map.put("/main.do", new TestControl());
 	
 		// [조민성] 부대시설 페이지
 		map.put("/facilities.do", new FacilitiesControl());
@@ -56,8 +57,6 @@ public class FrontController extends HttpServlet {
 		
 		// [조민성] 오시는 길 페이지
 		map.put("/contact.do", new ContactControl());
-
-		map.put("/main.do", new TestControl());
 		
 		// [승원] 마이페이지(첫화면 내 정보) 연결
 		map.put("/mypage.do", new MypageControl());

@@ -79,8 +79,9 @@
 					</div>
 				</div>
 				<div class="container">
-					<div style="text-align:center">
-						<a href="reservation.do" class="genric-btn info e-large" style="font-size:17px">예약하기</a>
+					<div style="text-align: center">
+						<a href="reservation.do" class="genric-btn info e-large"
+							style="font-size: 17px">예약하기</a>
 					</div>
 				</div>
 			</section>
@@ -93,7 +94,7 @@
 				<c:forEach var="review" items="${list}">
 					<div class="section-top-border">
 						<h3 class="mb-30">${review.memberId}</h3>
-						<h3 class="mb-30">${review.rating}</h3>
+						<h3 class="mb-30">${review.rating}.0</h3>
 						<div class="row">
 							<div class="col-md-3">
 								<img src="img/elements/d.jpg" alt="" class="img-fluid">
@@ -103,7 +104,7 @@
 							</div>
 						</div>
 						<br>
-						<p class="date">${review.reviewDate}</p>
+						<p class="date" style="text-align:right">${review.reviewDate}</p>
 					</div>
 				</c:forEach>
 			</div>
@@ -112,22 +113,29 @@
 
 	<div class="comment-form">
 		<div class="container box_1170">
-			<h4>리뷰 남기기</h4>
+			<h2>리뷰 남기기</h2>
+			<br>
 			<form class="form-contact comment_form" action="addReview.do"
 				id="commentForm" method="post">
 				<div class="row">
-					<div class="col-6">
-						<div class="form-group">
+					<div class="col-12">
+						<div class="form-group" style="display: none">
 							<input class="form-control" name="roomId" id="roomId" type="text"
 								value="${room.roomId}" readonly>
 						</div>
 					</div>
-					<div class="col-6">
+					<div class="col-12">
 						<div class="form-group">
-							<input class="form-control" name="memberId" id="memberId"
-								type="text" value="giacopo0" readonly>
+							<input class="form-control" name="roomName" id="roomName"
+								type="text" value="${room.roomName}" readonly>
 						</div>
 					</div>
+					<!--<div class="col-6">
+						<div class="form-group">
+							<input class="form-control" name="memberId" id="memberId"
+								type="text" value="${rvo.memberId}" readonly>
+						</div>
+					</div>-->
 					<div class="col-12">
 						<div class="form-group">
 							<input class="form-control" name="rating" id="rating"

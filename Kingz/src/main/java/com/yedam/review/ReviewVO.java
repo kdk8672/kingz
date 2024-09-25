@@ -13,4 +13,5 @@ public class ReviewVO {
 	private int rating;
 	private Date reviewDate;
 	private String image;
+//	private int reserveId;
 }

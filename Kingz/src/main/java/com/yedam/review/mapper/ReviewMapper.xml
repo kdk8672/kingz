@@ -17,10 +17,22 @@
 		values 			(seq_review_id.nextval, #{memberId}, #{roomId}, #{reviewContent}, #{rating}, sysdate)
 	</insert>
 	
-	<!-- <select id="reviewCheck" parameterType="map" resultType="com.yedam.reserve.ReservVO">
+	<!--<insert id="insertReview" parameterType="com.yedam.review.ReviewVO">
+		insert into 	review
+						(review_id, member_id, room_id, review_content, rating, review_date, reserve_id)
+		values 			(seq_review_id.nextval, #{memberId}, #{roomId}, #{reviewContent}, #{rating}, sysdate, #{reserveId})
+	</insert>
+	
+	<select id="reviewCheck" parameterType="map" resultType="com.yedam.reserve.ReservVO">
 		select 	*
 		from	reservation
 		where	room_id = #{room_id} and member_id = #{member_id} and checkout > sysdate
-	</select> -->
+	</select>
+	
+	<select id="getReviewByReservId" parameterType="int" resultType="com.yedam.review.ReviewVO">
+    	select	* 
+    	from	review 
+    	where 	reserve_id = #{reserveId}
+ 	</select>-->
 
 </mapper>

@@ -45,6 +45,7 @@
 							<div class="main-menu  d-none d-lg-block">
 								<nav>
 									<ul id="navigation">
+										<li><a class="active" href="main.do">HOME</a></li>
 										<li><a href="hotelList.do">호텔<i
 												class="ti-angle-down"></i></a>
 											<ul class="submenu">
@@ -59,7 +60,7 @@
 												<li><a href="royalsuite.do">로얄 스위트</a></li>
 												<li><a href="presidentialsuite.do">프레지덴셜 스위트</a></li>
 											</ul></li>
-										<li><a class="active" href="#">부대시설<i class="ti-angle-down"></i></a>
+										<li><a class="active" href="#">시설<i class="ti-angle-down"></i></a>
 											<ul class="submenu">
 												<li><a href="facilities.do">호텔 실내 수영장</a></li>
 												<li><a href="facilities.do">호텔 야외 수영장</a></li>
@@ -75,7 +76,6 @@
 											</ul></li>
 										<li><a href="contact.do">오시는 길</a></li>
 										<li><a href="member.do">등급소개</a></li>
-										<li><a href="board.do">공지사항</a></li>
 									</ul>
 								</nav>
 							</div>
@@ -91,12 +91,18 @@
 							<div class="book_room">
 								<div class="main-menu  d-none d-lg-block">
 									<nav>
-										<ul id="infonav">
-											<li><a href="login.do">로그인</a></li>
-											<li><a href="register.do">회원가입</a></li>
-											<li><a href="mypage.do">마이페이지</a></li>
-										</ul>
-									</nav>
+                                        <ul id="navigation">
+                                            <li><a href="login.do">로그인</a></li>
+                                            <li><a href="#">회원가입</a></li>
+                                            <li><a href="mypage.do">마이페이지</a></li>
+                                            <li><a href="#">고객센터<i class="ti-angle-down"></i></a>
+                                        	<ul class="submenu">
+                                                <li><a href="#">FAQ</a></li>
+												<li><a href="#">공지사항</a></li>
+                                            </ul>
+                                        </li>
+                                        </ul>
+                                    </nav>
 								</div>
 								<div class="book_btn d-none d-lg-block">
 									<a class="popup-with-form" href="#test-form">예약하기</a>

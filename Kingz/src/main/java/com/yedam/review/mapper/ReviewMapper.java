@@ -7,4 +7,5 @@ import com.yedam.review.ReviewVO;
 public interface ReviewMapper {
 	List<ReviewVO> reviewList(int roomId);
 	int insertReview(ReviewVO rvo);
+//	ReviewVO getReviewByReserveId(int reservId);
 }
