@@ -9,10 +9,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-<<<<<<< HEAD
-
-=======
-
 
 import com.yedam.contact.ContactControl;
 import com.yedam.facilities.FacilitiesControl;
@@ -27,24 +23,14 @@ import com.yedam.mypage.control.MyReservationControl;
 import com.yedam.mypage.control.MyReviewInfoControl;
 import com.yedam.mypage.control.MypageControl;
 
->>>>>>> refs/heads/main
 import com.yedam.member.control.AddMemberControl;
 import com.yedam.member.control.CheckIdControl;
 import com.yedam.member.control.LoginControl;
 import com.yedam.member.control.LoginFormControl;
 import com.yedam.member.control.MemberAddFormControl;
-<<<<<<< HEAD
 
-=======
-
->>>>>>> refs/heads/main
 import com.yedam.mypage.control.MypageControl;
-<<<<<<< HEAD
 
-
-=======
-
->>>>>>> refs/heads/main
 import com.yedam.example.control.TestControl;
 
 import com.yedam.reservation.control.ReservControl;
@@ -63,14 +49,9 @@ public class FrontController extends HttpServlet {
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		// control 추가
-		
 		// [조민성] 부대시설 페이지
 		map.put("/facilities.do", new FacilitiesControl());
-
-		// 마이페이지 연결
-		map.put("/mypage.do", new MypageControl());
-
-
+		
 		// [조민성] 호텔리스트 페이지
 		map.put("/hotelList.do", new HotelListControl());
 		
