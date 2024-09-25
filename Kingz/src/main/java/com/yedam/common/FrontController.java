@@ -15,8 +15,17 @@ import com.yedam.admin.control.AdminBalanceListControl;
 import com.yedam.admin.control.AdminBalanceYearControl;
 import com.yedam.admin.control.AdminUserDeleteControl;
 import com.yedam.admin.control.AdminUserListControl;
-import com.yedam.mypage.control.MypageControl;
 import com.yedam.example.control.TestControl;
+import com.yedam.member.control.AddMemberControl;
+import com.yedam.member.control.CheckIdControl;
+import com.yedam.member.control.LoginControl;
+import com.yedam.member.control.LoginFormControl;
+import com.yedam.member.control.MemberAddFormControl;
+import com.yedam.mypage.control.ModifyFormControl;
+import com.yedam.mypage.control.ModifyMypageControl;
+import com.yedam.mypage.control.MyReservationControl;
+import com.yedam.mypage.control.MyReviewInfoControl;
+import com.yedam.mypage.control.MypageControl;
 import com.yedam.reservation.control.ReservControl;
 
 //@WebServlet("*.do")
@@ -32,21 +41,38 @@ public class FrontController extends HttpServlet {
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		// control 추가
-		
-		// 마이페이지 연결
-		map.put("/mypage.do", new MypageControl());
-
 		map.put("/main.do", new TestControl());
+		
+		// [승원] 마이페이지(첫화면 내 정보) 연결
+		map.put("/mypage.do", new MypageControl());
+		
+		// [승원] 내 정보 수정 연결
+		map.put("/modifymypage.do", new ModifyMypageControl());
+		map.put("/modifyform.do", new ModifyFormControl());
+		
+		// [승원] 예약내용 연결
+		map.put("/myreservation.do", new MyReservationControl());
+		
+		// [승원] 리뷰내역 연결
+		map.put("/reviewinfo.do", new MyReviewInfoControl());
+		
+		// [권혁태] 회원가입
+		map.put("/memberAddForm.do", new MemberAddFormControl()); // 회원가입 창 열기
+		map.put("/addMember.do", new AddMemberControl()); // 회원가입 기능 
+		map.put("/checkId.do", new CheckIdControl()); // 아이디 중복 값 확인
+		map.put("/LoginForm.do", new LoginFormControl()); // 로그인 창 열기
+		map.put("/login.do", new LoginControl()); // 로그인 기능
 		
 		// [박진석] 예약 관련 URI 매핑
 		map.put("/reserv.do", new ReservControl());
-		
+
 		// [김건휘] 관리자 기능 관련
 		map.put("/userList.do", new AdminUserListControl()); // 회원 관리 페이지 이동
 		map.put("/deleteUser.do", new AdminUserDeleteControl()); // 회원 탈퇴
 		map.put("/balance.do", new AdminBalanceControl()); // 매출 페이지 이동
 		map.put("/balanceList.do", new AdminBalanceListControl()); // 매출액 조회
 		map.put("/balanceYear.do", new AdminBalanceYearControl()); // 매출이 있는 년도
+
 	}
 	
 	@Override
