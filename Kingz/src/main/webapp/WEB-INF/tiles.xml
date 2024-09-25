@@ -17,6 +17,4 @@
   <definition name="WILDCARD:*/*" extends="myapp.kingz">
   	<put-attribute name="body" value="/WEB-INF/{1}/{2}.jsp" />
   </definition>
-  
-  
 </tiles-definitions>
