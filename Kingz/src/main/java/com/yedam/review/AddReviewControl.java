@@ -68,6 +68,7 @@ public class AddReviewControl implements Control {
 //		} else {
 //			response.sendRedirect("roomDetail.do?roomId=" + roomId);
 //		}
+		
 	}
 
 }
