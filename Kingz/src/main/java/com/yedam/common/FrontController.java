@@ -10,7 +10,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.yedam.member.control.AddMemberControl;
+import com.yedam.member.control.CheckIdControl;
+import com.yedam.member.control.LoginControl;
+import com.yedam.member.control.LoginFormControl;
+import com.yedam.member.control.MemberAddFormControl;
+
 import com.yedam.mypage.control.MypageControl;
+
 
 import com.yedam.example.control.TestControl;
 import com.yedam.reservation.control.ReservControl;
@@ -33,6 +40,13 @@ public class FrontController extends HttpServlet {
 		map.put("/mypage.do", new MypageControl());
 		
 		map.put("/main.do", new TestControl());
+		
+		// [권혁태] 회원가입
+		map.put("/memberAddForm.do", new MemberAddFormControl()); // 회원가입 창 열기
+		map.put("/addMember.do", new AddMemberControl()); // 회원가입 기능 
+		map.put("/checkId.do", new CheckIdControl()); // 아이디 중복 값 확인
+		map.put("/LoginForm.do", new LoginFormControl()); // 로그인 창 열기
+		map.put("/login.do", new LoginControl()); // 로그인 기능
 		
 		// [박진석] 예약 관련 URI 매핑
 		map.put("/reserv.do", new ReservControl());
