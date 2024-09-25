@@ -14,6 +14,7 @@ import com.yedam.example.control.testControl;
 import com.yedam.facilities.FacilitiesControl;
 import com.yedam.hotel.HotelListControl;
 import com.yedam.hotel.RoomDetailControl;
+import com.yedam.review.AddReviewControl;
 
 //@WebServlet("*.do")
 public class FrontController extends HttpServlet {
@@ -38,8 +39,11 @@ public class FrontController extends HttpServlet {
 		
 		// [조민성] 호텔 상세페이지
 		map.put("/roomDetail.do", new RoomDetailControl());
+		
+		// [조민성] 리뷰 등록 기능
+		map.put("/addReview.do", new AddReviewControl());
 	}
-	
+		
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8"); // 요청방식이 POST 일 경우에 body 포함된 문자열 인코딩

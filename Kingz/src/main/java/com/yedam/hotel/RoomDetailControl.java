@@ -40,7 +40,7 @@ public class RoomDetailControl implements Control {
 //		if (rvc.addReview(rvo)) {
 //			response.sendRedirect("roomDetail.do?roomId=" + roomId);
 //		} else {
-//			request.getRequestDispatcher("layour/roomDetail.tiles").forward(request, response);
+//			request.getRequestDispatcher("layout/roomDetail.tiles").forward(request, response);
 //		}
 		
 		request.getRequestDispatcher("layout/roomDetail.tiles").forward(request, response);

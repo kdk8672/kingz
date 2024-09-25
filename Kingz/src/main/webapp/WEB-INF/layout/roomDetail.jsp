@@ -25,11 +25,13 @@
 		<div class="container box_1170">
 			<section class="blog_area single-post-area section-padding">
 				<div class="section-top-border">
-					<h3 class="mb-30">객실 정보</h3>
+					<h2 class="mb-30">객실 정보</h2>
 					<div class="row">
 						<div class="col-md-4">
 							<div class="single-defination">
-								<h4 class="mb-20">기본정보</h4>
+								<h4 class="mb-20">
+									<b class="text-dark">기본정보</b>
+								</h4>
 								<p>객실크기</p>
 								<p>· ${room.roomSize}</p>
 								<p>위치</p>
@@ -44,7 +46,9 @@
 						</div>
 						<div class="col-md-4">
 							<div class="single-defination">
-								<h4 class="mb-20">이용안내</h4>
+								<h4 class="mb-20">
+									<b class="text-dark">이용안내</b>
+								</h4>
 								<p>
 									이용안내<br> 실내외 수영장, 피트니스 클럽 무료 이용<br> <br>
 									체크인/체크아웃<br> · 체크인 15시, 체크아웃 12시<br> <br> Extra
@@ -54,7 +58,9 @@
 						</div>
 						<div class="col-md-4">
 							<div class="single-defination">
-								<h4 class="mb-20">이용규정</h4>
+								<h4 class="mb-20">
+									<b class="text-dark">이용규정</b>
+								</h4>
 								<p>
 									예약 취소 안내<br> · 숙박 2일 전: 객실 요금의 30% 부과<br> · 숙박 1일 전:
 									객실 요금의 50% 부과<br> · 숙박 당일 또는 No Show: 객실 요금의 100% 부과<br>
@@ -74,6 +80,7 @@
 
 		<div class="whole-wrap">
 			<div class="container box_1170">
+				<h2 class="mb-30">객실 리뷰</h2>
 				<c:forEach var="review" items="${list}">
 					<div class="section-top-border">
 						<h3 class="mb-30">${review.memberId}</h3>
@@ -92,21 +99,36 @@
 				</c:forEach>
 			</div>
 		</div>
+	</div>
 
-		<div class="comment-form">
+	<div class="comment-form">
+		<div class="container box_1170">
 			<h4>리뷰 남기기</h4>
-			<form class="form-contact comment_form" action="#" id="commentForm">
+			<form class="form-contact comment_form" action="addReview.do"
+				id="commentForm">
 				<div class="row">
-					<div class="col-12">
+					<div class="col-6">
 						<div class="form-group">
-							<textarea class="form-control w-100" name="content" id="content"
-								cols="30" rows="9" placeholder="리뷰를 작성해주세요"></textarea>
+							<input class="form-control" name="roomId" id="roomId" type="text"
+								value="${room.roomId}" readonly>
+						</div>
+					</div>
+					<div class="col-6">
+						<div class="form-group">
+							<input class="form-control" name="memberId" id="memberId" type="text"
+								value="giacopo0" readonly>
 						</div>
 					</div>
 					<div class="col-12">
 						<div class="form-group">
 							<input class="form-control" name="rating" id="rating" type="text"
 								placeholder="별점을 매겨주세요">
+						</div>
+					</div>
+					<div class="col-12">
+						<div class="form-group">
+							<textarea class="form-control w-100" name="content" id="content"
+								cols="30" rows="9" placeholder="리뷰를 작성해주세요"></textarea>
 						</div>
 					</div>
 				</div>
@@ -116,8 +138,8 @@
 				</div>
 			</form>
 		</div>
-		</section>
-
 	</div>
 
-	<!-- features_room_end -->
+</div>
+
+<!-- features_room_end -->
