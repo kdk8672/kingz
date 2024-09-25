@@ -11,8 +11,16 @@
 	</insert>
 	
 	<select id="seleteMember" parameterType="string" resultType="int">
-		select count(member_id) from member where member_id = #{memberId}
+		select count(member_id)
+		from member
+		where member_id = #{memberId}
 	</select>
 	
+	<select id="loginMember" resultType="com.yedam.member.vo.MemberVO">
+		select member_id, name, email, phone, grade
+		from   member
+		where  member_id = #{id}
+		and    password = #{password}
+	</select>
 	
 </mapper>
