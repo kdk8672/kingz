@@ -15,7 +15,6 @@ public class DataSource {
 		try {
 			inputStream = Resources.getResourceAsStream(resource);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);

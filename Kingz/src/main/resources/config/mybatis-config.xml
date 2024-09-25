@@ -10,6 +10,9 @@
 		<setting name="cacheEnabled" value="false"/>
   		<setting name="localCacheScope" value="STATEMENT"/>
 	</settings>
+	<typeAliases>
+		<typeAlias type="com.yedam.admin.vo.AdminVO" alias="admin"/>
+  	</typeAliases>
 	
   <environments default="development">
     <environment id="development">
@@ -26,5 +29,9 @@
     <!-- mapper 추가 -->
     <mapper resource="com/yedam/review/mapper/ReviewMapper.xml" />
     <mapper resource="com/yedam/hotel/mapper/HotelMapper.xml" />
+    <mapper resource="com/yedam/mypage/mapper/MypageMapper.xml" />
+    <mapper resource="com/yedam/admin/mapper/AdminMapper.xml"/>
+    <mapper resource="com/yedam/member/mapper/MemberMapper.xml"/>
+
   </mappers>
 </configuration>
