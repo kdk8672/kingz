@@ -24,13 +24,15 @@ public class ReservControl implements Control {
 	public void exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("[ReservControl.java] 호출 완료!");
 		
-		// [박진석 | 24.09.25] 객실 종류 검색을 위해 Hotel(room 테이블)과 관련된 패키지 접근 
-		HotelService svc = new HotelServiceImpl();
-		List<HotelVO> list = svc.getHotelRoomTypeList();
-		
-		System.out.println(list);
-		
-		request.setAttribute("roomTypelist", list);
-		request.getRequestDispatcher("reservation/reserv.tiles").forward(request, response);
+		// [박진석 | 24.09.25] 객실 종류 검색을 위해 Hotel(room 테이블)과 관련된 패키지 접근
+		// TODO: 외부에서 작업 끝나고 학원 도착하면 위 6줄은 주석 해제할 것.
+//		HotelService svc = new HotelServiceImpl();
+//		List<HotelVO> list = svc.getHotelRoomTypeList();
+//		
+//		System.out.println(list);
+//		
+//		request.setAttribute("roomTypelist", list);
+//		request.getRequestDispatcher("reservation/reserv.tiles").forward(request, response);
+		request.getRequestDispatcher("reservation/reservationTest.tiles").forward(request, response);
 	}
 }

@@ -21,6 +21,64 @@
 <script type="text/javascript" src="js/reservation/billing.js"></script>
 <!-- [박진석 | 24.09.24] 결제 API 끝 -->
 
+
+
+
+
+<!---------------------------------------------->
+<!-- [박진석 | 24.09.25] 레이아웃 테스트 중...-->
+<!-- 
+<style>
+    .container-main {
+        border: 1px solid black;
+        margin: 1px;
+        padding: 10px;
+        height: 100px;
+    }
+
+    .container-left-search {
+        float: left;
+        width: 100px;
+        height: 100px;
+        background-color: skyblue;
+        border: 1px solid black;
+    }
+
+    .container-right-rooms {
+        float: left;
+        width: 100px;
+        height: 100px;
+        background-color: skyblue;
+        border: 1px solid black;
+    }
+
+
+</style>
+
+<div class="container-main" style="background-color: blue;">
+	<div class="container-left-search">
+        <select>
+            <option value="hotel">호텔</option>
+            <option value="resort">리조트</option>
+        </select>
+        <input type="date" name="datepicker11">
+        <input type="date" name="datepicker22">
+	<div>
+    <div class="container-right-rooms" style="background-color: aqua;">
+        
+    </div>
+<div>
+ -->
+<!-- [박진석 | 24.09.25] 레이아웃 테스트 중...-->
+<!---------------------------------------------->
+
+
+
+
+
+
+
+
 <div class="body-main-container">
 	 <section class="blog_area section-padding">
         <div class="container">
