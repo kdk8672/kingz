@@ -32,9 +32,9 @@ import com.yedam.member.control.MemberAddFormControl;
 import com.yedam.mypage.control.MypageControl;
 
 import com.yedam.example.control.TestControl;
-
+import com.yedam.reservation.control.AddReservControl;
+import com.yedam.reservation.control.ReservCompleteControl;
 import com.yedam.reservation.control.ReservControl;
-
 
 //@WebServlet("*.do")
 public class FrontController extends HttpServlet {
@@ -88,7 +88,9 @@ public class FrontController extends HttpServlet {
 		
 		// [박진석] 예약 관련 URI 매핑
 		map.put("/reserv.do", new ReservControl());
-
+		map.put("/addReserv.do", new AddReservControl());
+		map.put("/reservComplete.do", new ReservCompleteControl());
+	
 	}
 		
 	@Override
