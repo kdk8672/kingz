@@ -192,13 +192,13 @@
                     				</div>
                     				<div class="second-col-detail">
                     					<h3>가격</h3><br>
-                    					<input name="roomPrice" id="roomPrice" value="200000">원 ~<br>
-                    					<input name="sleepDay" id="sleepDay" value="2">박<br>
+                    					객실금액<input name="roomPrice" id="roomPrice" value="200000">원 ~<br>
+                    					<div name="sleepDay" id="sleepDay" value="0"></div>박기준<br>
                     					<h4>옵션</h4><br>
-                    					조식 <input name="breakfastPrice" id="breakfastPrice" value="50000">원<br>
+                    					조식 <input name="breakfastPrice" id="breakfastPrice" value="0">원<br>
                     					포인트 <input name="pointPrice" id="pointPrice" value="0">원<br>
                     					<h2>총 예약금액</h2><input name="totalPrice" id="totalPrice" value="450000">원
-                    					<a class="genric-btn info circle" onclick='KGpay()'>결제하기</a>
+                    					<a class="genric-btn info circle" onclick='KGpay("giacopo0")'>결제하기</a>
                     					<input type="submit" id="reservSubmit" value="예약확정" hidden="hidden">
                     				</div>
                     			</div>

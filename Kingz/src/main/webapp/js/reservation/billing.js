@@ -1,8 +1,24 @@
 console.log("[reserv.jsp] 화면 도착");
 
-function KGpay() {
+function KGpay(mem_id) {
 	
-	// 필요한 경우, 여기에 null값 판단, 비회원 검증 등을 if로 구현할 것.
+	// 필요한 경우 여기에 null값 판단, 비회원 검증 등을 if로 구현할 것.
+	
+	//-------------------------------------------------
+	// [박진석 | 240925] 아이디와 현재 날짜와 시간을 결합하여 고유 결제번호("abc123_240925_2150)를 만듦
+    const now = new Date();
+
+    const year = String(now.getFullYear()).slice(2);
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const day = String(now.getDate()).padStart(2, '0');
+
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const orderId = `${mem_id}_${year}${month}${day}_${hours}${minutes}`;
+    
+   	console.log(orderId);
+	// [박진석 | 240925] 고유 결제번호 만들기 끝
+	//---------------------------------------------------
 	
 	var IMP = window.IMP; // 생략 가능
 	let key = "imp24027004";
@@ -11,7 +27,7 @@ function KGpay() {
 	IMP.request_pay({
 	    pg : 'html5_inicis.INIpayTest',
 	    pay_method : 'card',
-	    merchant_uid: "order_no_0015"	, // TODO [박진석 | 24.09.24] 상점에서 관리하는 주문 번호: 적절하게 값을 바꾸는 로직이 필요!!
+	    merchant_uid: orderId, 
 	    name : '주문명:결제테스트',
 	    amount : 100,
 	    buyer_email : 'iamport@siot.do',
