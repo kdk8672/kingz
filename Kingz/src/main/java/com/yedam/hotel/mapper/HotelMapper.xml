@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yedam.hotel.mapper.HotelMapper">
+
+	<select id="hotelList" resultType="com.yedam.hotel.HotelVO">
+		select 		a.image_url,
+					b.room_price,
+					b.room_name,
+					b.room_content,
+					b.room_id
+		from 		room b
+		join		room_image a
+		on 			a.room_id = b.room_id
+		order by 	b.room_id
+	</select>
+
+	<select id="selectHotel" parameterType="int">
+		select 		a.*,
+					b.*
+		from 		room b
+		join		room_image a
+		on 			a.room_id = b.room_id
+		where 		b.room_id = #{roomId}
+	</select>
+	
+</mapper>

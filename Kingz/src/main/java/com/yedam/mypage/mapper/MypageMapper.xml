@@ -9,5 +9,63 @@
 		select *
 		from member
 	</select>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
+<mapper namespace="com.yedam.mypage.mapper.MypageMapper">
+
+	<select id="memberList"
+		resultType="com.yedam.mypage.vo.MypageVO">
+		select member_id,
+		password,
+		name,
+		email,
+		phone,
+		grade
+		from member
+	</select>
+	<select id="reservList"
+		resultType="com.yedam.mypage.vo.MypageVO">
+		-- 예약내역 조회 --
+		select DISTINCT re.checkin,
+						re.member_id,
+						re.checkout,
+						re.headcount,
+						re.breakfast,
+						ro.room_type,
+						ro.room_price,
+						r.image_url,
+						p.payment_amount,
+						p.payment_point
+		from reservation re
+		JOIN room ro ON re.room_id = ro.room_id
+		JOIN room_image r ON ro.room_id = r.room_id
+		JOIN payment p On re.reserve_id = p.reserve_id
+		where re.member_id = 'mdorosario1'
+	</select>
+	
+	<select id="reviewList" resultType="com.yedam.mypage.vo.MypageVO">
+		select r.checkin, r.checkout, r.breakfast, r.headcount,
+      		   re.review_content, re.rating,
+       		   ro.room_type, ro.room_name,
+       	       ri.image_url
+		from   reservation r
+		JOIN   room ro ON r.room_id = ro.room_id
+		JOIN   review re ON ro.room_id = re.room_id
+		JOIN   review_image ri ON re.review_id = ri.review_id
+		where  r.member_id = 'mdorosario1'
+		AND    r.member_id = re.member_id
+	</select>
+	
+	<update id="modifymypage" parameterType="com.yedam.mypage.vo.MypageVO">
+		update member
+		set password = #{password},
+		    email = #{email},
+		    phone = #{phone} 
+		where member_id = #{memberId}
+	</update>
+	
+>>>>>>> refs/heads/main
 </mapper>
