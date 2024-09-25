@@ -16,6 +16,18 @@ import com.yedam.mypage.control.ModifyMypageControl;
 import com.yedam.mypage.control.MyReservationControl;
 import com.yedam.mypage.control.MyReviewInfoControl;
 import com.yedam.mypage.control.MypageControl;
+
+import com.yedam.member.control.AddMemberControl;
+import com.yedam.member.control.CheckIdControl;
+import com.yedam.member.control.LoginControl;
+import com.yedam.member.control.LoginFormControl;
+import com.yedam.member.control.MemberAddFormControl;
+
+import com.yedam.mypage.control.MypageControl;
+
+
+import com.yedam.example.control.TestControl;
+
 import com.yedam.reservation.control.ReservControl;
 
 //@WebServlet("*.do")
@@ -46,9 +58,16 @@ public class FrontController extends HttpServlet {
 		// [승원] 리뷰내역 연결
 		map.put("/reviewinfo.do", new MyReviewInfoControl());
 		
+		// [권혁태] 회원가입
+		map.put("/memberAddForm.do", new MemberAddFormControl()); // 회원가입 창 열기
+		map.put("/addMember.do", new AddMemberControl()); // 회원가입 기능 
+		map.put("/checkId.do", new CheckIdControl()); // 아이디 중복 값 확인
+		map.put("/LoginForm.do", new LoginFormControl()); // 로그인 창 열기
+		map.put("/login.do", new LoginControl()); // 로그인 기능
+		
 		// [박진석] 예약 관련 URI 매핑
 		map.put("/reserv.do", new ReservControl());
-		
+
 	}
 	
 	@Override
