@@ -15,6 +15,10 @@ import com.yedam.member.control.CheckIdControl;
 import com.yedam.member.control.LoginControl;
 import com.yedam.member.control.LoginFormControl;
 import com.yedam.member.control.MemberAddFormControl;
+
+import com.yedam.mypage.control.MypageControl;
+
+
 import com.yedam.example.control.TestControl;
 import com.yedam.reservation.control.ReservControl;
 
@@ -31,6 +35,10 @@ public class FrontController extends HttpServlet {
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		// control 추가
+		
+		// 마이페이지 연결
+		map.put("/mypage.do", new MypageControl());
+
 		map.put("/main.do", new TestControl());
 		
 		// [권혁태] 회원가입
