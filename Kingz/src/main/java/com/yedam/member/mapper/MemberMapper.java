@@ -4,5 +4,5 @@ import com.yedam.member.vo.MemberVO;
 
 public interface MemberMapper {
 	int insertMember(MemberVO member); // 회원등록
-	MemberVO seleteMember(String memberId); // 중복확인
+	int seleteMember(String memberId); // 중복확인
 }

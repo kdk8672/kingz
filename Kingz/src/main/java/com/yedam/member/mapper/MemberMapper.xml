@@ -3,6 +3,16 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.yedam.mapper.MemberMapper">
+<mapper namespace="com.yedam.member.mapper.MemberMapper">
 
+	<insert id="insertMember" parameterType="com.yedam.member.vo.MemberVO">
+		insert into member(member_id, password, name, email, phone)
+		values(#{memberId}, #{password}, #{name}, #{email}, #{phone})
+	</insert>
+	
+	<select id="seleteMember" parameterType="string" resultType="int">
+		select count(member_id) from member where member_id = #{memberId}
+	</select>
+	
+	
 </mapper>

@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.yedam.member.control.AddMemberControl;
+import com.yedam.member.control.CheckIdControl;
 import com.yedam.member.control.MemberAddFormControl;
 import com.yedam.example.control.TestControl;
 import com.yedam.reservation.control.ReservControl;
@@ -27,8 +29,12 @@ public class FrontController extends HttpServlet {
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		// control 추가
-		map.put("/memberAddForm.do", new MemberAddFormControl());
 		map.put("/main.do", new TestControl());
+		
+		// [권혁태] 회원가입
+		map.put("/memberAddForm.do", new MemberAddFormControl());
+		map.put("/addMember.do", new AddMemberControl());
+		map.put("/checkId.do", new CheckIdControl());
 		
 		// [박진석] 예약 관련 URI 매핑
 		map.put("/reserv.do", new ReservControl());
