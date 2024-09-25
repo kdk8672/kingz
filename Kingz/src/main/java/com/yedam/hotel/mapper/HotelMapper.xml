@@ -17,9 +17,12 @@
 	</select>
 
 	<select id="selectHotel" parameterType="int">
-		select 	*
-		from 	room
-		where 	room_id = #{roomId}
+		select 		a.*,
+					b.*
+		from 		room b
+		join		room_image a
+		on 			a.room_id = b.room_id
+		where 		b.room_id = #{roomId}
 	</select>
 	
 </mapper>

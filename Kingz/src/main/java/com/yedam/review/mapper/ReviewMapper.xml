@@ -5,16 +5,22 @@
 <mapper namespace="com.yedam.review.mapper.ReviewMapper">
 
 	<select id="reviewList" parameterType="int">
-		select 	*
-		from 	review
-		where 	room_id = #{roomId}
+		select 		*
+		from 		review
+		where 		room_id = #{roomId}
+		order by	review_id
 	</select>
 	
-	<select id="insertReview" parameterType="int">
-		insert into review
-		(review_id, member_id, room_id, review_content, rating, review_date)
-		values (seq_review_id.nextval,
-		#{memberId}, #{roomId}, #{reviewContent}, #{rating}, sysdate)
-	</select>
+	<insert id="insertReview" parameterType="com.yedam.review.ReviewVO">
+		insert into 	review
+						(review_id, member_id, room_id, review_content, rating, review_date)
+		values 			(seq_review_id.nextval, #{memberId}, #{roomId}, #{reviewContent}, #{rating}, sysdate)
+	</insert>
+	
+	<!-- <select id="reviewCheck" parameterType="map" resultType="com.yedam.reserve.ReservVO">
+		select 	*
+		from	reservation
+		where	room_id = #{room_id} and member_id = #{member_id} and checkout > sysdate
+	</select> -->
 
 </mapper>

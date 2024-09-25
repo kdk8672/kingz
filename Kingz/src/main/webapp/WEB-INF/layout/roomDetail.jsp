@@ -23,6 +23,9 @@
 	</div>
 	<div class="whole-wrap">
 		<div class="container box_1170">
+			<div class="room_thumb">
+				<img src="img/rooms/${room.imageUrl}" alt="">
+			</div>
 			<section class="blog_area single-post-area section-padding">
 				<div class="section-top-border">
 					<h2 class="mb-30">객실 정보</h2>
@@ -75,8 +78,14 @@
 						</div>
 					</div>
 				</div>
+				<div class="container">
+					<div style="text-align:center">
+						<a href="reservation.do" class="genric-btn info e-large" style="font-size:17px">예약하기</a>
+					</div>
+				</div>
 			</section>
 		</div>
+
 
 		<div class="whole-wrap">
 			<div class="container box_1170">
@@ -105,7 +114,7 @@
 		<div class="container box_1170">
 			<h4>리뷰 남기기</h4>
 			<form class="form-contact comment_form" action="addReview.do"
-				id="commentForm">
+				id="commentForm" method="post">
 				<div class="row">
 					<div class="col-6">
 						<div class="form-group">
@@ -115,20 +124,20 @@
 					</div>
 					<div class="col-6">
 						<div class="form-group">
-							<input class="form-control" name="memberId" id="memberId" type="text"
-								value="giacopo0" readonly>
+							<input class="form-control" name="memberId" id="memberId"
+								type="text" value="giacopo0" readonly>
 						</div>
 					</div>
 					<div class="col-12">
 						<div class="form-group">
-							<input class="form-control" name="rating" id="rating" type="text"
-								placeholder="별점을 매겨주세요">
+							<input class="form-control" name="rating" id="rating"
+								type="number" placeholder="별점을 매겨주세요">
 						</div>
 					</div>
 					<div class="col-12">
 						<div class="form-group">
-							<textarea class="form-control w-100" name="content" id="content"
-								cols="30" rows="9" placeholder="리뷰를 작성해주세요"></textarea>
+							<input class="form-control w-100" name="reviewContent"
+								id="reviewContent" placeholder="리뷰를 작성해주세요">
 						</div>
 					</div>
 				</div>

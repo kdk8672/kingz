@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.yedam.contact.ContactControl;
 import com.yedam.example.control.testControl;
 import com.yedam.facilities.FacilitiesControl;
 import com.yedam.hotel.HotelListControl;
@@ -42,6 +43,9 @@ public class FrontController extends HttpServlet {
 		
 		// [조민성] 리뷰 등록 기능
 		map.put("/addReview.do", new AddReviewControl());
+		
+		// [조민성] 오시는 길 페이지
+		map.put("/contact.do", new ContactControl());
 	}
 		
 	@Override
