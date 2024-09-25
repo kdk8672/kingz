@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.yedam.mypage.control.MypageControl;
 
 import com.yedam.example.control.TestControl;
+import com.yedam.reservation.control.AddReservControl;
 import com.yedam.reservation.control.ReservCompleteControl;
 import com.yedam.reservation.control.ReservControl;
 
@@ -37,6 +38,7 @@ public class FrontController extends HttpServlet {
 		
 		// [박진석] 예약 관련 URI 매핑
 		map.put("/reserv.do", new ReservControl());
+		map.put("/addReserv.do", new AddReservControl());
 		map.put("/reservComplete.do", new ReservCompleteControl());
 		
 	}

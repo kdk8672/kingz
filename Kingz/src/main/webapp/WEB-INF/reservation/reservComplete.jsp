@@ -9,47 +9,17 @@
 				<div class="row">
 					<div class="col-xl-12">
 						<div class="slider_text text-center">
-							<h3>결제 완료</h3>
-							<p>welcome</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div
-			class="single_slider  d-flex align-items-center justify-content-center slider_bg_2">
-			<div class="container">
-				<div class="row">
-					<div class="col-xl-12">
-						<div class="slider_text text-center">
-							<h3>결제완료</h3>
-							<p>welcome</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div
-			class="single_slider d-flex align-items-center justify-content-center slider_bg_1">
-			<div class="container">
-				<div class="row">
-					<div class="col-xl-12">
-						<div class="slider_text text-center">
-							<h3>결제완료</h3>
-							<p>welcome</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div
-			class="single_slider  d-flex align-items-center justify-content-center slider_bg_2">
-			<div class="container">
-				<div class="row">
-					<div class="col-xl-12">
-						<div class="slider_text text-center">
-							<h3>결제오나료</h3>
-							<p>Unlock to enjoy the view of Martine</p>
+							<h3>결제 완료</h3><br>
+							<h4>${roomName }</h4>
+							<p>Checkin: ${checkin }</p>
+							<p>Checkout: ${checkout }</p>
+							<p>${sleepDay }박 ${sleepDay + 1 }일</p>
+							<p>인원: ${headcount }</p><br>
+							<h4>TOTAL</h4>
+							<p>객실금액 ${roomPrice }</p>
+							<p>조식 ${breakfastPrice }</p>
+							<p>포인트 ${pointPrice }</p>
+							<p>총 결제금액 ${totalPrice }</p>
 						</div>
 					</div>
 				</div>

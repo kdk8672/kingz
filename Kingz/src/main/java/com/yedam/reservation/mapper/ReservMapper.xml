@@ -9,5 +9,24 @@
 		select *
 		from reservation
 	</select>
+	
+	<update id="updateReserv" parameterType="com.yedam.reservation.vo.ReservVO">
+		INSERT INTO	reservation (	reserve_id,
+									member_id,
+									room_id, 
+									checkin, 
+									checkout, 
+									headcount, 
+									breakfast, 
+									request)
+		VALUES (	SEQ_RESERVE_ID.NEXTVAL, 
+					#{memberId}, 
+					#{roomId}, 
+					#{checkin}, 
+					#{checkout}, 
+					#{headcount}, 
+					#{bearkfast}, 
+					#{request})
+	</update>
 
 </mapper>
