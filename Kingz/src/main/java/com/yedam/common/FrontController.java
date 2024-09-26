@@ -43,6 +43,7 @@ import com.yedam.mypage.control.ModifyMypageControl;
 import com.yedam.mypage.control.MyReservationControl;
 import com.yedam.mypage.control.MyReviewInfoControl;
 import com.yedam.mypage.control.MypageControl;
+import com.yedam.payment.control.AddPayControl;
 //github.com/kdk8672/kingz.git
 import com.yedam.reservation.control.ReservControl;
 import com.yedam.review.AddReviewControl;
@@ -103,10 +104,13 @@ public class FrontController extends HttpServlet {
 		map.put("/loginVer.do", new LoginVerControl()); // 로그인 검증
 		map.put("/logout.do", new LogoutControll());
 		
-		// [박진석] 예약 관련 URI 매핑
+		// [박진석] 예약 관련
 		map.put("/reserv.do", new ReservControl());
 		map.put("/addReserv.do", new AddReservControl());
 		map.put("/reservComplete.do", new ReservCompleteControl());
+		
+		// [박진석] 결제 관련
+		map.put("/addPay.do", new AddPayControl());
 
 		// [김건휘] 관리자 기능 관련
 		map.put("/userList.do", new AdminUserListControl()); // 회원 관리 페이지 이동
