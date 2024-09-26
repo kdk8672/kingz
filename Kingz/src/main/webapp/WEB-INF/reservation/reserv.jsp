@@ -87,19 +87,18 @@
                 <div class="col-lg-4">
                     <div class="blog_right_sidebar">
                         <aside class="single_sidebar_widget search_widget">
-                            <form action="reservSearch.do">
+                            <form action="reserv.do">
                                 <div class="form-group">
                                 	<!-- [박진석 | 24.09.24] 호텔 방 셀렉트 폼 -->
 	                                <div class="input-group-icon mt-10">
 										<div class="icon"><i class="fa fa-plane" aria-hidden="true"></i></div>
 										<div class="form-select" id="default-select">
-											<select>
-												<option value=" 1">City</option>
-												<option value="1">Dhaka</option>
-												<option value="1">Dilli</option>
-												<option value="1">Newyork</option>
-												<option value="1">Islamabad</option>
-												<!-- room 테이블에서 room_type와 room_id 값 가져와 위 option 값에 뿌리기 -->
+											<select name="roomType">
+												<!-- [박진석 | 24.09.26] room 테이블에서 room_type값 가져와 option에 뿌리기 -->
+												<c:forEach var="rtl" items="${roomTypelist}">
+													<option value="${rtl.roomType }">${rtl.roomType }</option>
+												</c:forEach>
+												<!-- [박진석 | 24.09.26] room_type 값 뿌리기 끝 -->
 											</select>
 										</div>
 									</div>
@@ -107,20 +106,23 @@
 									
                                 	<!-- [박진석 | 24.09.24] 날짜 선택 폼 -->
                                 	<div class="col-xl-6">
-                                        <input id="datepicker" placeholder="Check in date">
+                                        <input name="inDate" id="datepicker" placeholder="Check in date">
                                     </div>
                                     <div class="col-xl-6">
-                                        <input id="datepicker2" placeholder="Check out date">
+                                        <input name="outDate" id="datepicker2" placeholder="Check out date">
                                     </div>
                                 	<!-- [박진석 | 24.09.24] 날짜 선택 폼 끝 -->
                                 	<div>
-                                		인원: <input id="headcountPicker" type="number" value=1>
+                                		인원: <input name="inHeadcount" id="headcountPicker" type="number" value="1">
                                 	</div>
                                 </div>
                                 <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
-                                    type="submit" hidden>객실 검색</button>
+                                    type="submit">객실 검색</button>
                             </form>
                         </aside>
+
+
+
 
                         <aside class="single_sidebar_widget post_category_widget">
                             <h4 class="widget_title">Category</h4>
@@ -174,19 +176,19 @@
                 <div class="col-lg-8 mb-5 mb-lg-0">
                     <div class="blog_left_sidebar">
                     
-                    
+                    <c:forEach var="rl" items="${roomList}">
                      <!-- --------------------------- -->
                     <!-- 하나의 객실 보여주는 폼 묶음 -->
                     	<article class="room-item" style="background-color: lightgrey;" style="width: 90%; margin: 10px auto;">
                     		<form action="addReserv.do" method="post">
                     			<div class="first-col">
-                    				<img class="card-img rounded-0" src="img/blog/single_blog_1.png" alt="" style="width: 200px">
+                    				<img class="card-img rounded-0" src="img/rooms/${rl.imageUrl }" alt="" style="width: 200px">
                     			</div>
                     			<div class="second-col">
-	                    			<input name="roomName" id="roomName" value="슈페리어 방1"> <br>
+	                    			<input name="roomName" id="roomName" value="${rl.roomName }"> <br>
 	                    			조식 선택 가능
 	                    			<!-- 사용자에게 보여주지 않고 내부 쿼리 처리를 위한 input -->
-	                    			<input name="roomId" id="roomId" value="10">
+	                    			<input name="roomId" id="roomId" value="${rl.roomId }">
 	                    			<input name="checkin" id="checkin" value="24-01-01">
 	                    			<input name="checkout" id="checkout" value="24-01-01">
 	                    			<input name="headcount" id="headcount" value="2">
@@ -195,7 +197,7 @@
                     			</div>
                     			<div class="third-col">
                     				<small>1박 1객실</small><br>
-                    				<input name="roomPrice" value="200000">원 ~<br>
+                    				<input name="roomPrice" value="${rl.roomPrice }">원 ~<br>
                     			</div>
                     			<a class="genric-btn info circle" onclick="setReservInfo()">예약하기</a>
                     			
@@ -212,7 +214,7 @@
                     				<div class="second-col-detail">
                     					<h3>가격</h3><br>
                     					객실금액<input name="roomPrice" id="roomPrice" value="200000">원 ~<br>
-                    					<div name="sleepDay" id="sleepDay" value="0"></div>박기준<br>
+                    					<input name="sleepDay" id="sleepDay" value="1"></input>박기준<br>
                     					<h4>옵션</h4><br>
                     					조식 <input name="breakfastPrice" id="breakfastPrice" value="0">원<br>
                     					포인트 <input name="pointPrice" id="pointPrice" value="0">원<br>
@@ -225,9 +227,11 @@
                     			
                     		</form>
                         </article>
+                        <br>	<!-- [24.09.26] 각 객실 폼 묶음이 끝났다는걸 알려주기 위해 br 줄바꿈 넣음. -->
+                        		<!--  나중에 CSS 마진작업 때 bottom이 이상하다면 이부분 문제이니 br 삭제할 것. -->
                     <!-- 하나의 객실 폼 묶음 끝 -->
                     <!-- ----------------------- -->
-                    
+                    </c:forEach>
                     
                     
                     
