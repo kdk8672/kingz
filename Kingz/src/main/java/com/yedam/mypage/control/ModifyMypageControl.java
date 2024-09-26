@@ -24,8 +24,8 @@ public class ModifyMypageControl implements Control {
 		String phone = request.getParameter("phone");
 
 		MypageVO mvo = new MypageVO();
-		mvo.setMemberId(id);
-		mvo.setPassword(pw);
+		mvo.setId(id);
+		mvo.setPwd(pw);
 		mvo.setName(name);
 		mvo.setEmail(mail);
 		mvo.setPhone(phone);
