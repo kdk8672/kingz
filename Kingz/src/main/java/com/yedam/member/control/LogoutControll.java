@@ -9,12 +9,15 @@ import javax.servlet.http.HttpSession;
 
 import com.yedam.common.Control;
 
-public class LoginFormControl implements Control {
+public class LogoutControll implements Control {
 
 	@Override
 	public void exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("member/login.tiles").forward(request, response);
-	
+		
+		HttpSession session = request.getSession();
+		session.invalidate();
+		
+		response.sendRedirect("main.do");
 
 	}
 

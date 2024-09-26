@@ -26,6 +26,8 @@ import com.yedam.member.control.AddMemberControl;
 import com.yedam.member.control.CheckIdControl;
 import com.yedam.member.control.LoginControl;
 import com.yedam.member.control.LoginFormControl;
+import com.yedam.member.control.LoginVerControl;
+import com.yedam.member.control.LogoutControll;
 import com.yedam.member.control.MemberAddFormControl;
 import com.yedam.mypage.control.ModifyFormControl;
 import com.yedam.mypage.control.ModifyMypageControl;
@@ -86,6 +88,8 @@ public class FrontController extends HttpServlet {
 		map.put("/checkId.do", new CheckIdControl()); // 아이디 중복 값 확인
 		map.put("/LoginForm.do", new LoginFormControl()); // 로그인 창 열기
 		map.put("/login.do", new LoginControl()); // 로그인 기능
+		map.put("/loginVer.do", new LoginVerControl()); // 로그인 검증
+		map.put("/logout.do", new LogoutControll());
 		
 		// [박진석] 예약 관련 URI 매핑
 		map.put("/reserv.do", new ReservControl());
