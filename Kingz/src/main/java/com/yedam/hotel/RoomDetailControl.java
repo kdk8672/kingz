@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.yedam.common.Control;
+import com.yedam.review.ImageVO;
 import com.yedam.review.ReviewService;
 import com.yedam.review.ReviewServiceImpl;
 import com.yedam.review.ReviewVO;

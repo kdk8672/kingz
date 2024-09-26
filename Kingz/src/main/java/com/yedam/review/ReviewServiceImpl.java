@@ -41,5 +41,15 @@ public class ReviewServiceImpl implements ReviewService {
 			
 		return mapper.insertReview(rvo) == 1;
 	}
+	
+	@Override
+	public boolean addImage(ImageVO ivo) {
+		return mapper.insertImage(ivo) == 1;
+	}
+
+	@Override
+	public int getReviewId() {
+		return mapper.selectReviewId();
+	}
 
 }

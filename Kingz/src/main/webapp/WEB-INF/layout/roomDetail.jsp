@@ -3,7 +3,10 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-
+<%@ page import="java.io.File"%>
+<%@ page import="java.util.Enumeration"%>
+<%@ page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
+<%@ page import="com.oreilly.servlet.MultipartRequest"%>
 
 <div class="bradcam_area breadcam_bg">
 	<h3>Rooms</h3>
@@ -80,7 +83,7 @@
 				</div>
 				<div class="container">
 					<div style="text-align: center">
-						<a href="reservation.do" class="genric-btn info e-large"
+						<a href="reserv.do" class="genric-btn info e-large"
 							style="font-size: 17px">예약하기</a>
 					</div>
 				</div>
@@ -96,15 +99,22 @@
 						<h3 class="mb-30">${review.memberId}</h3>
 						<h3 class="mb-30">${review.rating}.0</h3>
 						<div class="row">
-							<div class="col-md-3">
-								<img src="img/elements/d.jpg" alt="" class="img-fluid">
-							</div>
+							<c:if test="${not empty review.imageUrl}">
+								<div class="col-md-3">
+									<img src="img/reviews/${review.imageUrl}" alt=""
+										class="img-fluid">
+								</div>
+							</c:if>
+							<!-- <div class="col-md-3">
+								<img src="img/elements/${review.imageUrl}" alt=""
+									class="img-fluid">
+							</div> -->
 							<div class="col-md-9 mt-sm-20">
 								<p>${review.reviewContent}</p>
 							</div>
 						</div>
 						<br>
-						<p class="date" style="text-align:right">${review.reviewDate}</p>
+						<p class="date" style="text-align: right">${review.reviewDate}</p>
 					</div>
 				</c:forEach>
 			</div>
@@ -116,7 +126,7 @@
 			<h2>리뷰 남기기</h2>
 			<br>
 			<form class="form-contact comment_form" action="addReview.do"
-				id="commentForm" method="post">
+				id="commentForm" method="post" enctype="multipart/form-data">
 				<div class="row">
 					<div class="col-12">
 						<div class="form-group" style="display: none">
@@ -137,6 +147,21 @@
 						</div>
 					</div>-->
 					<div class="col-12">
+						<!-- <div class="nice-select form-select wide form-group" tabindex="0">
+							<span class="current">별점</span>
+							<ul class="list">
+								<li data-value="1" data-display="1" class="option"><input class="form-control" name="rating" id="rating"
+								type="number" value="1"></li>
+								<li data-value="2" data-display="2" class="option"><input class="form-control" name="rating" id="rating"
+								type="number" value="2"></li>
+								<li data-value="3" data-display="3" class="option"><input class="form-control" name="rating" id="rating"
+								type="number" value="3"></li>
+								<li data-value="4" data-display="4" class="option"><input class="form-control" name="rating" id="rating"
+								type="number" value="4"></li>
+								<li data-value="5" data-display="5" class="option"><input class="form-control" name="rating" id="rating"
+								type="number" value="5"></li>
+							</ul>
+						</div> -->
 						<div class="form-group">
 							<input class="form-control" name="rating" id="rating"
 								type="number" placeholder="별점을 매겨주세요">
@@ -146,6 +171,11 @@
 						<div class="form-group">
 							<input class="form-control w-100" name="reviewContent"
 								id="reviewContent" placeholder="리뷰를 작성해주세요">
+						</div>
+					</div>
+					<div class="col-12">
+						<div class="form-group">
+							<input type="file" id="imageUrl" name="imageUrl">
 						</div>
 					</div>
 				</div>

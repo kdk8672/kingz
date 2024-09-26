@@ -9,6 +9,9 @@
   </appender>
 
   <!-- logger 추가 -->
+  <logger name="com.yedam.review.mapper.ReviewMapper">
+		<level value="debug" />
+	</logger>
   
   <root level="error">
     <appender-ref ref="stdout"/>
