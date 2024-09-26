@@ -20,6 +20,26 @@
 <link rel="stylesheet" href="adminassets/css/app.css">
 <link rel="shortcut icon" href="adminassets/images/favicon.svg"
 	type="image/x-icon">
+
+	<script src="adminassets/js/plugin/webfont/webfont.min.js"></script>
+	<script>
+		WebFont.load({
+			google: { families: ["Public Sans:300,400,500,600,700"] },
+			custom: {
+				families: [
+					"Font Awesome 5 Solid",
+					"Font Awesome 5 Regular",
+					"Font Awesome 5 Brands",
+					"simple-line-icons",
+				],
+				urls: ["../assets/css/fonts.min.css"],
+			},
+			active: function () {
+				sessionStorage.fonts = true;
+			},
+		});
+	</script>
+
 <style>
 	.card-header{
 		display: flex;
@@ -42,6 +62,14 @@
 <div class="bradcam_area breadcam_bg_1">
 	<h3>호텔 통계</h3>
 </div>
+<div class="list-group list-group-horizontal-sm mb-1 text-center"
+     role="tablist">
+     <a class="list-group-item list-group-item-action"
+         id="list-sunday-list" href="userList.do"
+         role="tab">회원 관리</a>
+     <a class="list-group-item list-group-item-action active" id="list-monday-list"
+         href="balance.do" role="tab">호텔 통계</a>
+ </div>
 <section class="section">
 	<div class="row">
 		<div class="col-md">
@@ -57,6 +85,38 @@
 		</div>
 	</div>
 </section>
+<div class="row">
+	<div class="col-md-6">
+		<div class="card">
+			<div class="card-header">
+				<div class="card-title">등급 별 회원</div>
+			</div>
+			<div class="card-body">
+				<div class="chart-container">
+					<canvas
+						id="doughnutChart"
+						style="width: 800px; height: 400px"
+					></canvas>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="card">
+			<div class="card-header">
+				<div class="card-title">객실 예약</div>
+			</div>
+			<div class="card-body">
+				<div class="chart-container">
+					<canvas
+						id="barChart"
+						style="width: 800px; height: 400px"
+					></canvas>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
 <script src="adminassets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 <script src="adminassets/js/bootstrap.bundle.min.js"></script>
@@ -64,6 +124,21 @@
 <script src="adminassets/vendors/dayjs/dayjs.min.js"></script>
 <script src="adminassets/js/selectYear.js"></script>
 <script src="adminassets/vendors/apexcharts/apexcharts.js"></script>
+<!-- DB 매출 차트 생성 -->
 <script src="adminassets/js/pages/ui-apexchart.js"></script>
 
 <script src="adminassets/js/main.js"></script>
+
+<script src="adminassets/js/core/jquery-3.7.1.min.js"></script>
+<script src="adminassets/js/core/popper.min.js"></script>
+<script src="adminassets/js/core/bootstrap.min.js"></script>
+<!-- Chart JS -->
+<script src="adminassets/js/plugin/chart.js/chart.min.js"></script>
+<!-- jQuery Scrollbar -->
+<script src="adminassets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+<!-- Kaiadmin JS -->
+<script src="adminassets/js/kaiadmin.min.js"></script>
+<!-- Kaiadmin DEMO methods, don't include it in your project! -->
+<script src="adminassets/js/setting-demo2.js"></script>
+<!-- DB 등급, 객실 차트 생성 -->
+<script src="adminassets/js/makeChart.js"></script> 

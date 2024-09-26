@@ -68,5 +68,20 @@
 		from payment 
 		order by pyear
 	</select>
+	
+	<select id="selectGradeCount" resultType="admin">
+		select grade, count(1) as count
+		from member 
+		group by grade 
+		order by grade
+	</select>
+	
+	<select id="selectRoomReserveCount" resultType="admin">
+		SELECT r.room_name as room_name, r.room_type as room_type, COUNT(1) AS count
+		FROM reservation re
+		JOIN room r ON re.room_id = r.room_id
+		GROUP BY r.room_name, r.room_type
+		ORDER BY r.room_type
+	</select>
   
 </mapper>

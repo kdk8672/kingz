@@ -9,4 +9,6 @@ public interface AdminService {
 	boolean deleteUser(String memberId);
 	List<AdminVO> balanceList(int year);
 	List<AdminVO> balanceYearList();
+	List<AdminVO> gradeCounts();
+	List<AdminVO> roomReserveCounts();
 }

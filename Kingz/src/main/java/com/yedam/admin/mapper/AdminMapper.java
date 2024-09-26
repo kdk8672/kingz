@@ -18,4 +18,10 @@ public interface AdminMapper {
 	// 매출 조회
 	List<AdminVO> selectBalance(int pyear);
 	List<AdminVO> selectBalanceYear();
+	
+	// 등급별 통계
+	List<AdminVO> selectGradeCount();
+	List<AdminVO> selectRoomReserveCount();
+	
+	// 방별 예약 통계
 }

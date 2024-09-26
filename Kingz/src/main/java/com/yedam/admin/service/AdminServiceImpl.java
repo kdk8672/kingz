@@ -39,4 +39,14 @@ public class AdminServiceImpl implements AdminService{
 		return mapper.selectBalanceYear();
 	}
 
+	@Override
+	public List<AdminVO> gradeCounts() {
+		return mapper.selectGradeCount();
+	}
+
+	@Override
+	public List<AdminVO> roomReserveCounts() {
+		return mapper.selectRoomReserveCount();
+	}
+
 }

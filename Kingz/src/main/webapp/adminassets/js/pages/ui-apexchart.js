@@ -468,7 +468,7 @@ var radialBarOptions = {
   labels: ["Apples", "Oranges", "Bananas", "Berries"],
 };
 
-// MutationObserver를 사용하여 DOM 변화를 감지
+// 차트 출력
 const observer = new MutationObserver(() => {
   const currentSpan = document.querySelector('span.current');
 
@@ -511,7 +511,7 @@ line.render();
 
 
 let areaChart;
-
+// 차트 생성
 function makeChart(pyear){
   fetch('balanceList.do?pyear=' + pyear)
   .then(resolve => resolve.json())

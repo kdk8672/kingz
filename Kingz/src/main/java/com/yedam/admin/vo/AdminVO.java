@@ -14,4 +14,7 @@ public class AdminVO {
 	private int pyear; // 결제년도
 	private String paymentMonth; // 결제월
 	private int totalAmount; // 월별 총 결제 금액
+	private int count; // 각 조건별 갯수
+	private String roomName; // 방 이름
+	private String roomType; // 호텔, 리조트 구분
 }

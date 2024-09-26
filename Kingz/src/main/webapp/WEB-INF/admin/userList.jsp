@@ -37,6 +37,15 @@
 	<h3>회원 관리</h3>
 </div>
 
+<div class="list-group list-group-horizontal-sm mb-1 text-center"
+     role="tablist">
+     <a class="list-group-item list-group-item-action active"
+         id="list-sunday-list" href="userList.do"
+         role="tab">회원 관리</a>
+     <a class="list-group-item list-group-item-action" id="list-monday-list" 
+     	href="balance.do" role="tab">호텔 통계</a>
+ </div>	
+
 <section class="section">
 	<div class="card">
 		<div class="card-body">
@@ -94,3 +103,4 @@
 	let dataTable = new simpleDatatables.DataTable(table1);
 	console.log(table1);
 </script>
+<script src="adminassets/js/main.js"></script>

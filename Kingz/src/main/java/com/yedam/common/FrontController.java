@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.yedam.admin.control.AdminBalanceControl;
 import com.yedam.admin.control.AdminBalanceListControl;
 import com.yedam.admin.control.AdminBalanceYearControl;
+import com.yedam.admin.control.AdminGradeListControl;
+import com.yedam.admin.control.AdminRoomReserveListControl;
 import com.yedam.admin.control.AdminUserDeleteControl;
 import com.yedam.admin.control.AdminUserListControl;
 import com.yedam.example.control.TestControl;
@@ -72,6 +74,8 @@ public class FrontController extends HttpServlet {
 		map.put("/balance.do", new AdminBalanceControl()); // 매출 페이지 이동
 		map.put("/balanceList.do", new AdminBalanceListControl()); // 매출액 조회
 		map.put("/balanceYear.do", new AdminBalanceYearControl()); // 매출이 있는 년도
+		map.put("/gradeList.do", new AdminGradeListControl()); // 등급별 인원 조회
+		map.put("/roomReserveList.do", new AdminRoomReserveListControl()); // 방별 예약수 조회
 
 	}
 	
