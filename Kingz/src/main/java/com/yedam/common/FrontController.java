@@ -9,7 +9,16 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+//github.com/kdk8672/kingz.git
+import com.yedam.contact.ContactControl;
+import com.yedam.example.control.TestControl;
+//github.com/kdk8672/kingz.git
+import com.yedam.facilities.FacilitiesControl;
+import com.yedam.hotel.HotelListControl;
+import com.yedam.hotel.RoomDetailControl;
+//github.com/kdk8672/kingz.git
 import com.yedam.admin.control.AdminBalanceControl;
 import com.yedam.admin.control.AdminBalanceListControl;
 import com.yedam.admin.control.AdminBalanceYearControl;
@@ -34,6 +43,9 @@ import com.yedam.mypage.control.ModifyMypageControl;
 import com.yedam.mypage.control.MyReservationControl;
 import com.yedam.mypage.control.MyReviewInfoControl;
 import com.yedam.mypage.control.MypageControl;
+//github.com/kdk8672/kingz.git
+import com.yedam.reservation.control.ReservControl;
+import com.yedam.review.AddReviewControl;
 import com.yedam.reservation.control.AddReservControl;
 import com.yedam.reservation.control.ReservCompleteControl;
 import com.yedam.reservation.control.ReservControl;
@@ -52,6 +64,8 @@ public class FrontController extends HttpServlet {
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		// control 추가
+		map.put("/main.do", new TestControl());
+
 		// [조민성] 부대시설 페이지
 		map.put("/facilities.do", new FacilitiesControl());
 		
@@ -66,8 +80,6 @@ public class FrontController extends HttpServlet {
 		
 		// [조민성] 오시는 길 페이지
 		map.put("/contact.do", new ContactControl());
-
-		map.put("/main.do", new TestControl());
 		
 		// [승원] 마이페이지(첫화면 내 정보) 연결
 		map.put("/mypage.do", new MypageControl());
