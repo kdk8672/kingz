@@ -23,3 +23,4 @@ public interface MypageMapper {
 	int modifymypage(MypageVO update);
 	
 }
+

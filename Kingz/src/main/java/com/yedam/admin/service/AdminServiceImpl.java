@@ -17,5 +17,36 @@ public class AdminServiceImpl implements AdminService{
 	public List<AdminVO> userList() {
 		return mapper.selectUsers();
 	}
+	
+	// 회원 탈퇴
+	@Override
+	public boolean deleteUser(String memberId) {
+		mapper.deletePointHistory(memberId);
+		mapper.deletePayment(memberId);
+		mapper.deletePointHistory(memberId);
+		mapper.deleteReviewImage(memberId);
+		mapper.deleteReview(memberId);
+		return mapper.deleteUser(memberId) == 1;
+	}
+
+	@Override
+	public List<AdminVO> balanceList(int year) {
+		return mapper.selectBalance(year);
+	}
+
+	@Override
+	public List<AdminVO> balanceYearList() {
+		return mapper.selectBalanceYear();
+	}
+
+	@Override
+	public List<AdminVO> gradeCounts() {
+		return mapper.selectGradeCount();
+	}
+
+	@Override
+	public List<AdminVO> roomReserveCounts() {
+		return mapper.selectRoomReserveCount();
+	}
 
 }

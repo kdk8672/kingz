@@ -9,6 +9,9 @@
   </appender>
 
   <!-- logger 추가 -->
+  <logger name="com.yedam.admin.mapper.AdminMapper">
+    <level value="debug"/>
+  </logger>
   
   <logger name="com.yedam.mypage.mapper.MypageMapper">
   	<level value="debug"></level>

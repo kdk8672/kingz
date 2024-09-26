@@ -1,7 +1,6 @@
 package com.yedam.mypage.control;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -24,8 +23,8 @@ public class ModifyMypageControl implements Control {
 		String phone = request.getParameter("phone");
 
 		MypageVO mvo = new MypageVO();
-		mvo.setMemberId(id);
-		mvo.setPassword(pw);
+		mvo.setId(id);
+		mvo.setPwd(pw);
 		mvo.setEmail(mail);
 		mvo.setPhone(phone);
 
