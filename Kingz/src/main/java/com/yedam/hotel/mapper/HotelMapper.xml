@@ -25,4 +25,26 @@
 		where 		b.room_id = #{roomId}
 	</select>
 	
+	<!-- [박진석 | 24.09.25] 객실 종류 검색 -->
+	<select id="selectRoomType" resultType="com.yedam.hotel.HotelVO">
+		SELECT	DISTINCT
+				room_type
+		FROM	room
+	</select>
+	
+	<select id="selectFilteredRoomList" resultType="com.yedam.hotel.HotelVO" parameterType="com.yedam.common.RoomSearchDTO">
+		
+		SELECT  r.room_id
+		        ,r.room_name
+		        ,r.room_price
+		        ,r.room_headcount
+		        ,i.image_url
+		FROM    room r JOIN room_image i
+		ON      r.room_id = i.room_id
+		WHERE   room_type = #{roomType}
+		<![CDATA[
+		  AND   room_headcount >= #{headcount}
+		]]>
+	</select>
+	
 </mapper>

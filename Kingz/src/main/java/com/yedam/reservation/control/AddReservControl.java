@@ -78,6 +78,8 @@ public class AddReservControl implements Control {
 		
 		if(mapper.updateReserv(rvo) == 1) {
 			System.out.println("[AddReservContol.java] updateReserv 작업 완료");
+			request.setAttribute("status", "reservSuccess");
+			request.setAttribute("message", "예약이 완료되었습니다.");
 			request.setAttribute("roomName", roomName);
 			request.setAttribute("checkin", checkin);
 			request.setAttribute("checkout", checkout);
@@ -90,11 +92,11 @@ public class AddReservControl implements Control {
 			request.getRequestDispatcher("reservComplete.do").forward(request, response);
 		} else {
 			System.out.println("[AddReservContol.java] updateReserv 작업 실패");
-			request.setAttribute("error", "reservFail");
+			request.setAttribute("status", "reservFail");
+			request.setAttribute("message", "예약에 실패하였습니다. 관리자에게 문의하세요.");
 			request.getRequestDispatcher("reservComplete.do").forward(request, response);
 		}
 		
 		
 	}
-
 }

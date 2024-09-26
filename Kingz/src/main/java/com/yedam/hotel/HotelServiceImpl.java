@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import com.yedam.common.DataSource;
+import com.yedam.common.RoomSearchDTO;
 import com.yedam.hotel.mapper.HotelMapper;
 
 public class HotelServiceImpl implements HotelService {
@@ -22,4 +23,15 @@ public class HotelServiceImpl implements HotelService {
 		return mapper.selectHotel(roomId);
 	}
 
+	// [박진석 | 24.09.25] 예약 페이지에 사용할 객실 종류 조회
+	@Override
+	public List<HotelVO> getHotelRoomTypeList() {
+		return mapper.selectRoomType();
+	}
+
+	// [박진석 | 24.09.26] 예약 페이지에 사용할 객실 검색 결과 조회
+	@Override
+	public List<HotelVO> getFilteredRoomList(RoomSearchDTO search) {
+		return mapper.selectFilteredRoomList(search);
+	}
 }
