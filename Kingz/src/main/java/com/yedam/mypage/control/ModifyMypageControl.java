@@ -1,6 +1,7 @@
 package com.yedam.mypage.control;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -19,22 +20,20 @@ public class ModifyMypageControl implements Control {
 		
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pass");
-		String name = request.getParameter("name");
 		String mail = request.getParameter("email");
 		String phone = request.getParameter("phone");
 
 		MypageVO mvo = new MypageVO();
 		mvo.setMemberId(id);
 		mvo.setPassword(pw);
-		mvo.setName(name);
 		mvo.setEmail(mail);
 		mvo.setPhone(phone);
 
 		MypageService svc = new MypageServiceImpl();
-		
+
 		
 		if(svc.modifyMypage(mvo)) {
-			response.getWriter().print("{\"retCode\": \"OK\"}");
+			response.sendRedirect("mypage.do");
 		}
 		else {
 			response.getWriter().print("{\"retCode\": \"NG\"}");

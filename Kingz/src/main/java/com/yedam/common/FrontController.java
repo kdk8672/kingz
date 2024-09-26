@@ -45,7 +45,7 @@ public class FrontController extends HttpServlet {
 		// control 추가
 		map.put("/main.do", new TestControl());
 		
-		// [승원] 마이페이지(첫화면 내 정보) 연결
+		// [승원] 마이페이지(첫화면 예약내용) 연결
 		map.put("/mypage.do", new MypageControl());
 		
 		// [승원] 내 정보 수정 연결

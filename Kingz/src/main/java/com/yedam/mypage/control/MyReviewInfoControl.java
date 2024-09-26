@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.yedam.common.Control;
 import com.yedam.mypage.service.MypageService;
 import com.yedam.mypage.service.MypageServiceImpl;
+import com.yedam.mypage.vo.ReservVO;
 import com.yedam.mypage.vo.ReviewVO;
 
 public class MyReviewInfoControl implements Control {
@@ -17,9 +18,10 @@ public class MyReviewInfoControl implements Control {
 	@Override
 	public void exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		MypageService svc = new MypageServiceImpl();
-		List<ReviewVO> list = svc.getRoomId();
+		
+		List<ReviewVO> list = svc.getMemberId();
 	
-		request.setAttribute("ReviewList", list);
+		request.setAttribute("memberId", list);
 
 		request.getRequestDispatcher("mypage/body.tiles").forward(request, response);
 	}

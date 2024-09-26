@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HAEVICHI - My Page</title>
+    <title>Kingz - My Page</title>
     <link rel="stylesheet" href="css/mypage.css">
 </head>
 <div class="bradcam_area breadcam_bg_2"></div>
@@ -13,7 +14,7 @@
         <div class="welcome-section">
             <div>
                 <h3 class="text-sm text-gray-500">일반회원</h3>
-                <h2 class="text-2xl font-bold"> 님 환영합니다!</h2>
+                <h2 class="text-2xl font-bold">${logName } 님 환영합니다!</h2>
             </div>
         </div>
 
@@ -37,30 +38,34 @@
                     <p>- 예약번호를 클릭하시면 상세한 정보를 확인하실 수 있습니다.</p>
                     <p>- 예약내역은 홈페이지에서 예약한 내역만 표시됩니다.</p>
                 </div>
-                <div class="mb-4 border rounded-lg p-4 flex justify-between">
-                    <div class="flex">
-                        <img src="/placeholder.svg" alt="Room" class="w-24 h-24 object-cover rounded mr-4" />
-                        <div>
-                            <h3 class="font-bold">디럭스 룸</h3>
-                            <p>옵션: 조식 포함</p>
-                        </div>
-                    </div>
-                    <div class="text-right">
-                        <p>1박 2일</p>
-                        <p class="font-bold">₩200,000</p>
-                        <div class="accordion">
-                            <button class="accordion-trigger">상세 내역</button>
-                            <div class="accordion-content">
-                                <p>체크인: 2023-09-15</p>
-                                <p>체크아웃: 2023-09-17</p>
-                                <p>인원: 2명</p>
-                                <p>객실금액: ₩180,000</p>
-                                <p>조식: ₩20,000</p>
-                                <p class="font-bold">총 결제금액: ₩200,000</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <c:forEach var="reserve" items="${reserve }">
+	                <div class="mb-4 border rounded-lg p-4 flex justify-between">
+	                    <div class="flex">
+	                        <p class="w-24 h-24 object-cover rounded mr-4"><img src="img/rooms/${reserve.imageUrl }" style="width:30%; height:30%"></p>
+	                        <div>
+	                            <h3 class="font-bold">${reserve.roomType }</h3>
+	                            <p>${reserve.roomName }</p>
+	                            <p>옵션: ${reserve.breakfast }</p>
+	                            <p>인원수: ${reserve.headCount }명</p>
+	                        </div>
+	                    </div>
+	                    <div class="text-right">
+	                        <p>1박 2일</p>
+	                        <p class="font-bold">${reserve.paymentAmount }원</p>
+	                        <div class="accordion">
+	                            <button class="accordion-trigger">상세 내역</button>
+	                            <div class="accordion-content">
+	                                <p>체크인: ${reserve.checkIn }</p>
+	                                <p>체크아웃: ${reserve.checkOut }</p>
+	                                <p>인원: ${reserve.headCount }명</p>
+	                                <p>객실금액: ${reserve.roomPrice }</p>
+	                                <p>조식: ${reserve.headCount } </p>
+	                                <p class="font-bold">총 결제금액: ${reserve.paymentAmount }원</p>
+	                            </div>
+	                        </div>
+	                    </div>
+                	</div>
+            	</c:forEach>
             </div>
         </div>
     </template>
@@ -83,7 +88,7 @@
                     <tbody>
                         <tr>
                             <td>1</td>
-                            <td>객실 예약 관련 문의</td>
+                            <td>${roomType }</td>
                             <td>2023-09-01</td>
                             <td>답변완료</td>
                         </tr>
@@ -122,40 +127,39 @@
             </div>
         </div>
     </template>
-
-    <template id="member-info-content">
-        <div class="card">
-            <div class="card-header">
-                <h3 class="card-title">나의 정보관리</h3>
-            </div>
-            <div class="card-content">
-                <form class="space-y-4">
-                    <div class="form-group">
-                        <label class="form-label" for="id">아이디</label>
-                        <p>ID</p>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="password">비밀번호</label>
-                        <input id="password" class="form-input" type="password" value="********" />
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="name">이름</label>
-                        <p>NAME</p>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="email">이메일</label>
-                        <input id="email" class="form-input" type="email" value="gong@example.com" />
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="phone">전화번호</label>
-                        <input id="phone" class="form-input" value="010-1234-5678" />
-                    </div>
-                    <button class="button">정보 수정</button>
-                </form>
-            </div>
-        </div>
-    </template>
-
+	    <template id="member-info-content">
+	        <div class="card">
+	            <div class="card-header">
+	                <h3 class="card-title">나의 정보관리</h3>
+	            </div>
+	            <div class="card-content">
+	                <form class="space-y-4" action="modifymypage.do" method="get">
+	                	<input type="hidden" name="id" value=${id }>
+	                    <div class="form-group">
+	                        <label class="form-label" for="id">아이디</label>
+	                        <p>${id }</p>
+	                    </div>
+	                    <div class="form-group">
+	                        <label class="form-label" for="password">비밀번호</label>
+	                        <input id="password" class="form-input" type="password" name="pass"/>
+	                    </div>
+	                    <div class="form-group">
+	                        <label class="form-label" for="name">이름</label>
+	                        <p>${logName }</p>
+	                    </div>
+	                    <div class="form-group">
+	                        <label class="form-label" for="email">이메일</label>
+	                        <input id="email" class="form-input" type="email" name="email" />
+	                    </div>
+	                    <div class="form-group">
+	                        <label class="form-label" for="phone">전화번호</label>
+	                        <input id="phone" class="form-input" name="phone" />
+	                    </div>
+	                    <button class="summit" onclick="/mypage.do">저장</button>
+	                </form>
+	            </div>
+	        </div>
+	    </template>
     <template id="membership-content">
         <div class="card">
             <div class="card-header">

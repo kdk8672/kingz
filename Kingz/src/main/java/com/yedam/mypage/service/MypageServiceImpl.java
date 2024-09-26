@@ -20,13 +20,9 @@ public class MypageServiceImpl implements MypageService{
 		return mapper.memberList();
 	}
 
-	@Override
-	public List<ReservVO> getId() {
-		return mapper.reservList();
-	}
 
 	@Override
-	public List<ReviewVO> getRoomId() {
+	public List<ReviewVO> getMemberId() {
 		return mapper.reviewList();
 	}
 
@@ -34,6 +30,13 @@ public class MypageServiceImpl implements MypageService{
 	public boolean modifyMypage(MypageVO memberId) {
 		return mapper.modifymypage(memberId) == 1;
 	}
-	
+
+
+	@Override
+	public List<ReservVO> getId(String memberId) {
+		return mapper.selectreserv(memberId);
+	}
+
+
 
 }

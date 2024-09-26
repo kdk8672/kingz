@@ -39,6 +39,7 @@ public class LoginControl implements Control {
 		session.setAttribute("logPhone", member.getPhone());
 		session.setAttribute("logGrade", member.getGrade());
 		
+		
 		if(member.getGrade().equals("일반") || member.getGrade().equals("VIP") || member.getGrade().equals("VVIP")) {
 			request.getRequestDispatcher("layout/body.tiles")
 			.forward(request, response);
