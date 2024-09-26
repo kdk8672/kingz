@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+/*document.addEventListener('DOMContentLoaded', function() {
 	const loginForm = document.getElementById('loginForm');
 	const errorMessage = document.getElementById('errorMessage');
 
@@ -19,4 +19,22 @@ document.addEventListener('DOMContentLoaded', function() {
 			errorMessage.style.display = 'none';
 		}
 	});
-});
+});*/
+
+function check(e) {
+	e.preventDefault();
+	const id = document.getElementById('id').value;
+	const password = document.getElementById('password').value;
+
+	fetch('loginVer.do?id=' + id + "&password=" + password)
+		.then(resolve => resolve.json())
+		.then(result => {
+			if (result.retCode == 'OK') {
+				document.querySelector('#CheckResult').innerHTML = '<font color=red>아이디 및 비밀번호를 확인해주세요.</font>'
+				
+			} else {
+				lgoinform.submit();
+			}
+		})
+		.catch(console.log)
+}

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,7 +23,7 @@
 						<div class="lf-card">
 							<h1 class="lf-card-title">로그인</h1>
 							<br>
-							<form action="login.do" method="post" class="lf-form" >
+							<form action="login.do" method="post" class="lf-form" name="lgoinform">
 								<div class="lf-form-group">
 									<label for="id" class="lf-label">아이디</label> <input type="text"
 										id="id" name="id" class="lf-input" placeholder="아이디를 입력하세요"
@@ -32,8 +33,9 @@
 									<label for="password" class="lf-label">비밀번호</label> <input
 										type="password" id="password" name="password" class="lf-input"
 										placeholder="비밀번호를 입력하세요" required>
+								<p id="CheckResult"></p>
 								</div>
-								<input type="submit" class="lf-button" >
+								<input type="submit" class="lf-button" onclick="check(event)" >
 							</form>
 							<p id="errorMessage" class="lf-error-message"
 								style="display: none;"></p>

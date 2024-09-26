@@ -31,10 +31,10 @@ public class CheckIdControl implements Control {
 		
 		if(svc.getMember(id)) {
 			map.put("retCode", "OK"); 
-			System.out.println("중복확인 컨트롤dd");
+
 		} else {
 			map.put("retCode", "NG"); 
-			System.out.println("중복확인 컨트롤ss");
+
 		}
 		
 		String json = gson.toJson(map);
