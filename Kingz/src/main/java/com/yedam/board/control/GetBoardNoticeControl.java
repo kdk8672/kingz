@@ -1,7 +1,6 @@
 package com.yedam.board.control;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -12,21 +11,20 @@ import com.yedam.board.service.BoardServiceImpl;
 import com.yedam.board.vo.BoardVO;
 import com.yedam.common.Control;
 
-public class BoardNoticeControl implements Control {
+public class GetBoardNoticeControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		String boardType = request.getParameter("boardType");
+		String id = request.getParameter("id");
 		
 		BoardService svc = new BoardServiceImpl();
 		
-		List<BoardVO> list = svc.boardList(boardType);
+		BoardVO board = svc.getBoard(Integer.parseInt(id));
+
+		request.setAttribute("board", board);
 		
-		request.setAttribute("list", list);
-		
-		request.getRequestDispatcher("board/boardNotice.tiles").forward(request, response);
-		
+		request.getRequestDispatcher("board/noticeDetail.tiles").forward(request, response);
+
 	}
 
 }

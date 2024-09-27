@@ -25,8 +25,6 @@ public class BoardFaqControl implements Control {
 		
 		request.setAttribute("list", list);
 		
-		System.out.println(list);
-		
 		request.getRequestDispatcher("board/boardFaq.tiles").forward(request, response);
 	}
 

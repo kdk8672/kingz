@@ -28,6 +28,7 @@ import com.yedam.admin.control.AdminUserDeleteControl;
 import com.yedam.admin.control.AdminUserListControl;
 import com.yedam.board.control.BoardFaqControl;
 import com.yedam.board.control.BoardNoticeControl;
+import com.yedam.board.control.GetBoardNoticeControl;
 import com.yedam.contact.ContactControl;
 import com.yedam.example.control.TestControl;
 import com.yedam.facilities.FacilitiesControl;
@@ -105,9 +106,9 @@ public class FrontController extends HttpServlet {
 		map.put("/login.do", new LoginControl()); // 로그인 기능
 		map.put("/loginVer.do", new LoginVerControl()); // 로그인 검증
 		map.put("/logout.do", new LogoutControl());
-		
 		// [권혁태] 공지사항
 		map.put("/boardNotice.do", new BoardNoticeControl());
+		map.put("/getNotice.do", new GetBoardNoticeControl());
 		// [권혁태] FAQ
 		map.put("/boardFaq.do", new BoardFaqControl());
 		
