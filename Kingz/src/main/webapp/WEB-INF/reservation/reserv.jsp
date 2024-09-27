@@ -117,7 +117,8 @@
                                 	</div>
                                 </div>
                                 <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
-                                    type="submit">객실 검색</button>
+                                    type="submit">진짜 검색하기</button>
+                                 <a class="genric-btn info circle" onclick='searchConfirm()'>가짜 검색하기</a>
                             </form>
                         </aside>
 

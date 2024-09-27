@@ -8,7 +8,7 @@
 </head>
 <body>
 	<div class="bradcam_area breadcam_bg_1">
-		<h3>Sign up</h3>
+		<h3>회원가입</h3>
 
 	</div>
 	<!-- offers_area_start -->

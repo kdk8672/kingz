@@ -15,7 +15,6 @@ import javax.servlet.http.HttpSession;
 
 import com.yedam.admin.control.AdminAddBoardControl;
 import com.yedam.admin.control.AdminAddBoardFormControl;
-//github.com/kdk8672/kingz.git
 import com.yedam.admin.control.AdminBalanceControl;
 import com.yedam.admin.control.AdminBalanceListControl;
 import com.yedam.admin.control.AdminBalanceYearControl;
@@ -25,10 +24,11 @@ import com.yedam.admin.control.AdminRemoveReviewControl;
 import com.yedam.admin.control.AdminRoomReserveListControl;
 import com.yedam.admin.control.AdminUserDeleteControl;
 import com.yedam.admin.control.AdminUserListControl;
-//github.com/kdk8672/kingz.git
+import com.yedam.board.control.BoardFaqControl;
+import com.yedam.board.control.BoardNoticeControl;
+import com.yedam.board.control.GetBoardNoticeControl;
 import com.yedam.contact.ContactControl;
 import com.yedam.example.control.TestControl;
-//github.com/kdk8672/kingz.git
 import com.yedam.facilities.FacilitiesControl;
 import com.yedam.hotel.HotelListControl;
 import com.yedam.hotel.RoomDetailControl;
@@ -37,16 +37,16 @@ import com.yedam.member.control.CheckIdControl;
 import com.yedam.member.control.LoginControl;
 import com.yedam.member.control.LoginFormControl;
 import com.yedam.member.control.LoginVerControl;
-import com.yedam.member.control.LogoutControll;
+import com.yedam.member.control.LogoutControl;
 import com.yedam.member.control.MemberAddFormControl;
 import com.yedam.mypage.control.ModifyFormControl;
 import com.yedam.mypage.control.ModifyMypageControl;
 import com.yedam.mypage.control.MyReservationControl;
 import com.yedam.mypage.control.MyReviewInfoControl;
 import com.yedam.mypage.control.MypageControl;
+import com.yedam.payment.control.AddPayControl;
 import com.yedam.reservation.control.AddReservControl;
 import com.yedam.reservation.control.ReservCompleteControl;
-//github.com/kdk8672/kingz.git
 import com.yedam.reservation.control.ReservControl;
 import com.yedam.review.AddReviewControl;
 
@@ -80,7 +80,7 @@ public class FrontController extends HttpServlet {
 		// [조민성] 오시는 길 페이지
 		map.put("/contact.do", new ContactControl());
 
-		// [승원] 마이페이지(첫화면 내 정보) 연결
+		// [승원] 마이페이지(첫화면 예약내용) 연결
 		map.put("/mypage.do", new MypageControl());
 
 		// [승원] 내 정보 수정 연결
@@ -100,12 +100,21 @@ public class FrontController extends HttpServlet {
 		map.put("/LoginForm.do", new LoginFormControl()); // 로그인 창 열기
 		map.put("/login.do", new LoginControl()); // 로그인 기능
 		map.put("/loginVer.do", new LoginVerControl()); // 로그인 검증
-		map.put("/logout.do", new LogoutControll());
-
-		// [박진석] 예약 관련 URI 매핑
+		map.put("/logout.do", new LogoutControl());
+		
+		// [권혁태] 공지사항
+		map.put("/boardNotice.do", new BoardNoticeControl());
+		map.put("/getNotice.do", new GetBoardNoticeControl());
+		// [권혁태] FAQ
+		map.put("/boardFaq.do", new BoardFaqControl());
+		
+		// [박진석] 예약 관련
 		map.put("/reserv.do", new ReservControl());
 		map.put("/addReserv.do", new AddReservControl());
 		map.put("/reservComplete.do", new ReservCompleteControl());
+		
+		// [박진석] 결제 관련
+		map.put("/addPay.do", new AddPayControl());
 
 		// [김건휘] 관리자 기능 관련
 		map.put("/userList.do", new AdminUserListControl()); // 회원 관리 페이지 이동

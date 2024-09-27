@@ -41,6 +41,11 @@ function KGpay(mem_id) {
             let msg = '결제가 완료되었습니다.';
             alert(msg);
             
+            let payMethod = rsp.pay_method;
+            let totalPaid = rsp.paid_amount;
+            
+            console.log("[billing.js] 결제방법: " + payMethod + " | 결제액: " + totalPaid);
+            
             document.getElementById('reservSubmit').click();
             
 	    } else {
@@ -85,4 +90,48 @@ function setReservInfo() {
 	document.querySelector("#totalPrice").value = totalPrice
 	
 	// TODO n박, 최종 비용도 계산하기!	
+}
+
+// [24.09.27 | 박진석] 아코디언 관련 동작
+document.addEventListener('DOMContentLoaded', function() {
+  const tabsContainer = document.getElementById('tabs-container');
+  let activeTab = 'reservations';
+
+  function switchTab(tabValue) {
+    activeTab = tabValue;
+    updateTabStyles();
+    renderTabContent();
+  }
+
+  function updateTabStyles() {
+    const buttons = document.querySelectorAll('.tab-trigger');
+    buttons.forEach(button => {
+      button.classList.toggle('active', button.dataset.tab === activeTab);
+    });
+  }
+
+  function renderTabContent() {
+    const contentContainer = document.getElementById('tab-content');
+    contentContainer.innerHTML = document.getElementById(`${activeTab}-content`).innerHTML;
+    initializeAccordions();
+  }
+
+  function initializeAccordions() {
+    document.querySelectorAll('.accordion-trigger').forEach(trigger => {
+      trigger.addEventListener('click', function() {
+        const content = this.nextElementSibling;
+        content.style.display = content.style.display === 'none' ? 'block' : 'none';
+      });
+    });
+  }
+
+  document.querySelectorAll('.tab-trigger').forEach(trigger => {
+    trigger.addEventListener('click', () => switchTab(trigger.dataset.tab));
+  });
+
+  renderTabContent();
+});
+
+function searchConfirm() {
+	alert("검색 검증!");
 }
