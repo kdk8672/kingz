@@ -12,6 +12,25 @@
 .comment-form .form-group {
 	margin-bottom: 20px;
 }
+
+.star.half-filled {
+	color: ff7009;
+	position: relative;
+}
+
+.star.half-filled:before {
+	content: '\2605';
+	color: ff7009;
+	position: absolute;
+	left: 0;
+	width: 50%;
+	overflow: hidden;
+}
+.room_thumb img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
 </style>
 
 <script type="text/javascript">
@@ -39,7 +58,7 @@
 	<div class="whole-wrap">
 		<div class="container box_1170">
 			<div class="room_thumb">
-				<img src="img/rooms/${room.imageUrl}" alt="">
+				<img src="img/rooms/${room.imageUrl}" alt="" class="img-fluid">
 			</div>
 			<section class="blog_area single-post-area section-padding">
 				<div class="section-top-border">
@@ -109,25 +128,32 @@
 				<c:forEach var="review" items="${list}">
 					<div class="section-top-border">
 						<h3 class="mb-30">${review.memberId}</h3>
-						<h3 class="mb-30">${review.rating}</h3>
-						<div class="star-rating" style="display:inline-block">
-							<c:forEach var="i" begin="1" end="10">
+						<div class="star-rating"
+							style="display: inline-block; margin-right: 10px">
+							<c:forEach var="i" begin="1" end="5">
 								<c:if test="${i <= review.rating}">
-									<span class="star filled">&#9733;</span>
+									<span class="star filled" style="font-size: 25px;">&#9733;</span>
 								</c:if>
 								<c:if test="${i > review.rating}">
-									<span class="star">&#9734;</span>
+									<c:if test="${review.rating >= (i - 0.5)}">
+										<span class="star half-filled" style="font-size: 25px;">&#9734;</span>
+									</c:if>
+									<c:if test="${review.rating < (i - 0.5)}">
+										<span class="star" style="font-size: 25px;">&#9734;</span>
+									</c:if>
 								</c:if>
 							</c:forEach>
 						</div>
+						<h3 class="mb-30" style="display: inline-block;">${review.rating}</h3>
 						<div class="row">
 							<c:if test="${not empty review.imageUrl}">
 								<div class="col-md-3">
-									<img src="img/${review.imageUrl}" alt="" class="img-fluid">
+									<img src="img/review/${review.imageUrl}" alt=""
+										class="img-fluid">
 								</div>
 							</c:if>
 							<div class="col-md-9 mt-sm-20">
-								<p>${review.reviewContent}</p>
+								<p style="font-size: 20px">${review.reviewContent}</p>
 							</div>
 						</div>
 						<br>
@@ -210,7 +236,7 @@
 					</div>
 					<div class="col-12">
 						<div class="form-group">
-							<input type="file" id="imageUrl" name="imageUrl" value="사진 업로드">
+							<input type="file" id="imageUrl" name="imageUrl" class="form-control">
 						</div>
 					</div>
 				</div>
