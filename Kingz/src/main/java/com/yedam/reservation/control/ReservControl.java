@@ -68,7 +68,7 @@ public class ReservControl implements Control {
 		
 		request.setAttribute("roomTypelist", list);
 		request.setAttribute("roomList", roomList);		
-		request.getRequestDispatcher("reservation/reserv.tiles").forward(request, response);
-//		request.getRequestDispatcher("reservation/reservationTest.tiles").forward(request, response);
+//		request.getRequestDispatcher("reservation/reserv.tiles").forward(request, response);
+		request.getRequestDispatcher("reservation/body.tiles").forward(request, response);
 	}
 }
