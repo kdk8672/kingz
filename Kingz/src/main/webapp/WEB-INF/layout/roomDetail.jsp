@@ -17,7 +17,7 @@
 <script type="text/javascript">
 	var msg = "${msg}";
 	if (msg) {
-	    alert(msg);
+		alert(msg);
 	}
 </script>
 
@@ -110,11 +110,20 @@
 					<div class="section-top-border">
 						<h3 class="mb-30">${review.memberId}</h3>
 						<h3 class="mb-30">${review.rating}</h3>
+						<div class="star-rating" style="display:inline-block">
+							<c:forEach var="i" begin="1" end="10">
+								<c:if test="${i <= review.rating}">
+									<span class="star filled">&#9733;</span>
+								</c:if>
+								<c:if test="${i > review.rating}">
+									<span class="star">&#9734;</span>
+								</c:if>
+							</c:forEach>
+						</div>
 						<div class="row">
 							<c:if test="${not empty review.imageUrl}">
 								<div class="col-md-3">
-									<img src="img/${review.imageUrl}" alt=""
-										class="img-fluid">
+									<img src="img/${review.imageUrl}" alt="" class="img-fluid">
 								</div>
 							</c:if>
 							<div class="col-md-9 mt-sm-20">
