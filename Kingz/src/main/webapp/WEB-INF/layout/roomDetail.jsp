@@ -8,11 +8,42 @@
 <%@ page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
 <%@ page import="com.oreilly.servlet.MultipartRequest"%>
 
+<style>
+.comment-form .form-group {
+	margin-bottom: 20px;
+}
+
+.star.half-filled {
+	color: ff7009;
+	position: relative;
+}
+
+.star.half-filled:before {
+	content: '\2605';
+	color: ff7009;
+	position: absolute;
+	left: 0;
+	width: 50%;
+	overflow: hidden;
+}
+.room_thumb img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+</style>
+
+<script type="text/javascript">
+	var msg = "${msg}";
+	if (msg) {
+		alert(msg);
+	}
+</script>
+
 <div class="bradcam_area breadcam_bg">
 	<h3>Rooms</h3>
 </div>
 
-<!-- features_room_startt -->
 <div class="features_room">
 	<div class="container">
 		<div class="row">
@@ -27,7 +58,7 @@
 	<div class="whole-wrap">
 		<div class="container box_1170">
 			<div class="room_thumb">
-				<img src="img/rooms/${room.imageUrl}" alt="">
+				<img src="img/rooms/${room.imageUrl}" alt="" class="img-fluid">
 			</div>
 			<section class="blog_area single-post-area section-padding">
 				<div class="section-top-border">
@@ -83,13 +114,13 @@
 				</div>
 				<div class="container">
 					<div style="text-align: center">
-						<a href="reserv.do" class="genric-btn info e-large"
+						<a href="reserv.do"
+							class="button button-contactForm btn_1 boxed-btn"
 							style="font-size: 17px">예약하기</a>
 					</div>
 				</div>
 			</section>
 		</div>
-
 
 		<div class="whole-wrap">
 			<div class="container box_1170">
@@ -97,20 +128,32 @@
 				<c:forEach var="review" items="${list}">
 					<div class="section-top-border">
 						<h3 class="mb-30">${review.memberId}</h3>
-						<h3 class="mb-30">${review.rating}.0</h3>
+						<div class="star-rating"
+							style="display: inline-block; margin-right: 10px">
+							<c:forEach var="i" begin="1" end="5">
+								<c:if test="${i <= review.rating}">
+									<span class="star filled" style="font-size: 25px;">&#9733;</span>
+								</c:if>
+								<c:if test="${i > review.rating}">
+									<c:if test="${review.rating >= (i - 0.5)}">
+										<span class="star half-filled" style="font-size: 25px;">&#9734;</span>
+									</c:if>
+									<c:if test="${review.rating < (i - 0.5)}">
+										<span class="star" style="font-size: 25px;">&#9734;</span>
+									</c:if>
+								</c:if>
+							</c:forEach>
+						</div>
+						<h3 class="mb-30" style="display: inline-block;">${review.rating}</h3>
 						<div class="row">
 							<c:if test="${not empty review.imageUrl}">
 								<div class="col-md-3">
-									<img src="img/reviews/${review.imageUrl}" alt=""
+									<img src="img/review/${review.imageUrl}" alt=""
 										class="img-fluid">
 								</div>
 							</c:if>
-							<!-- <div class="col-md-3">
-								<img src="img/elements/${review.imageUrl}" alt=""
-									class="img-fluid">
-							</div> -->
 							<div class="col-md-9 mt-sm-20">
-								<p>${review.reviewContent}</p>
+								<p style="font-size: 20px">${review.reviewContent}</p>
 							</div>
 						</div>
 						<br>
@@ -135,36 +178,54 @@
 						</div>
 					</div>
 					<div class="col-12">
+						<div class="from-group">
+							<div class="rating">
+								<label class="rating__label rating__label--half" for="starhalf">
+									<input type="radio" id="starhalf" class="rating__input"
+									name="rating" value="0.5"> <span class="star-icon"></span>
+								</label> <label class="rating__label rating__label--full" for="star1">
+									<input type="radio" id="star1" class="rating__input"
+									name="rating" value="1"> <span class="star-icon"></span>
+								</label> <label class="rating__label rating__label--half"
+									for="star1half"> <input type="radio" id="star1half"
+									class="rating__input" name="rating" value="1.5"> <span
+									class="star-icon"></span>
+								</label> <label class="rating__label rating__label--full" for="star2">
+									<input type="radio" id="star2" class="rating__input"
+									name="rating" value="2"> <span class="star-icon"></span>
+								</label> <label class="rating__label rating__label--half"
+									for="star2half"> <input type="radio" id="star2half"
+									class="rating__input" name="rating" value="2.5"> <span
+									class="star-icon"></span>
+								</label> <label class="rating__label rating__label--full" for="star3">
+									<input type="radio" id="star3" class="rating__input"
+									name="rating" value="3"> <span class="star-icon"></span>
+								</label> <label class="rating__label rating__label--half"
+									for="star3half"> <input type="radio" id="star3half"
+									class="rating__input" name="rating" value="3.5"> <span
+									class="star-icon"></span>
+								</label> <label class="rating__label rating__label--full" for="star4">
+									<input type="radio" id="star4" class="rating__input"
+									name="rating" value="4"> <span class="star-icon"></span>
+								</label> <label class="rating__label rating__label--half"
+									for="star4half"> <input type="radio" id="star4half"
+									class="rating__input" name="rating" value="4.5"> <span
+									class="star-icon"></span>
+								</label> <label class="rating__label rating__label--full" for="star5">
+									<input type="radio" id="star5" class="rating__input"
+									name="rating" value="5" checked> <span
+									class="star-icon"></span>
+								</label>
+							</div>
+						</div>
+						<div>
+							<p></p>
+						</div>
+					</div>
+					<div class="col-12">
 						<div class="form-group">
 							<input class="form-control" name="roomName" id="roomName"
 								type="text" value="${room.roomName}" readonly>
-						</div>
-					</div>
-					<!--<div class="col-6">
-						<div class="form-group">
-							<input class="form-control" name="memberId" id="memberId"
-								type="text" value="${rvo.memberId}" readonly>
-						</div>
-					</div>-->
-					<div class="col-12">
-						<!-- <div class="nice-select form-select wide form-group" tabindex="0">
-							<span class="current">별점</span>
-							<ul class="list">
-								<li data-value="1" data-display="1" class="option"><input class="form-control" name="rating" id="rating"
-								type="number" value="1"></li>
-								<li data-value="2" data-display="2" class="option"><input class="form-control" name="rating" id="rating"
-								type="number" value="2"></li>
-								<li data-value="3" data-display="3" class="option"><input class="form-control" name="rating" id="rating"
-								type="number" value="3"></li>
-								<li data-value="4" data-display="4" class="option"><input class="form-control" name="rating" id="rating"
-								type="number" value="4"></li>
-								<li data-value="5" data-display="5" class="option"><input class="form-control" name="rating" id="rating"
-								type="number" value="5"></li>
-							</ul>
-						</div> -->
-						<div class="form-group">
-							<input class="form-control" name="rating" id="rating"
-								type="number" placeholder="별점을 매겨주세요">
 						</div>
 					</div>
 					<div class="col-12">
@@ -175,7 +236,7 @@
 					</div>
 					<div class="col-12">
 						<div class="form-group">
-							<input type="file" id="imageUrl" name="imageUrl">
+							<input type="file" id="imageUrl" name="imageUrl" class="form-control">
 						</div>
 					</div>
 				</div>
@@ -186,7 +247,4 @@
 			</form>
 		</div>
 	</div>
-
 </div>
-
-<!-- features_room_end -->

@@ -17,6 +17,11 @@ public class BoardServiceImpl implements BoardService {
 	public List<BoardVO> boardList(String boardType) {
 		return mapper.selectList(boardType);
 	}
+
+	@Override
+	public BoardVO getBoard(int BoardId) {
+		return mapper.selectBoard(BoardId);
+	}
 	
 	
 }

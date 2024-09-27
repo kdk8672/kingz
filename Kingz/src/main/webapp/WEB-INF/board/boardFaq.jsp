@@ -9,7 +9,7 @@
 </head>
 <body>
 	<div class="bradcam_area breadcam_bg_1">
-		<h3>Login</h3>
+		<h3>FAQ</h3>
 	</div>
 	<!-- about_area_start -->
 	<div class="about_area">
@@ -41,27 +41,19 @@
 											<h6 class="mb-0 collapsed" data-toggle="collapse"
 												data-target="#${board.boardId}" aria-expanded="true"
 												aria-controls="${board.boardId }">
-												Q.&nbsp${board.boardTitle }<span class="lni-chevron-up"></span>
+												Q.${board.boardTitle }<span class="lni-chevron-up"></span>
 											</h6>
 										</div>
 										<div class="collapse" id="${board.boardId }"
 											aria-labelledby="headingOne" data-parent="#faqAccordion">
 											<div class="card-body">
-												<p>A.&nbsp${board.boardContent }</p>
+												<p>A.${board.boardContent }</p>
 											</div>
 										</div>
 									</div>
 								</div>
 							</c:forEach>
 							<!-- Support Button-->
-								<div
-									class="support-button text-center d-flex align-items-center justify-content-center mt-4 wow fadeInUp"
-									data-wow-delay="0.5s"
-									style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
-									<i class="lni-emoji-sad"></i>
-									<p class="mb-0 px-2">Can't find your answers?</p>
-									<a href="#"> Contact us</a>
-								</div>
 							</div>
 						</div>
 				</div>
@@ -69,6 +61,6 @@
 		</div>
 	</div>
 	<!-- about_area_end -->
-	<script src="js/member/login.js"></script>
+	<script src="js/board/board.js"></script>
 </body>
 </html>
