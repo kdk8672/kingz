@@ -4,10 +4,13 @@ import lombok.Data;
 
 @Data
 public class ReviewVO {
-	private String reviewId;
-	private String memberId;
-	private String roomId;
+	private String checkIn;
+	private String checkOut;
 	private String reviewContent;
 	private int rating;
 	private String reviewDate;
+	private String memberId;
+	private String roomType;
+	private String roomName;
+	private String imageUrl;
 }

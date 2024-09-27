@@ -125,9 +125,9 @@
                     <c:forEach var="review" items="${review }">
 	                    <tbody>
 	                        <tr>
-	                            <td></td>
+	                            <td>${review.rating }</td>
 	                            <td>${review.reviewContent }</td>
-	                            <td></td>
+	                            <td>${review.checkIn } ~ ${review.checkOut }</td>
 	                            <td>${review.reviewDate }</td>
 	                        </tr>
 	                    </tbody>
