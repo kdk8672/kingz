@@ -6,4 +6,5 @@ import com.yedam.board.vo.BoardVO;
 
 public interface BoardMapper {
 	List<BoardVO> selectList(String boardType);
+	BoardVO selectBoard(int boardId);
 }

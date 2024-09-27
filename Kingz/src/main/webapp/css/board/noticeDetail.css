@@ -1,0 +1,62 @@
+/* 전체 컨테이너 */
+.container {
+	width: 80%;
+	margin: 0 auto;
+	padding: 20px;
+	font-family: 'Arial', sans-serif;
+}
+
+/* 공지사항 제목과 날짜 */
+.notice-header {
+	border-bottom: 2px solid #007bff;
+	padding-bottom: 10px;
+	margin-bottom: 20px;
+}
+
+.notice-title {
+	font-size: 24px;
+	color: #333;
+	margin: 0;
+}
+
+.notice-date {
+	font-size: 14px;
+	color: #888;
+	margin-top: 10px;
+}
+
+/* 공지사항 본문 */
+.notice-body {
+	font-size: 16px;
+	color: #555;
+	line-height: 1.6;
+	margin-bottom: 30px;
+}
+
+.notice-body p {
+	margin-bottom: 15px;
+}
+
+/* 강조된 텍스트 */
+.notice-body strong {
+	color: #007bff;
+}
+
+/* 목록으로 돌아가기 링크 */
+.notice-footer {
+	text-align: right;
+}
+
+.back-link {
+	color: #007bff;
+	text-decoration: none;
+	font-size: 14px;
+	border: 1px solid #007bff;
+	padding: 8px 12px;
+	border-radius: 5px;
+}
+
+.back-link:hover {
+	background-color: #007bff;
+	color: #fff;
+}
