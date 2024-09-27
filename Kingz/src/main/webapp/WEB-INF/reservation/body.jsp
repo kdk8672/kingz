@@ -20,20 +20,26 @@
 
 <style type="text/css">
 	.pjs-search-layout {
-		margin: 3rem; margin-left : 100px;
-		background-color: lightgray;
+		margin: 3rem;
 		margin-left: 100px;
 	}
 	
 	.pjs-search-layout {
-		margin: 3rem; margin-right : 100px;
-		background-color: lightblue;
+		margin: 3rem;
 		margin-right: 100px;
 	}
 	
+	.pjs-rooms-form input {
+		border: 0;
+		outline: none;
+		background-color: rgb(245, 245, 245);
+	}
 	
 	
-	.accordion-trigger {
+
+	
+	
+/* 	.accordion-trigger {
 	  width: 100%;
 	  padding: 0.5rem;
 	  text-align: left;
@@ -45,7 +51,7 @@
 	.accordion-content {
 	  padding: 1rem;
 	  display: none;
-	}
+	} */
 	
 	
 </style>
@@ -69,7 +75,7 @@
 							<i class="fa fa-globe" aria-hidden="true"></i>
 						</div>
 						<div class="form-select" id="default-select">
-							<select>
+							<select name="roomType">
 								<c:forEach var="rtl" items="${roomTypelist}">
 									<option value="${rtl.roomType }">${rtl.roomType }</option>
 								</c:forEach>
@@ -105,21 +111,30 @@
 			<!-- ------------------------------------------- -->
 			<!-- [24.09.27 | 박진석] 오른쪽 레이아웃 영역 끝 -->
 			<div class="col-lg-8 col-md-8 pjs-rooms-layout">
-			
+				
+				<c:forEach var="rl" items="${roomList}">
 				<!-- [24.09.27 | 박진석] 객실 하나 묶음 영역 -->
 				<div class="mb-4 border rounded-lg p-4 flex justify-between">
+				<form action="addReserv.do" method="post" class="pjs-rooms-form">
                     <div class="flex">
-                        <img src="img/rooms/1.png" alt="Room" class="w-24 h-24 object-cover rounded mr-4" style="width: 300px;"/>
-                        <div>
-                            <h3 class="font-bold">디럭스 룸</h3>
+                    	<div>
+	                        <img src="img/rooms/${rl.imageUrl }" alt="Room" class="w-24 h-24 object-cover rounded mr-4" style="width: 200px; float: left;"/>
+                    	</div>
+                        <div style="width: 300px; float: left;">
+                            <input name="roomName" id="roomName" value="${rl.roomName }" style='font-size:25px;' readonly><br>
+                            <input name="roomId" id="roomId" value="${rl.roomId }" hidden="hedden">
                             <p>옵션: 조식 포함</p>
+                            <input name="checkin" id="checkin" value="24-01-01" hidden="hedden">
+                   			<input name="checkout" id="checkout" value="24-01-01" hidden="hidden">
+                   			<input name="headcount" id="headcount" value="2" hidden="hedden">
+                   			<input name="memberid" id="memberid" value="giacopo0" hidden="hedden">
                         </div>
                     </div>
                     
                     
                     <div class="text-right">
-                        <p>1박 2일</p>
-                        <p class="font-bold">₩200,000</p>
+                        <p>1박 1객실</p>
+                        <input name="roomPrice" value="${rl.roomPrice }" style='font-size:20px; text-align:right;' readonly>원
                         <!-- 
                         <div class="accordion">
                             <button class="accordion-trigger">상세 내역</button>
@@ -138,149 +153,39 @@
                     <!-- 상세정보 폼 묶음(콜랩스) 시작 -->
                     
                     <p>
-					  <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" onclick="setReservInfo()">
+					  <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" 
+					  		role="button" aria-expanded="false" aria-controls="collapseExample" onclick="setReservInfo()" 
+					  		style="float: right;">
 					    예약하기
 					  </a>
 					</p>
 					<div class="collapse" id="collapseExample">
 					  <div class="card card-body">
-					    <div class="pjs-first-col-detail" style="float: left;">
+					    <div class="pjs-first-col-detail" style="display: inline-block;">
             				<h3>옵션사항</h3><br>
             				조식여부: <input name="breakfast" type="checkbox"><br>
             				포인트 사용: <input name="usePoint" type="checkbox"><br>
             				추가 요청사항:<br>
             				<textarea name="request"></textarea>
            				</div>
-           				<div class="pjs-second-col-detail" style="float: left;">
+           				<div class="pjs-second-col-detail" style="display: inline-block;">
            					<h3>가격</h3><br>
-           					객실금액<input name="roomPrice" id="roomPrice" value="200000">원 ~<br>
-           					<input name="sleepDay" id="sleepDay" value="1"></input>박기준<br>
+           					객실금액<input name="roomPrice" id="roomPrice" value="200000" style="text-align:right;" readonly>원<br>
+           					<input name="sleepDay" id="sleepDay" value="1" style="text-align:right;"></input>박<br>
            					<h4>옵션</h4><br>
-           					조식 <input name="breakfastPrice" id="breakfastPrice" value="0">원<br>
-           					포인트 <input name="pointPrice" id="pointPrice" value="0">원<br>
-           					<h2>총 예약금액</h2><input name="totalPrice" id="totalPrice" value="450000">원
+           					조식 <input name="breakfastPrice" id="breakfastPrice" value="0" style="text-align:right;" readonly>원<br>
+           					포인트 <input name="pointPrice" id="pointPrice" value="0" style="text-align:right;" readonly>원<br>
+           					<h2>총 예약금액</h2><input name="totalPrice" id="totalPrice" value="123000" style="text-align:right;" readonly>원
            					<a class="genric-btn info circle" onclick='KGpay("giacopo0")'>결제하기</a>
            					<input type="submit" id="reservSubmit" value="예약확정" hidden="hidden">
            				</div>
 					  </div>
 					</div>
                     <!-- 상세정보 폼 묶음 끝 -->
-                    
+                    </form>
                 </div>
                 <!-- [24.09.27 | 박진석] 객실 묶음 영역 끝 -->
-			
-				<div class="single-element-widget">
-					<h3 class="mb-30">Switches</h3>
-					<div class="switch-wrap d-flex justify-content-between">
-						<p>01. Sample Switch</p>
-						<div class="primary-switch">
-							<input type="checkbox" id="default-switch"> <label
-								for="default-switch"></label>
-						</div>
-					</div>
-					<div class="switch-wrap d-flex justify-content-between">
-						<p>02. Primary Color Switch</p>
-						<div class="primary-switch">
-							<input type="checkbox" id="primary-switch" checked> <label
-								for="primary-switch"></label>
-						</div>
-					</div>
-					<div class="switch-wrap d-flex justify-content-between">
-						<p>03. Confirm Color Switch</p>
-						<div class="confirm-switch">
-							<input type="checkbox" id="confirm-switch" checked> <label
-								for="confirm-switch"></label>
-						</div>
-					</div>
-				</div>
-				<div class="single-element-widget mt-30">
-					<h3 class="mb-30">Selectboxes</h3>
-					<div class="default-select" id="default-select"">
-						<select>
-							<option value=" 1">English</option>
-							<option value="1">Spanish</option>
-							<option value="1">Arabic</option>
-							<option value="1">Portuguise</option>
-							<option value="1">Bengali</option>
-						</select>
-					</div>
-				</div>
-				<div class="single-element-widget mt-30">
-					<h3 class="mb-30">Checkboxes</h3>
-					<div class="switch-wrap d-flex justify-content-between">
-						<p>01. Sample Checkbox</p>
-						<div class="primary-checkbox">
-							<input type="checkbox" id="default-checkbox"> <label
-								for="default-checkbox"></label>
-						</div>
-					</div>
-					<div class="switch-wrap d-flex justify-content-between">
-						<p>02. Primary Color Checkbox</p>
-						<div class="primary-checkbox">
-							<input type="checkbox" id="primary-checkbox" checked> <label
-								for="primary-checkbox"></label>
-						</div>
-					</div>
-					<div class="switch-wrap d-flex justify-content-between">
-						<p>03. Confirm Color Checkbox</p>
-						<div class="confirm-checkbox">
-							<input type="checkbox" id="confirm-checkbox"> <label
-								for="confirm-checkbox"></label>
-						</div>
-					</div>
-					<div class="switch-wrap d-flex justify-content-between">
-						<p>04. Disabled Checkbox</p>
-						<div class="disabled-checkbox">
-							<input type="checkbox" id="disabled-checkbox" disabled> <label
-								for="disabled-checkbox"></label>
-						</div>
-					</div>
-					<div class="switch-wrap d-flex justify-content-between">
-						<p>05. Disabled Checkbox active</p>
-						<div class="disabled-checkbox">
-							<input type="checkbox" id="disabled-checkbox-active" checked
-								disabled> <label for="disabled-checkbox-active"></label>
-						</div>
-					</div>
-				</div>
-				<div class="single-element-widget mt-30">
-					<h3 class="mb-30">Radios</h3>
-					<div class="switch-wrap d-flex justify-content-between">
-						<p>01. Sample radio</p>
-						<div class="primary-radio">
-							<input type="checkbox" id="default-radio"> <label
-								for="default-radio"></label>
-						</div>
-					</div>
-					<div class="switch-wrap d-flex justify-content-between">
-						<p>02. Primary Color radio</p>
-						<div class="primary-radio">
-							<input type="checkbox" id="primary-radio" checked> <label
-								for="primary-radio"></label>
-						</div>
-					</div>
-					<div class="switch-wrap d-flex justify-content-between">
-						<p>03. Confirm Color radio</p>
-						<div class="confirm-radio">
-							<input type="checkbox" id="confirm-radio" checked> <label
-								for="confirm-radio"></label>
-						</div>
-					</div>
-					<div class="switch-wrap d-flex justify-content-between">
-						<p>04. Disabled radio</p>
-						<div class="disabled-radio">
-							<input type="checkbox" id="disabled-radio" disabled> <label
-								for="disabled-radio"></label>
-						</div>
-					</div>
-					<div class="switch-wrap d-flex justify-content-between">
-						<p>05. Disabled radio active</p>
-						<div class="disabled-radio">
-							<input type="checkbox" id="disabled-radio-active" checked
-								disabled> <label for="disabled-radio-active"></label>
-						</div>
-					</div>
-				</div>
+				</c:forEach>
 			</div>
 			<!-- [24.09.27 | 박진석] 오른쪽 레이아웃 영역 끝 -->
 			<!-- ------------------------------------------- -->
