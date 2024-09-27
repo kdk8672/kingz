@@ -5,22 +5,47 @@
 <mapper namespace="com.yedam.review.mapper.ReviewMapper">
 
 	<select id="reviewList" parameterType="int">
-		select 		*
-		from 		review
-		where 		room_id = #{roomId}
-		order by	review_id
+		select 	r.*, ri.*
+		from 	member m, room ro, review r left outer join review_image ri
+		on 		r.review_id = ri.review_id
+		where 	r.member_id = m.member_id
+		and 	ro.room_id = r.room_id
+		and 	r.room_id = #{roomId}
+	</select>
+	
+	<select id="selectReviewId" resultType="int">
+		select 	seq_review_id.nextval
+		from	dual
 	</select>
 	
 	<insert id="insertReview" parameterType="com.yedam.review.ReviewVO">
 		insert into 	review
 						(review_id, member_id, room_id, review_content, rating, review_date)
-		values 			(seq_review_id.nextval, #{memberId}, #{roomId}, #{reviewContent}, #{rating}, sysdate)
+		values 			(#{reviewId}, #{memberId}, #{roomId}, #{reviewContent}, #{rating}, sysdate)
 	</insert>
 	
-	<!-- <select id="reviewCheck" parameterType="map" resultType="com.yedam.reserve.ReservVO">
+	<insert id="insertImage" parameterType="com.yedam.review.ImageVO">
+		insert into	review_image
+					(reviewimage_id, review_id, image_url)
+		values		(seq_reviewimage_id.nextval, #{reviewId}, #{imageUrl})
+	</insert>
+	
+	<!--<insert id="insertReview" parameterType="com.yedam.review.ReviewVO">
+		insert into 	review
+						(review_id, member_id, room_id, review_content, rating, review_date, reserve_id)
+		values 			(seq_review_id.nextval, #{memberId}, #{roomId}, #{reviewContent}, #{rating}, sysdate, #{reserveId})
+	</insert>
+	
+	<select id="reviewCheck" parameterType="map" resultType="com.yedam.reserve.ReservVO">
 		select 	*
 		from	reservation
 		where	room_id = #{room_id} and member_id = #{member_id} and checkout > sysdate
-	</select> -->
+	</select>
+	
+	<select id="getReviewByReservId" parameterType="int" resultType="com.yedam.review.ReviewVO">
+    	select	* 
+    	from	review 
+    	where 	reserve_id = #{reserveId}
+ 	</select>-->
 
 </mapper>
