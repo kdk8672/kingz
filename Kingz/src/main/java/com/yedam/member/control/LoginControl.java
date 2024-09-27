@@ -38,17 +38,9 @@ public class LoginControl implements Control {
 		session.setAttribute("logEmail", member.getEmail());
 		session.setAttribute("logPhone", member.getPhone());
 		session.setAttribute("logGrade", member.getGrade());
-<<<<<<< HEAD
-		
-		
-		if(member.getGrade().equals("일반") || member.getGrade().equals("VIP") || member.getGrade().equals("VVIP")) {
-			request.getRequestDispatcher("layout/body.tiles")
-			.forward(request, response);
-		}
-=======
 
 		request.getRequestDispatcher("layout/body.tiles").forward(request, response);
->>>>>>> refs/remotes/origin/main
+
 
 	}
 
