@@ -10,7 +10,7 @@
 					<div class="col-xl-12">
 						<div class="slider_text text-center">
 							<h3>KINGZ HOTEL</h3>
-							<p>welcome</p>
+							<p>welcome ${logName}</p>
 						</div>
 					</div>
 				</div>
@@ -23,12 +23,13 @@
 					<div class="col-xl-12">
 						<div class="slider_text text-center">
 							<h3>KINGZ HOTEL</h3>
-							<p>welcome</p>
+							<p>welcome ${logName}</p>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+
 		<div
 			class="single_slider d-flex align-items-center justify-content-center slider_bg_1">
 			<div class="container">
@@ -36,7 +37,7 @@
 					<div class="col-xl-12">
 						<div class="slider_text text-center">
 							<h3>KINGZ HOTEL</h3>
-							<p>welcome</p>
+							<p>welcome ${logName}</p>
 						</div>
 					</div>
 				</div>

@@ -3,13 +3,21 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ page import="java.io.File"%>
+<%@ page import="java.util.Enumeration"%>
+<%@ page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
+<%@ page import="com.oreilly.servlet.MultipartRequest"%>
 
+<style>
+.comment-form .form-group {
+	margin-bottom: 20px;
+}
+</style>
 
 <div class="bradcam_area breadcam_bg">
 	<h3>Rooms</h3>
 </div>
 
-<!-- features_room_startt -->
 <div class="features_room">
 	<div class="container">
 		<div class="row">
@@ -79,13 +87,13 @@
 					</div>
 				</div>
 				<div class="container">
-					<div style="text-align:center">
-						<a href="reservation.do" class="genric-btn info e-large" style="font-size:17px">예약하기</a>
+					<div style="text-align: center">
+						<a href="reserv.do" class="button button-contactForm btn_1 boxed-btn"
+							style="font-size: 17px">예약하기</a>
 					</div>
 				</div>
 			</section>
 		</div>
-
 
 		<div class="whole-wrap">
 			<div class="container box_1170">
@@ -95,15 +103,18 @@
 						<h3 class="mb-30">${review.memberId}</h3>
 						<h3 class="mb-30">${review.rating}</h3>
 						<div class="row">
-							<div class="col-md-3">
-								<img src="img/elements/d.jpg" alt="" class="img-fluid">
-							</div>
+							<c:if test="${not empty review.imageUrl}">
+								<div class="col-md-3">
+									<img src="img/reviews/${review.imageUrl}" alt=""
+										class="img-fluid">
+								</div>
+							</c:if>
 							<div class="col-md-9 mt-sm-20">
 								<p>${review.reviewContent}</p>
 							</div>
 						</div>
 						<br>
-						<p class="date">${review.reviewDate}</p>
+						<p class="date" style="text-align: right">${review.reviewDate}</p>
 					</div>
 				</c:forEach>
 			</div>
@@ -112,26 +123,65 @@
 
 	<div class="comment-form">
 		<div class="container box_1170">
-			<h4>리뷰 남기기</h4>
+			<h2>리뷰 남기기</h2>
+			<br>
 			<form class="form-contact comment_form" action="addReview.do"
-				id="commentForm" method="post">
+				id="commentForm" method="post" enctype="multipart/form-data">
 				<div class="row">
-					<div class="col-6">
-						<div class="form-group">
+					<div class="col-12">
+						<div class="form-group" style="display: none">
 							<input class="form-control" name="roomId" id="roomId" type="text"
 								value="${room.roomId}" readonly>
 						</div>
 					</div>
-					<div class="col-6">
+					<div class="col-12">
 						<div class="form-group">
-							<input class="form-control" name="memberId" id="memberId"
-								type="text" value="giacopo0" readonly>
+							<input class="form-control" name="roomName" id="roomName"
+								type="text" value="${room.roomName}" readonly>
 						</div>
 					</div>
 					<div class="col-12">
-						<div class="form-group">
-							<input class="form-control" name="rating" id="rating"
-								type="number" placeholder="별점을 매겨주세요">
+						<div class="from-group">
+							<div class="rating">
+								<label class="rating__label rating__label--half" for="starhalf">
+									<input type="radio" id="starhalf" class="rating__input"
+									name="rating" value="0.5"> <span class="star-icon"></span>
+								</label> <label class="rating__label rating__label--full" for="star1">
+									<input type="radio" id="star1" class="rating__input"
+									name="rating" value="1"> <span class="star-icon"></span>
+								</label> <label class="rating__label rating__label--half"
+									for="star1half"> <input type="radio" id="star1half"
+									class="rating__input" name="rating" value="1.5"> <span
+									class="star-icon"></span>
+								</label> <label class="rating__label rating__label--full" for="star2">
+									<input type="radio" id="star2" class="rating__input"
+									name="rating" value="2"> <span class="star-icon"></span>
+								</label> <label class="rating__label rating__label--half"
+									for="star2half"> <input type="radio" id="star2half"
+									class="rating__input" name="rating" value="2.5">
+									<span class="star-icon"></span>
+								</label> <label class="rating__label rating__label--full" for="star3">
+									<input type="radio" id="star3" class="rating__input"
+									name="rating" value="3"> <span class="star-icon"></span>
+								</label> <label class="rating__label rating__label--half"
+									for="star3half"> <input type="radio" id="star3half"
+									class="rating__input" name="rating" value="3.5"> <span
+									class="star-icon"></span>
+								</label> <label class="rating__label rating__label--full" for="star4">
+									<input type="radio" id="star4" class="rating__input"
+									name="rating" value="4"> <span class="star-icon"></span>
+								</label> <label class="rating__label rating__label--half"
+									for="star4half"> <input type="radio" id="star4half"
+									class="rating__input" name="rating" value="4.5"> <span
+									class="star-icon"></span>
+								</label> <label class="rating__label rating__label--full" for="star5">
+									<input type="radio" id="star5" class="rating__input"
+									name="rating" value="5" checked> <span class="star-icon"></span>
+								</label>
+							</div>
+						</div>
+						<div>
+							<p></p>
 						</div>
 					</div>
 					<div class="col-12">
@@ -140,15 +190,17 @@
 								id="reviewContent" placeholder="리뷰를 작성해주세요">
 						</div>
 					</div>
+					<div class="col-12">
+						<div class="form-group">
+							<input type="file" id="imageUrl" name="imageUrl" value="사진 업로드">
+						</div>
+					</div>
 				</div>
 				<div class="form-group">
-					<button type="submit"
+					<button type="submit" onclick="alert('${msg}')"
 						class="button button-contactForm btn_1 boxed-btn">등록하기</button>
 				</div>
 			</form>
 		</div>
 	</div>
-
 </div>
-
-<!-- features_room_end -->

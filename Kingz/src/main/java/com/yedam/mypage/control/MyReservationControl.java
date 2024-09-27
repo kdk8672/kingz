@@ -16,10 +16,12 @@ public class MyReservationControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String memberId = request.getParameter("memberId");
+		
 		MypageService svc = new MypageServiceImpl();
-		List<ReservVO> list = svc.getId();
-	
-		request.setAttribute("ReservList", list);
+		List<ReservVO> reserve = svc.getId(memberId);
+		
+		request.setAttribute("reserve", reserve);
 
 		request.getRequestDispatcher("mypage/body.tiles").forward(request, response);
 	}

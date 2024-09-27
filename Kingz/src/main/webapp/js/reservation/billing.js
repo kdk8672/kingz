@@ -41,6 +41,11 @@ function KGpay(mem_id) {
             let msg = '결제가 완료되었습니다.';
             alert(msg);
             
+            let payMethod = rsp.pay_method;
+            let totalPaid = rsp.paid_amount;
+            
+            console.log("[billing.js] 결제방법: " + payMethod + " | 결제액: " + totalPaid);
+            
             document.getElementById('reservSubmit').click();
             
 	    } else {
@@ -126,3 +131,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   renderTabContent();
 });
+
+function searchConfirm() {
+	alert("검색 검증!");
+}

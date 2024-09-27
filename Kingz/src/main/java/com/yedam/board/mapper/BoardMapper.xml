@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yedam.board.mapper.BoardMapper">
+
+	<select id="selectList" resultType="board">
+		select board_id,
+		 board_title,
+		 board_content,
+		 board_date,
+		 board_type
+		 from board
+		 where board_type = #{boardType}
+	</select>
+	
+</mapper>
+

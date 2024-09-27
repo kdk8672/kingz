@@ -17,24 +17,22 @@ public class ModifyMypageControl implements Control {
 	public void exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=utf-8");
 		
-		String id = request.getParameter("id");
+		String id = request.getParameter("memberId");
 		String pw = request.getParameter("pass");
-		String name = request.getParameter("name");
 		String mail = request.getParameter("email");
 		String phone = request.getParameter("phone");
 
 		MypageVO mvo = new MypageVO();
-		mvo.setId(id);
-		mvo.setPwd(pw);
-		mvo.setName(name);
+		mvo.setMemberId(id);
+		mvo.setPassword(pw);
 		mvo.setEmail(mail);
 		mvo.setPhone(phone);
 
 		MypageService svc = new MypageServiceImpl();
-		
+
 		
 		if(svc.modifyMypage(mvo)) {
-			response.getWriter().print("{\"retCode\": \"OK\"}");
+			response.sendRedirect("mypage.do?memberId=" + id);
 		}
 		else {
 			response.getWriter().print("{\"retCode\": \"NG\"}");
