@@ -41,6 +41,7 @@ public class LoginControl implements Control {
 
 		request.getRequestDispatcher("layout/body.tiles").forward(request, response);
 
+
 	}
 
 }

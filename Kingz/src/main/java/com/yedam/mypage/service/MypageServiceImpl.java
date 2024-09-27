@@ -1,4 +1,3 @@
-
 package com.yedam.mypage.service;
 
 import java.util.List;
@@ -21,20 +20,29 @@ public class MypageServiceImpl implements MypageService{
 		return mapper.memberList();
 	}
 
-	@Override
-	public List<ReservVO> getId() {
-		return mapper.reservList();
-	}
-
-	@Override
-	public List<ReviewVO> getRoomId() {
-		return mapper.reviewList();
-	}
 
 	@Override
 	public boolean modifyMypage(MypageVO memberId) {
 		return mapper.modifymypage(memberId) == 1;
 	}
-	
+
+
+	@Override
+	public List<ReservVO> getId(String memberId) {
+		return mapper.selectreserv(memberId);
+	}
+
+
+	@Override
+	public int myPoint(String memberId) {
+		return mapper.myPoint(memberId);
+	}
+
+
+	@Override
+	public List<ReviewVO> getMemberId(String review) {
+		return mapper.reviewList(review);
+	}
+
 
 }

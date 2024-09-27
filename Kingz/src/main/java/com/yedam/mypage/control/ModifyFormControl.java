@@ -12,7 +12,7 @@ public class ModifyFormControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("mypage/modifymypage.tiles").forward(request, response);
+		request.getRequestDispatcher("mypage/body.tiles").forward(request, response);
 	}
 
 }
