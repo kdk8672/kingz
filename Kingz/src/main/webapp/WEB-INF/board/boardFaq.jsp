@@ -9,7 +9,7 @@
 </head>
 <body>
 	<div class="bradcam_area breadcam_bg_1">
-		<h3>Login</h3>
+		<h3>FAQ</h3>
 	</div>
 	<!-- about_area_start -->
 	<div class="about_area">
@@ -54,14 +54,6 @@
 								</div>
 							</c:forEach>
 							<!-- Support Button-->
-								<div
-									class="support-button text-center d-flex align-items-center justify-content-center mt-4 wow fadeInUp"
-									data-wow-delay="0.5s"
-									style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
-									<i class="lni-emoji-sad"></i>
-									<p class="mb-0 px-2">Can't find your answers?</p>
-									<a href="#"> Contact us</a>
-								</div>
 							</div>
 						</div>
 				</div>

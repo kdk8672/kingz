@@ -10,7 +10,7 @@
 </head>
 <body>
 	<div class="bradcam_area breadcam_bg_2">
-		<h3>Login</h3>
+		<h3>공지사항</h3>
 	</div>
 	<!-- about_area_start -->
 	<div class="about_area">
