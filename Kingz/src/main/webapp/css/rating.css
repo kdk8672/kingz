@@ -1,0 +1,59 @@
+@charset "UTF-8";
+.wrap {
+    height: 100vh;
+    min-height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 32px;
+}
+
+h1 {
+		font-size: 40px;
+		font-weight: 600;
+}
+
+.rating {
+	float: none;
+    width: 200px;
+    display: flex;
+}
+
+.rating__input {
+	display: none; /* 라디오버튼 hide */
+}
+
+.rating__label {
+	width: 12px; /* 원본 사이즈/2 */
+	overflow: hidden;
+	cursor: pointer;
+}
+
+.rating__label .star-icon {
+	width: 12px; /* 원본 사이즈/2 */
+	height: 24px;
+	display: block;
+	position: relative;
+	left: 0;
+	background-image: url('https://velog.velcdn.com/images/jellykelly/post/9957327f-f358-4c25-9989-5bb3dd5755d6/image.svg');
+	background-repeat: no-repeat;
+	&.filled {
+                background-image: url('https://velog.velcdn.com/images/jellykelly/post/10caf033-b0ef-4d58-804b-6e33395e4ea5/image.svg');
+            }
+}
+
+.rating__label--full .star-icon {
+	background-position: right;
+}
+
+.rating__label--half .star-icon {
+	background-position: left;
+}
+
+.rating.readonly {
+        .star-icon {
+            opacity: 0.7;
+            cursor: default;
+        }
+    }

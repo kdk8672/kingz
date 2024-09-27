@@ -27,6 +27,7 @@
 <link rel="stylesheet" href="css/animate.css">
 <link rel="stylesheet" href="css/slicknav.css">
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/rating.css">
 <!-- <link rel="stylesheet" href="css/responsive.css"> -->
 </head>
 
@@ -108,6 +109,7 @@
 	<script src="js/jquery.magnific-popup.min.js"></script>
 	<script src="js/plugins.js"></script>
 	<script src="js/gijgo.min.js"></script>
+	<script src="js/rating.js"></script>
 
 	<!--contact js-->
 	<script src="js/contact.js"></script>

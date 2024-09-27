@@ -18,8 +18,13 @@
     <level value="debug"/>
   </logger>
   
+  <logger name="com.yedam.mypage.mapper.MypageMapper">
+  	<level value="debug"></level>
+  </logger>
+  
   <root level="error">
     <appender-ref ref="stdout"/>
   </root>
+  
 
 </configuration>
