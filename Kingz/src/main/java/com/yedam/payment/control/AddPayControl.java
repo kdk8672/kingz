@@ -1,4 +1,4 @@
-package com.yedam.mypage.control;
+package com.yedam.payment.control;
 
 import java.io.IOException;
 
@@ -8,11 +8,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.yedam.common.Control;
 
-public class ModifyFormControl implements Control {
+public class AddPayControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("mypage/body.tiles").forward(request, response);
-	}
 
+	}
 }

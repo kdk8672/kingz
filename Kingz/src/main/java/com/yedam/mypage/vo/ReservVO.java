@@ -4,9 +4,20 @@ import lombok.Data;
 
 @Data
 public class ReservVO {
-	private String roomImg;
+	private int reserveId;
+	private String memberId;
+	private int roomId;
+	private String roomName;
 	private String checkIn;
 	private String checkOut;
-	private String price;
-	private String stay;
+	private int headCount;
+	private int breakfast;
+	private String request;
+	private String roomType;
+	private int roomPrice;
+	private String imageUrl;
+	private int paymentAmount;
+	private int paymentPoint;
+	private int night;
+	private int pointUse;
 }

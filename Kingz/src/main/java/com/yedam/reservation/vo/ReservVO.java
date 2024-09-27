@@ -14,4 +14,11 @@ public class ReservVO {
 	private int headcount;
 	private int bearkfast;
 	private String request;
+	
+	// 결제랑 예약 동시에 INSERT 할 때 필요한 임?시 필드
+	private int paymentId;
+	private int paymentAmount;
+	private String paymentMethod;
+	private Date paymentDate;
+	private int paymentPoint;
 }

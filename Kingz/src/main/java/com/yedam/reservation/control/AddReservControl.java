@@ -70,14 +70,23 @@ public class AddReservControl implements Control {
 		rvo.setBearkfast(breakfast);
 		rvo.setRequest(requestStr);
 		
+		rvo.setPaymentAmount(totalPrice);
+		rvo.setPaymentMethod("KaKao Pay");	// TODO 결제 API에서 response 값으로 가져온거 넣기
+		rvo.setPaymentPoint(pointPrice);
+		
 		System.out.println("[AddReservControl.java] rvo 객체: " + rvo);
 		
 		SqlSessionFactory factory = DataSource.getInstance();
 		SqlSession session = factory.openSession(true);
 		ReservMapper mapper = session.getMapper(ReservMapper.class);
 		
-		if(mapper.updateReserv(rvo) == 1) {
+		
+		
+		if(mapper.updateReservAndPayment(rvo) == 1) {
 			System.out.println("[AddReservContol.java] updateReserv 작업 완료");
+			
+			request.setAttribute("roomId", roomId);
+			
 			request.setAttribute("status", "reservSuccess");
 			request.setAttribute("message", "예약이 완료되었습니다.");
 			request.setAttribute("roomName", roomName);

@@ -9,7 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import com.yedam.common.Control;
 
-public class LogoutControll implements Control {
+public class LogoutControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
