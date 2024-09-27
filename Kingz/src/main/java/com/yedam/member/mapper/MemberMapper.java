@@ -9,5 +9,6 @@ public interface MemberMapper {
 	int seleteMember(String memberId); // 중복확인
 
 	MemberVO loginMember(@Param("id")String id, @Param("password") String password);
+
 	
 }

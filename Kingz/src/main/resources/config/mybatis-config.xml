@@ -12,6 +12,7 @@
 	</settings>
 	<typeAliases>
 		<typeAlias type="com.yedam.admin.vo.AdminVO" alias="admin"/>
+		<typeAlias type="com.yedam.board.vo.BoardVO" alias="board"/>
   	</typeAliases>
 	
   <environments default="development">
@@ -33,5 +34,6 @@
     <mapper resource="com/yedam/admin/mapper/AdminMapper.xml"/>
     <mapper resource="com/yedam/reservation/mapper/ReservMapper.xml"/>
     <mapper resource="com/yedam/member/mapper/MemberMapper.xml"/>
+    <mapper resource="com/yedam/board/mapper/BoardMapper.xml" />
   </mappers>
 </configuration>

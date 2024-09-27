@@ -29,6 +29,7 @@
 				</div>
 			</div>
 		</div>
+<<<<<<< HEAD
 		<div
 			class="single_slider d-flex align-items-center justify-content-center slider_bg_1">
 			<div class="container">
@@ -55,6 +56,8 @@
 				</div>
 			</div>
 		</div>
+=======
+>>>>>>> refs/remotes/origin/main
 	</div>
 </div>
 <!-- slider_area_end -->
