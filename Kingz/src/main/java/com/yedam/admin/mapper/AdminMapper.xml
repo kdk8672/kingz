@@ -83,5 +83,30 @@
 		GROUP BY r.room_name, r.room_type
 		ORDER BY r.room_type
 	</select>
+	
+	<insert id="insertBoard" parameterType="com.yedam.admin.vo.AdBoardVO">
+		insert into board(
+			board_id,
+			board_title,
+			board_content,
+			board_type
+		)
+		values (seq_board_id.nextval, #{boardTitle}, #{boardContent}, '공지사항')
+	</insert>
+	
+	<delete id="deleteBoard" parameterType="int">
+		delete from board
+		where board_id = #{boardId}
+	</delete>
+	
+	<delete id="deleteReviewOne" parameterType="int">
+		delete from review
+		where review_id = #{reviewId}
+	</delete>
+	
+	<delete id="deleteReviewImageOne" parameterType="int">
+		delete from review_iamge
+		where review_id = #{reviewId}
+	</delete>
   
 </mapper>
