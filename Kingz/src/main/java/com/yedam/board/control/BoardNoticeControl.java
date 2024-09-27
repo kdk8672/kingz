@@ -1,21 +1,25 @@
-package com.yedam.member.control;
+package com.yedam.board.control;
 
 import java.io.IOException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
+import com.yedam.board.service.BoardService;
+import com.yedam.board.service.BoardServiceImpl;
 import com.yedam.common.Control;
 
-public class LoginFormControl implements Control {
+public class BoardNoticeControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("member/login.tiles").forward(request, response);
-	
-
+		String boardType = request.getParameter("boardType");
+		
+		BoardService svc = new BoardServiceImpl();
+		
+		
+		
 	}
 
 }

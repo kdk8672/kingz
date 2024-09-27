@@ -46,10 +46,12 @@
 							<div class="main-menu  d-none d-lg-block">
 								<nav>
 									<ul id="navigation">
+
 										<li><a href="main.do">HOME</a></li>
 										<li><a href="hotelList.do">Hotel & Resort</a></li>
                                         <li><a href="facilities.do">시설</a></li>  
 										<li><a href="contact.do">오시는 길</a></li>
+
 									</ul>
 								</nav>
 							</div>
@@ -65,6 +67,7 @@
 							<div class="book_room">
 								<div class="main-menu  d-none d-lg-block">
 									<nav>
+
 										<ul id="navigation">
                                         	<c:choose>
                                         		<c:when test="${empty id }">
@@ -86,6 +89,7 @@
                                             		<li><a href="mypage.do?memberId=${id }">마이페이지</a></li>
                                             	</c:otherwise>
                                             </c:choose>
+
                                             <li><a href="#">고객센터<i class="ti-angle-down"></i></a>
                                         	<ul class="submenu">
                                                 <li><a href="#">FAQ</a></li>
@@ -93,7 +97,9 @@
                                             </ul>
                                         </li>
                                         </ul>
+
 									</nav>
+
 								</div>
 								<div class="book_btn d-none d-lg-block">
 									<a class="popup-with-form" href="#test-form">예약하기</a>

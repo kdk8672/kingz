@@ -28,5 +28,39 @@
 					#{bearkfast}, 
 					#{request})
 	</update>
+	
+	<update id="updateReservAndPayment" parameterType="com.yedam.reservation.vo.ReservVO">
+		INSERT ALL
+		    INTO     reservation (reserve_id
+		    					, member_id
+		    					, room_id
+		    					, checkin
+		    					, checkout
+		    					, headcount
+		    					, breakfast
+		    					, request)
+		    VALUES (	SEQ_RESERVE_ID.NEXTVAL
+		    			, #{memberId}
+		    			, #{roomId}
+		    			, #{checkin}
+		    			, #{checkout}
+		    			, #{headcount}
+		    			, #{bearkfast}
+		    			, #{request})
+		
+		    INTO payment (payment_id
+	    				, reserve_id
+	    				, payment_amount
+	    				, payment_method
+	    				, payment_date
+	    				, payment_point)
+		    VALUES (  SEQ_PAYMENT_ID.NEXTVAL
+		    		, SEQ_RESERVE_ID.CURRVAL
+		    		, #{paymentAmount}
+		    		, #{paymentMethod}
+		    		, SYSDATE
+		    		, #{paymentPoint})
+		SELECT * FROM dual 
+	</update>
 
 </mapper>

@@ -51,7 +51,6 @@ function checkId(e) {
 	fetch('checkId.do?id=' + userId)
 		.then(resolve => resolve.json())
 		.then(result => {
-			console.log(result)
 			if (result.retCode == 'OK') {
 				document.querySelector('#idCheckResult').innerHTML = '<font color=red>중복된 ID 입니다.</font>'
 				isIdChecked = true;
