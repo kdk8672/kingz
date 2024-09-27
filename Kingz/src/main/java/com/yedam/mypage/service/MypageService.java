@@ -9,7 +9,8 @@ import com.yedam.mypage.vo.ReviewVO;
 public interface MypageService {
 	List<MypageVO> getMembers();
 	List<ReservVO> getId(String memberId);
-	List<ReviewVO> getMemberId();
+	List<ReviewVO> getMemberId(String review);
 	boolean modifyMypage(MypageVO memberId);
+	int myPoint(String memberId);
 }
 

@@ -18,9 +18,10 @@
 	<select id="selectreserv"
 		resultType="com.yedam.mypage.vo.ReservVO">
 		select DISTINCT re.reserve_id,
-						re.checkin,
+						TO_CHAR(re.checkin, 'YYYY-MM-DD') as checkIn,
 						re.member_id,
-						re.checkout,
+						TO_CHAR(re.checkOut, 'YYYY-MM-DD') as checkOut,
+						(re.checkout - re.checkin) as night,
 						re.headcount,
 						re.breakfast,
 						ro.room_type,
@@ -36,17 +37,12 @@
 		where re.member_id = #{memberId}
 	</select>
 	
-	<select id="reviewList" resultType="com.yedam.mypage.vo.MypageVO">
-		select r.checkin, r.checkout, r.breakfast, r.headcount,
-      		   re.review_content, re.rating,
-       		   ro.room_type, ro.room_name,
-       	       ri.image_url
-		from   reservation r
-		JOIN   room ro ON r.room_id = ro.room_id
-		JOIN   review re ON ro.room_id = re.room_id
-		JOIN   review_image ri ON re.review_id = ri.review_id
-		where  r.member_id = #{memberId}
-		AND    r.member_id = re.member_id
+	<select id="reviewList" resultType="com.yedam.mypage.vo.ReviewVO">
+		SELECT re.review_content, re.rating, re.review_date,
+		COALESCE(ri.image_url, '') AS image_url
+		FROM review re
+		LEFT JOIN review_image ri ON re.review_id = ri.review_id
+		WHERE re.member_id = #{memberId}
 	</select>
 	
 	<update id="modifymypage" parameterType="com.yedam.mypage.vo.MypageVO">
@@ -56,5 +52,11 @@
 		    phone = #{phone} 
 		where member_id = #{memberId}
 	</update>
+	
+	<select id="myPoint" resultType="int" parameterType="string">
+		select SUM(point_use)
+        from point_history
+        where member_id = #{memberId}
+	</select>
 	
 </mapper>

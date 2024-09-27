@@ -18,4 +18,6 @@ public class ReservVO {
 	private String imageUrl;
 	private int paymentAmount;
 	private int paymentPoint;
+	private int night;
+	private int pointUse;
 }

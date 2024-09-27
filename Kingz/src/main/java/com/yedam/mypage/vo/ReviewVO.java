@@ -8,5 +8,6 @@ public class ReviewVO {
 	private String memberId;
 	private String roomId;
 	private String reviewContent;
-	private Number rating;
+	private int rating;
+	private String reviewDate;
 }

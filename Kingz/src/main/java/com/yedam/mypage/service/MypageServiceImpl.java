@@ -22,11 +22,6 @@ public class MypageServiceImpl implements MypageService{
 
 
 	@Override
-	public List<ReviewVO> getMemberId() {
-		return mapper.reviewList();
-	}
-
-	@Override
 	public boolean modifyMypage(MypageVO memberId) {
 		return mapper.modifymypage(memberId) == 1;
 	}
@@ -35,6 +30,18 @@ public class MypageServiceImpl implements MypageService{
 	@Override
 	public List<ReservVO> getId(String memberId) {
 		return mapper.selectreserv(memberId);
+	}
+
+
+	@Override
+	public int myPoint(String memberId) {
+		return mapper.myPoint(memberId);
+	}
+
+
+	@Override
+	public List<ReviewVO> getMemberId(String review) {
+		return mapper.reviewList(review);
 	}
 
 

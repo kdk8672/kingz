@@ -14,9 +14,10 @@ public interface MypageMapper {
 	//예약 내역 조회
 	ReservVO reservList();
 	List<ReservVO> selectreserv(String reserv);
+	int myPoint(String memberId);
 	
 	//리뷰 내역 조회
-	List<ReviewVO> reviewList();
+	List<ReviewVO> reviewList(String review);
 	ReviewVO selectreview(String review);
 	
 	//내 정보 업데이트

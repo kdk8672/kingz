@@ -18,8 +18,8 @@ public class MyReviewInfoControl implements Control {
 	@Override
 	public void exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		MypageService svc = new MypageServiceImpl();
-		
-		List<ReviewVO> list = svc.getMemberId();
+		String memberId = request.getParameter("memberId");
+		List<ReviewVO> list = svc.getMemberId(memberId);
 	
 		request.setAttribute("memberId", list);
 
