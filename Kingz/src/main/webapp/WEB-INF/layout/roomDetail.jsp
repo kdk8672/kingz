@@ -14,6 +14,13 @@
 }
 </style>
 
+<script type="text/javascript">
+	var msg = "${msg}";
+	if (msg) {
+	    alert(msg);
+	}
+</script>
+
 <div class="bradcam_area breadcam_bg">
 	<h3>Rooms</h3>
 </div>
@@ -88,7 +95,8 @@
 				</div>
 				<div class="container">
 					<div style="text-align: center">
-						<a href="reserv.do" class="button button-contactForm btn_1 boxed-btn"
+						<a href="reserv.do"
+							class="button button-contactForm btn_1 boxed-btn"
 							style="font-size: 17px">예약하기</a>
 					</div>
 				</div>
@@ -105,7 +113,7 @@
 						<div class="row">
 							<c:if test="${not empty review.imageUrl}">
 								<div class="col-md-3">
-									<img src="img/reviews/${review.imageUrl}" alt=""
+									<img src="img/${review.imageUrl}" alt=""
 										class="img-fluid">
 								</div>
 							</c:if>
@@ -135,12 +143,6 @@
 						</div>
 					</div>
 					<div class="col-12">
-						<div class="form-group">
-							<input class="form-control" name="roomName" id="roomName"
-								type="text" value="${room.roomName}" readonly>
-						</div>
-					</div>
-					<div class="col-12">
 						<div class="from-group">
 							<div class="rating">
 								<label class="rating__label rating__label--half" for="starhalf">
@@ -158,8 +160,8 @@
 									name="rating" value="2"> <span class="star-icon"></span>
 								</label> <label class="rating__label rating__label--half"
 									for="star2half"> <input type="radio" id="star2half"
-									class="rating__input" name="rating" value="2.5">
-									<span class="star-icon"></span>
+									class="rating__input" name="rating" value="2.5"> <span
+									class="star-icon"></span>
 								</label> <label class="rating__label rating__label--full" for="star3">
 									<input type="radio" id="star3" class="rating__input"
 									name="rating" value="3"> <span class="star-icon"></span>
@@ -176,12 +178,19 @@
 									class="star-icon"></span>
 								</label> <label class="rating__label rating__label--full" for="star5">
 									<input type="radio" id="star5" class="rating__input"
-									name="rating" value="5" checked> <span class="star-icon"></span>
+									name="rating" value="5" checked> <span
+									class="star-icon"></span>
 								</label>
 							</div>
 						</div>
 						<div>
 							<p></p>
+						</div>
+					</div>
+					<div class="col-12">
+						<div class="form-group">
+							<input class="form-control" name="roomName" id="roomName"
+								type="text" value="${room.roomName}" readonly>
 						</div>
 					</div>
 					<div class="col-12">
@@ -197,7 +206,7 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<button type="submit" onclick="alert('${msg}')"
+					<button type="submit"
 						class="button button-contactForm btn_1 boxed-btn">등록하기</button>
 				</div>
 			</form>
