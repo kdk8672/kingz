@@ -1,45 +1,67 @@
 console.log("[reserv.jsp] 화면 도착");
 
-//setSearchParams();
+
+// TODO 파라미터 넘기는거 안되는 오류 고치기!!
+window.addEventListener('DOMContentLoaded', function(){
+	setSearchParams();
+});
+
+
 
 // URL에 파라미터 담겨져올 때 왼쪽 레이아웃에 값 유지시키는 함수
 function setSearchParams() {
 	let searchParams = new URLSearchParams(location.search);
-	console.log(searchParams);
 
 	let roomType = searchParams.get('roomType');
 	let inDate = searchParams.get('inDate');
 	let outDate = searchParams.get('outDate');
 	let inHeadcount = searchParams.get('inHeadcount');
 
-	console.log(roomType + inDate + outDate + inHeadcount);
+	console.log("roomType: "+ roomType + " | inDate: " + inDate + " | outDate: " + outDate + " | inHeadcount: " + inHeadcount);
 
 	if (roomType != null || roomType != "") {
 		document.querySelector("#roomType").value = roomType;
+		
 	} else if (inDate != null || inDate != "") {
-		document.querySelector("#datepicker").value = inDate.toString();
+		document.querySelector("#datepicker").value = convertDate(inDate);
+		document.querySelector("#checkin").value = convertDate(inDate);
+		
 	} else if (outDate != null || outDate != "") {
-		document.querySelector("#datepicker").value = outDate.toString();
+		document.querySelector("#datepicker").value = convertDate(outDate);
+		document.querySelector("#checkout").value = convertDate(outDate);
+		
 	} else if (inHeadcount != null || inHeadcount != "") {
 		document.querySelector("#headcountPicker").value = inHeadcount;
+		document.querySelector("#headcount").value = inHeadcount;
+		
 	}
 }
 
 
-// TODO 조식 체크박스 눌렀을 때 조식 input에 값 적용
-function breakfastCheck() {
-	let checkbox = document.querySelector("#breakfast");
-	checkbox.addEventListener('change', (event) => {
-		let value = event.target.checked;
-	})
-	const log = `체크박스 "조식"은 ${value}로 변경되었습니다.`;
-  	console.log(log);
+// 조식 체크박스 눌렀을 때 조식 input에 값 적용
+function breakfastCheck(event) {
+  	let headcount = document.querySelector("#headcount").value;
+  	let result = 0;  	
+  	
+	if(event.target.checked)  {
+	    result = 10000;
+	}else {
+	    result = 0;
+	}
+	
+  	console.log("[breakfastCheck()] headcount: " + headcount + " | result: " + result);
+	
+	document.querySelector("#breakfastPrice").value = result * headcount;
+	
+  	
 }
 
 
-function KGpay(mem_id) {
+function KGpay() {
+	
+	memId = document.querySelector("#memberid").value
 
-	if (mem_id == "" || mem_id == null) {
+	if (memId == "" || memId == null) {
 		alert("회원만 예약을 진행할 수 있습니다.");
 		return false;
 	} else {
@@ -190,4 +212,15 @@ function checkSearchValues() {
 	} else {
 		return true;
 	}
+}
+
+// 날짜 형식을 변환(09/25/2024 -> 24-09-25)
+function convertDate(inputDate) {
+    const dateParts = inputDate.split('/');
+    
+    const year = dateParts[2];
+    const month = dateParts[0];
+    const day = dateParts[1];
+    
+    return `${year}-${month}-${day}`;
 }

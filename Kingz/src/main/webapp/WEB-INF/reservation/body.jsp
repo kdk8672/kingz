@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 <!-- [박진석 | 24.09.24] JQuery 및 결제 관련 js import 후 결제 API 작성 -->
@@ -124,9 +124,9 @@
                             <input name="roomName" id="roomName" value="${rl.roomName }" style='font-size:25px;' readonly><br>
                             <input name="roomId" id="roomId" value="${rl.roomId }" hidden="hedden">
                             <p>옵션: 조식 포함</p>
-                            <input name="checkin" id="checkin" value="24-01-01" hidden="hedden">
-                   			<input name="checkout" id="checkout" value="24-01-01" hidden="hidden">
-                   			<input name="headcount" id="headcount" value="2" hidden="hedden">
+                            <input name="checkin" id="checkin" value="24-01-01" > 체크인(히)
+                   			<input name="checkout" id="checkout" value="24-01-01" > 체크아웃(히)
+                   			<input name="headcount" id="headcount" value="2" > 인원(히)
                    			<input name="memberid" id="memberid" value="giacopo0" hidden="hedden">
                         </div>
                     </div>
@@ -163,7 +163,7 @@
 					  <div class="card card-body">
 					    <div class="pjs-first-col-detail" style="display: inline-block;">
             				<h3>옵션사항</h3><br>
-            				조식여부: <input name="breakfast" id="breakfast" type="checkbox"><br>
+            				조식여부: <input name="breakfast" id="breakfast" type="checkbox" onclick="breakfastCheck(event)"><br>
             				포인트 사용: <input name="usePoint" type="checkbox"><br>
             				추가 요청사항:<br>
             				<textarea name="request"></textarea>
