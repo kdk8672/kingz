@@ -124,9 +124,9 @@
                             <input name="roomName" id="roomName" value="${rl.roomName }" style='font-size:25px;' readonly><br>
                             <input name="roomId" id="roomId" value="${rl.roomId }" hidden="hedden">
                             <p>옵션: 조식 포함</p>
-                            <input name="checkin" id="checkin" value="24-01-01" > 체크인(히)
-                   			<input name="checkout" id="checkout" value="24-01-01" > 체크아웃(히)
-                   			<input name="headcount" id="headcount" value="2" > 인원(히)
+                            <input name="checkin" id="checkin"> 체크인(히)
+                   			<input name="checkout" id="checkout" > 체크아웃(히)
+                   			<input name="headcount" id="headcount"> 인원(히)
                    			<input name="memberid" id="memberid" value="giacopo0" hidden="hedden">
                         </div>
                     </div>
@@ -134,7 +134,7 @@
                     
                     <div class="text-right">
                         <p>1박 1객실</p>
-                        <input name="roomPrice" value="${rl.roomPrice }" style='font-size:20px; text-align:right;' readonly>원
+                        <input name="roomPrice" id="roomPrice" value="${rl.roomPrice }" style='font-size:20px; text-align:right;' readonly>원
                         <!-- 
                         <div class="accordion">
                             <button class="accordion-trigger">상세 내역</button>
@@ -164,13 +164,13 @@
 					    <div class="pjs-first-col-detail" style="display: inline-block;">
             				<h3>옵션사항</h3><br>
             				조식여부: <input name="breakfast" id="breakfast" type="checkbox" onclick="breakfastCheck(event)"><br>
-            				포인트 사용: <input name="usePoint" type="checkbox"><br>
+            				포인트 사용: <input name="usePoint" type="checkbox" onclick="pointCheck(event)"><br>
             				추가 요청사항:<br>
             				<textarea name="request"></textarea>
            				</div>
            				<div class="pjs-second-col-detail" style="display: inline-block;">
            					<h3>가격</h3><br>
-           					객실금액<input name="roomPrice" id="roomPrice" value="200000" style="text-align:right;" readonly>원<br>
+           					객실금액<input name="roomPrice2" id="roomPrice2" value="200000" style="text-align:right;" readonly>원<br>
            					<input name="sleepDay" id="sleepDay" value="1" style="text-align:right;"></input>박<br>
            					<h3>옵션</h3><br>
            					조식 <input name="breakfastPrice" id="breakfastPrice" value="0" style="text-align:right;" readonly>원<br>

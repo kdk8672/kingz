@@ -1,14 +1,33 @@
 console.log("[reserv.jsp] 화면 도착");
 
 
-// TODO 파라미터 넘기는거 안되는 오류 고치기!!
-window.addEventListener('DOMContentLoaded', function(){
+
+window.onload = function(){
 	setSearchParams();
-});
+}
 
 
 
-// URL에 파라미터 담겨져올 때 왼쪽 레이아웃에 값 유지시키는 함수
+
+// 조식, 포인트 사용할 때 마다 최종 금액 계산해주는 함수
+function calTotal() {
+	console.log("calTotal - 값 바뀜!");
+	
+	let roomPrice = document.querySelector("#roomPrice2").value;
+	let sleepDate = document.querySelector("#sleepDay").value;
+	let breakfast = document.querySelector("#breakfastPrice").value;
+	let point = document.querySelector("#pointPrice").value;
+	let result = (roomPrice * sleepDate) - (breakfast + point);
+	
+	document.querySelector("#totalPrice").value = result;
+	
+	console.log("calTotal - 바뀐 값 적용됨!")
+}
+
+
+
+
+// URL에 파라미터 담겨져올 때 왼쪽 레이아웃과 form에 값 유지시키는 함수
 function setSearchParams() {
 	let searchParams = new URLSearchParams(location.search);
 
@@ -17,25 +36,30 @@ function setSearchParams() {
 	let outDate = searchParams.get('outDate');
 	let inHeadcount = searchParams.get('inHeadcount');
 
+
 	console.log("roomType: "+ roomType + " | inDate: " + inDate + " | outDate: " + outDate + " | inHeadcount: " + inHeadcount);
 
 	if (roomType != null || roomType != "") {
-		document.querySelector("#roomType").value = roomType;
-		
-	} else if (inDate != null || inDate != "") {
+		document.querySelector("#roomType").value = roomType;	
+	}
+	
+	if (inDate != null || inDate != "") {
 		document.querySelector("#datepicker").value = convertDate(inDate);
 		document.querySelector("#checkin").value = convertDate(inDate);
-		
-	} else if (outDate != null || outDate != "") {
+	}
+	
+	if (outDate != null || outDate != "") {
 		document.querySelector("#datepicker").value = convertDate(outDate);
 		document.querySelector("#checkout").value = convertDate(outDate);
-		
-	} else if (inHeadcount != null || inHeadcount != "") {
+	}
+	
+	if (inHeadcount != null || inHeadcount != "") {
 		document.querySelector("#headcountPicker").value = inHeadcount;
 		document.querySelector("#headcount").value = inHeadcount;
-		
 	}
 }
+
+
 
 
 // 조식 체크박스 눌렀을 때 조식 input에 값 적용
@@ -53,9 +77,46 @@ function breakfastCheck(event) {
 	
 	document.querySelector("#breakfastPrice").value = result * headcount;
 	
-  	
+	calTotal();
 }
 
+function pointCheck(event) {
+	let point = 0;
+	let memId = ""; 	// TODO 여기에 현재 로그인된 맴버 아이디 가져오는 코드 구현할 것.
+	
+	if(event.target.checked)  {
+		
+		/*
+		if(memId == null | memId == "") {
+			alert("로그인 후 포인트 사용을 할 수 있습니다.");
+			return false;
+		} else {											// TODO 이 부분은 공승원 마이페이지 쪽에서 작업한거 있을테니 그거 활용하자
+			fetch('getPointOneMember.do?id=' + mem_id)
+			.then(resolve => resolve.json())
+			.then(result => {
+				if (result.retCode == 'OK') {
+					console.log(result);
+					point = result.pointSum;	// 쿼리 결과로 나온 1개 값을 point로 지정
+					
+				} else {
+					alert("포인트 조회 중 오류가 발생하였습니다.")
+				}
+			})
+			.catch(console.log)
+		}
+		*/
+		
+		
+		point = 50000;
+			
+	}else {
+	    point = 0;
+	}
+	console.log("[pointCheck()] point: " + point)
+	document.querySelector("#pointPrice").value = point;
+	
+	calTotal();
+}
 
 function KGpay() {
 	
@@ -67,7 +128,7 @@ function KGpay() {
 	} else {
 		
 		//-------------------------------------------------
-		// [박진석 | 240925] 아이디와 현재 날짜와 시간을 결합하여 고유 결제번호("abc123_240925_2150"")를 만듦
+		// [박진석 | 240925] 아이디와 현재 날짜와 시간을 결합하여 고유 결제번호("abc123_240925_2150")를 만듦
 		const now = new Date();
 
 		const year = String(now.getFullYear()).slice(2);
@@ -76,7 +137,7 @@ function KGpay() {
 
 		const hours = String(now.getHours()).padStart(2, '0');
 		const minutes = String(now.getMinutes()).padStart(2, '0');
-		const orderId = `${mem_id}_${year}${month}${day}_${hours}${minutes}`;
+		const orderId = `${memId}_${year}${month}${day}_${hours}${minutes}`;
 
 		console.log(orderId);
 		// [박진석 | 240925] 고유 결제번호 만들기 끝
@@ -121,11 +182,28 @@ function KGpay() {
 	}
 }
 
+function calRoomPrice() {
+	let checkin = document.querySelector("#checkin").value;
+	let checkout = document.querySelector("#checkout").value;
+	let roomPrice = document.querySelector("#roomPrice").value;
+	
+	if (checkin.indexOf("undefined")) {
+		console.log("UNDEFINED 출현!: " + checkin);
+		checkin = checkin.substring(10, 20);
+	}
+	
+	let inDate = new Date(checkin);
+	let outDate = new Date(checkout);
+	let sleepDate = (outDate - inDate) / (1000 * 60 * 60 * 24);	// 체크인, 체크아웃 날짜를 사용하여 n박을 계산
+	
+	console.log("쳌아웃-쳌인*방값: "  + (sleepDate * roomPrice));
+}
 
+// "예약하기" 버튼 눌렀을 때 세부 input 값 지정하는 함수
 function setReservInfo() {
-	let checkinDate = (document.querySelector("#datepicker").value).replace(/\//g, "-");		// 왼쪽 레이아웃에서 체크인과 체크아웃 값을 Date 형식으로 가져오기
-	let checkoutDate = (document.querySelector("#datepicker2").value).replace(/\//g, "-");		// (2024/01/01 -> 2024-01-01)
-	let headcountValue = document.querySelector("#headcountPicker").value;						// 왼쪽 레이아웃에서 인원 수를 가져오기
+	let checkinDate = (document.querySelector("#checkin").value).replace(/\//g, "-");		// 왼쪽 레이아웃에서 체크인과 체크아웃 값을 Date 형식으로 가져오기
+	let checkoutDate = (document.querySelector("#checkout").value).replace(/\//g, "-");		// (2024/01/01 -> 2024-01-01)
+	let headcountValue = document.querySelector("#headcount").value;						// 왼쪽 레이아웃에서 인원 수를 가져오기
 
 	let inDate = new Date(checkinDate);
 	let outDate = new Date(checkoutDate);
@@ -137,20 +215,26 @@ function setReservInfo() {
 
 	if (checkinDate == "" || checkinDate == null || checkoutDate == "" || checkoutDate == null) {
 		alert("체크인 또는 체크아웃 날짜가 잘못되었습니다.")
+		return false;
 	}
 
 	if (sleepDate < 1) {
 		alert("체크인 날짜가 체크아웃 날짜보다 늦습니다.")
+		return false;
 	}
 
 	let roomPrice = document.querySelector("#roomPrice").value
 	let totalPrice = roomPrice * sleepDate;
+	console.log("totalPrice: " + totalPrice);
 
-
+	document.querySelector("#roomPrice2").value = roomPrice;
+	document.querySelector("#sleepDay").value = sleepDate;
 	document.querySelector("#checkin").value = checkinDate;
 	document.querySelector("#checkout").value = checkoutDate;
 	document.querySelector("#headcount").value = headcountValue;
 	document.querySelector("#totalPrice").value = totalPrice
+	
+	console.log("==================================================");
 
 	// TODO n박, 최종 비용도 계산하기!	
 }
