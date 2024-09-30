@@ -26,10 +26,11 @@
 	width: 50%;
 	overflow: hidden;
 }
+
 .room_thumb img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
+	width: 100%;
+	height: auto;
+	object-fit: cover;
 }
 </style>
 
@@ -70,6 +71,7 @@
 								<h4 class="mb-20">
 									<b class="text-dark">기본정보</b>
 								</h4>
+								<br>
 								<p>객실크기</p>
 								<p>· ${room.roomSize}</p>
 								<p>위치</p>
@@ -87,8 +89,9 @@
 								<h4 class="mb-20">
 									<b class="text-dark">이용안내</b>
 								</h4>
+								<br>
 								<p>
-									이용안내<br> 실내외 수영장, 피트니스 클럽 무료 이용<br> <br>
+									시설 이용안내<br> 실내외 수영장, 피트니스 클럽 무료 이용<br> <br>
 									체크인/체크아웃<br> · 체크인 15시, 체크아웃 12시<br> <br> Extra
 									Bed 및 인원 추가<br> · 침대 및 인원 추가: 48,400원/1EA•1인
 								</p>
@@ -99,6 +102,7 @@
 								<h4 class="mb-20">
 									<b class="text-dark">이용규정</b>
 								</h4>
+								<br>
 								<p>
 									예약 취소 안내<br> · 숙박 2일 전: 객실 요금의 30% 부과<br> · 숙박 1일 전:
 									객실 요금의 50% 부과<br> · 숙박 당일 또는 No Show: 객실 요금의 100% 부과<br>
@@ -172,7 +176,7 @@
 		</div>
 	</div>
 
-	<div class="comment-form">
+	<div class="comment-form" style="margin-bottom: 100px;">
 		<div class="container box_1170">
 			<h2>리뷰 남기기</h2>
 			<br>
@@ -244,12 +248,13 @@
 					</div>
 					<div class="col-12">
 						<div class="form-group">
-							<input type="file" id="imageUrl" name="imageUrl" class="form-control">
+							<input type="file" id="imageUrl" name="imageUrl" accept="image/*"
+								class="form-control" multiple>
 						</div>
 					</div>
 				</div>
 				<div class="form-group">
-					<button type="submit"
+					<button type="submit" value="submit"
 						class="button button-contactForm btn_1 boxed-btn">등록하기</button>
 				</div>
 			</form>
