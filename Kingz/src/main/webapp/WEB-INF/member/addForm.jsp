@@ -5,6 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <link href="css/member/addForm.css" rel="stylesheet" type="text/css" />
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
 	<div class="bradcam_area breadcam_bg">
@@ -13,7 +15,7 @@
 	</div>
 	<!-- offers_area_start -->
 	<div class="offers_area padding_top">
-		<div class="container">
+		<div class="container">	
 			<div class="row">
 				<div class="col-xl-12"></div>
 			</div>

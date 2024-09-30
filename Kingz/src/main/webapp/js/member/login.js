@@ -31,7 +31,6 @@ function check(e) {
 		.then(result => {
 			if (result.retCode == 'OK') {
 				document.querySelector('#CheckResult').innerHTML = '<font color=red>아이디 및 비밀번호를 확인해주세요.</font>'
-				
 			} else {
 				lgoinform.submit();
 			}
