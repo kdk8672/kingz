@@ -13,6 +13,7 @@ public class ReviewVO {
 	private double rating;
 	private Date reviewDate;
 	private String imageUrl;
+//	private List<String> imageUrls;
 	private int reserveId;
 	private int reserveCnt;
 	private int reviewCnt;

@@ -30,7 +30,6 @@ public class RoomDetailControl implements Control {
 		ReviewVO rvo = new ReviewVO();
 		System.out.println(rvo);
 		List<ReviewVO> list = rvc.getReviewList(Integer.parseInt(roomId));
-		
 		HttpSession session = request.getSession();
 		String msg = (String) session.getAttribute("msg");
 		
