@@ -152,6 +152,7 @@
 					  </a>
 					</p>
 					<div class="collapse" id="collapseExample-${rl.roomId }">
+
 					  <div class="card card-body">
 					    <div class="pjs-first-col-detail" style="display: inline-block;">
             				<h3>옵션사항</h3><br>
