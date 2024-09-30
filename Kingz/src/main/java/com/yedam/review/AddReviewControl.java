@@ -20,7 +20,7 @@ public class AddReviewControl implements Control {
 		response.setContentType("text/html;charset=utf-8");
 
 		MultipartRequest mr;
-		String saveDir = request.getServletContext().getRealPath("img");
+		String saveDir = request.getServletContext().getRealPath("img/review");
 		int maxSize = 5 * 1024 * 1024;
 		mr = new MultipartRequest(request, saveDir, maxSize, "utf-8", new DefaultFileRenamePolicy());
 
@@ -28,12 +28,7 @@ public class AddReviewControl implements Control {
 
 		int reviewId = svc.getReviewId();
 		String roomId = mr.getParameter("roomId");
-
-//		HttpSession session = request.getSession(false);
-//		if(session != null) {
-//			session.invalidate();
-//		} 세션 초기화 (로그아웃 경우 체크용)
-
+		
 		HttpSession session = request.getSession();
 		Object getMemberId = session.getAttribute("id");
 		String memberId = (String) getMemberId;

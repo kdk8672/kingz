@@ -54,6 +54,8 @@
 								</div>
 							</c:forEach>
 							<!-- Support Button-->
+							</div>
+
 						</div>
 					</div>
 				</div>
