@@ -12,12 +12,31 @@
 .comment-form .form-group {
 	margin-bottom: 20px;
 }
+
+.star.half-filled {
+	color: ff7009;
+	position: relative;
+}
+
+.star.half-filled:before {
+	content: '\2605';
+	color: ff7009;
+	position: absolute;
+	left: 0;
+	width: 50%;
+	overflow: hidden;
+}
+.room_thumb img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
 </style>
 
 <script type="text/javascript">
 	var msg = "${msg}";
 	if (msg) {
-	    alert(msg);
+		alert(msg);
 	}
 </script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -40,7 +59,7 @@
 	<div class="whole-wrap">
 		<div class="container box_1170">
 			<div class="room_thumb">
-				<img src="img/rooms/${room.imageUrl}" alt="">
+				<img src="img/rooms/${room.imageUrl}" alt="" class="img-fluid">
 			</div>
 			<section class="blog_area single-post-area section-padding">
 				<div class="section-top-border">
@@ -115,16 +134,32 @@
 								<path d="M 10 2 L 9 3 L 4 3 L 4 5 L 5 5 L 5 20 C 5 20.522222 5.1913289 21.05461 5.5683594 21.431641 C 5.9453899 21.808671 6.4777778 22 7 22 L 17 22 C 17.522222 22 18.05461 21.808671 18.431641 21.431641 C 18.808671 21.05461 19 20.522222 19 20 L 19 5 L 20 5 L 20 3 L 15 3 L 14 2 L 10 2 z M 7 5 L 17 5 L 17 20 L 7 20 L 7 5 z M 9 7 L 9 18 L 11 18 L 11 7 L 9 7 z M 13 7 L 13 18 L 15 18 L 15 7 L 13 7 z"></path>
 							</svg>
 						</div>
-						<h3 class="mb-30">${review.rating}</h3>
+						<div class="star-rating"
+							style="display: inline-block; margin-right: 10px">
+							<c:forEach var="i" begin="1" end="5">
+								<c:if test="${i <= review.rating}">
+									<span class="star filled" style="font-size: 25px;">&#9733;</span>
+								</c:if>
+								<c:if test="${i > review.rating}">
+									<c:if test="${review.rating >= (i - 0.5)}">
+										<span class="star half-filled" style="font-size: 25px;">&#9734;</span>
+									</c:if>
+									<c:if test="${review.rating < (i - 0.5)}">
+										<span class="star" style="font-size: 25px;">&#9734;</span>
+									</c:if>
+								</c:if>
+							</c:forEach>
+						</div>
+						<h3 class="mb-30" style="display: inline-block;">${review.rating}</h3>
 						<div class="row">
 							<c:if test="${not empty review.imageUrl}">
 								<div class="col-md-3">
-									<img src="img/${review.imageUrl}" alt=""
+									<img src="img/review/${review.imageUrl}" alt=""
 										class="img-fluid">
 								</div>
 							</c:if>
 							<div class="col-md-9 mt-sm-20">
-								<p>${review.reviewContent}</p>
+								<p style="font-size: 20px">${review.reviewContent}</p>
 							</div>
 						</div>
 						<br>
@@ -207,7 +242,7 @@
 					</div>
 					<div class="col-12">
 						<div class="form-group">
-							<input type="file" id="imageUrl" name="imageUrl" value="사진 업로드">
+							<input type="file" id="imageUrl" name="imageUrl" class="form-control">
 						</div>
 					</div>
 				</div>
