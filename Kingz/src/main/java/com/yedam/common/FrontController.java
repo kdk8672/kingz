@@ -144,7 +144,8 @@ public class FrontController extends HttpServlet {
 
 		// 관리자 이용 컨트롤
 		List<String> adminPages = Arrays.asList("/userList.do", "/deleteUser.do", "/balance.do", "/balanceList.do", 
-												"/balanceYear.do", "/gradeList.do", "/roomReserveList.do");
+												"/balanceYear.do", "/gradeList.do", "/roomReserveList.do",
+												"/addBoardForm.do", "/addBoard.do", "/removeBoard.do", "/removeReview.do");
 
 		HttpSession session = req.getSession();
 		String logGrade = (String) session.getAttribute("logGrade");
