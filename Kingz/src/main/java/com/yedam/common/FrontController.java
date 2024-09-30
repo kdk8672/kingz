@@ -127,7 +127,7 @@ public class FrontController extends HttpServlet {
 		map.put("/addBoardForm.do", new AdminAddBoardFormControl()); // 공지사항 작성 폼 이동
 		map.put("/addBoard.do", new AdminAddBoardControl()); // 공지사항 추가
 		map.put("/removeBoard.do", new AdminRemoveBoardControl()); // 공지사항 삭제
-		map.put("/removeReview.do", new AdminRemoveReviewControl()); // 공지사항 삭제
+		map.put("/removeReview.do", new AdminRemoveReviewControl()); // 리뷰 삭제
 
 	}
 
