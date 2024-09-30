@@ -6,5 +6,6 @@ import com.yedam.board.vo.BoardVO;
 
 public interface BoardService {
 	List<BoardVO> boardList(String boardType);
-
+	BoardVO getBoard(int BoardId);
+	
 }

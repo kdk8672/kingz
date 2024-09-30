@@ -43,7 +43,7 @@
 		                                            <li><a href="memberAddForm.do">회원가입</a></li>
                                         		</c:when>
                                         		<c:otherwise>
-                                        			<li><a href="#">로그아웃</a></li>
+                                        			<li><a href="logout.do">로그아웃</a></li>
                                         		</c:otherwise>
                                         	</c:choose>
                                             <c:choose>

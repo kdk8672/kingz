@@ -6,9 +6,9 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.yedam.common.Control;
-import com.yedam.review.ImageVO;
 import com.yedam.review.ReviewService;
 import com.yedam.review.ReviewServiceImpl;
 import com.yedam.review.ReviewVO;
@@ -30,6 +30,14 @@ public class RoomDetailControl implements Control {
 		ReviewVO rvo = new ReviewVO();
 		System.out.println(rvo);
 		List<ReviewVO> list = rvc.getReviewList(Integer.parseInt(roomId));
+		HttpSession session = request.getSession();
+		String msg = (String) session.getAttribute("msg");
+		
+		if (msg != null) {
+		    request.setAttribute("msg", msg);
+		    session.removeAttribute("msg"); 
+		}
+		
 		request.setAttribute("list", list);
 		
 		request.getRequestDispatcher("layout/roomDetail.tiles").forward(request, response);

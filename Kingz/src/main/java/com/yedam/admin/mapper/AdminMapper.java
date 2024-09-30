@@ -2,6 +2,7 @@ package com.yedam.admin.mapper;
 
 import java.util.List;
 
+import com.yedam.admin.vo.AdBoardVO;
 import com.yedam.admin.vo.AdminVO;
 
 public interface AdminMapper {
@@ -21,7 +22,16 @@ public interface AdminMapper {
 	
 	// 등급별 통계
 	List<AdminVO> selectGradeCount();
-	List<AdminVO> selectRoomReserveCount();
 	
 	// 방별 예약 통계
+	List<AdminVO> selectRoomReserveCount();
+	
+	// 게시판 등록, 삭제
+	int insertBoard(AdBoardVO board);
+	int deleteBoard(int boardId);
+	
+	// 리뷰 삭제
+	int deleteReviewOne(int reviewId);
+	int deleteReviewImageOne(int reviewId);
+	
 }

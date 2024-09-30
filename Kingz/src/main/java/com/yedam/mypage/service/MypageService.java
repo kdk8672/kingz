@@ -12,5 +12,6 @@ public interface MypageService {
 	List<ReviewVO> getMemberId(String review);
 	boolean modifyMypage(MypageVO memberId);
 	int myPoint(String memberId);
+	boolean reserveDelete(int reserveId);
 }
 

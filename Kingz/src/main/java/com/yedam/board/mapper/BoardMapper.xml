@@ -13,6 +13,18 @@
 		 board_type
 		 from board
 		 where board_type = #{boardType}
+		 order by board_id desc
+	</select>
+	
+	<select id="selectBoard" parameterType="int" resultType="board">
+		 select board_id,
+		 board_title,
+		 board_content,
+		 board_date,
+		 board_type
+		 from board
+		 where board_id = #{boardId}
+		 order by board_id desc
 	</select>
 	
 </mapper>

@@ -75,7 +75,7 @@
 		<div class="col-md">
 			<div class="card">
 				<div class="card-header">
-					<h4>월별 매출</h4>
+					<h4>호텔 매출</h4>
 					<select class="form-select"></select>
 				</div>
 				<div class="card-body">
