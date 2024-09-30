@@ -2,7 +2,7 @@ console.log("[reserv.jsp] 화면 도착");
 
 
 
-window.onload = function(){
+window.onload = function() {
 	setSearchParams();
 }
 
@@ -12,15 +12,18 @@ window.onload = function(){
 // 조식, 포인트 사용할 때 마다 최종 금액 계산해주는 함수
 function calTotal() {
 	console.log("calTotal - 값 바뀜!");
-	
+
 	let roomPrice = document.querySelector("#roomPrice2").value;
 	let sleepDate = document.querySelector("#sleepDay").value;
 	let breakfast = document.querySelector("#breakfastPrice").value;
 	let point = document.querySelector("#pointPrice").value;
-	let result = (roomPrice * sleepDate) - (breakfast + point);
-	
+	let result = ((Number(roomPrice) * Number(sleepDate)) + Number(breakfast) - Number(point));
+
+	console.log("roomPrice: " + roomPrice + " | sleepDate: " + sleepDate + " | breakfast: " + breakfast);
+	console.log("point: " + point + " | result: " + result);
+
 	document.querySelector("#totalPrice").value = result;
-	
+
 	console.log("calTotal - 바뀐 값 적용됨!")
 }
 
@@ -37,22 +40,22 @@ function setSearchParams() {
 	let inHeadcount = searchParams.get('inHeadcount');
 
 
-	console.log("roomType: "+ roomType + " | inDate: " + inDate + " | outDate: " + outDate + " | inHeadcount: " + inHeadcount);
+	console.log("roomType: " + roomType + " | inDate: " + inDate + " | outDate: " + outDate + " | inHeadcount: " + inHeadcount);
 
 	if (roomType != null || roomType != "") {
-		document.querySelector("#roomType").value = roomType;	
+		document.querySelector("#roomType").value = roomType;
 	}
-	
+
 	if (inDate != null || inDate != "") {
 		document.querySelector("#datepicker").value = convertDate(inDate);
 		document.querySelector("#checkin").value = convertDate(inDate);
 	}
-	
+
 	if (outDate != null || outDate != "") {
 		document.querySelector("#datepicker").value = convertDate(outDate);
 		document.querySelector("#checkout").value = convertDate(outDate);
 	}
-	
+
 	if (inHeadcount != null || inHeadcount != "") {
 		document.querySelector("#headcountPicker").value = inHeadcount;
 		document.querySelector("#headcount").value = inHeadcount;
@@ -64,69 +67,68 @@ function setSearchParams() {
 
 // 조식 체크박스 눌렀을 때 조식 input에 값 적용
 function breakfastCheck(event) {
-  	let headcount = document.querySelector("#headcount").value;
-  	let result = 0;  	
-  	
-	if(event.target.checked)  {
-	    result = 10000;
-	}else {
-	    result = 0;
+	let headcount = document.querySelector("#headcount").value;
+	let result = 0;
+
+	if (event.target.checked) {
+		result = 10000;
+	} else {
+		result = 0;
 	}
-	
-  	console.log("[breakfastCheck()] headcount: " + headcount + " | result: " + result);
-	
+
+	console.log("[breakfastCheck()] headcount: " + headcount + " | result: " + result);
+
 	document.querySelector("#breakfastPrice").value = result * headcount;
-	
+
 	calTotal();
 }
 
 function pointCheck(event) {
 	let point = 0;
-	let memId = ""; 	// TODO 여기에 현재 로그인된 맴버 아이디 가져오는 코드 구현할 것.
-	
-	if(event.target.checked)  {
-		
-		/*
-		if(memId == null | memId == "") {
+	let memberId = document.querySelector("#memberid").value;
+	console.log("포인트 사용하려는 member: " + memberId);
+
+	if (event.target.checked) {
+
+		if (memberId == null | memberId == "") {
 			alert("로그인 후 포인트 사용을 할 수 있습니다.");
 			return false;
-		} else {											// TODO 이 부분은 공승원 마이페이지 쪽에서 작업한거 있을테니 그거 활용하자
-			fetch('getPointOneMember.do?id=' + mem_id)
-			.then(resolve => resolve.json())
-			.then(result => {
-				if (result.retCode == 'OK') {
-					console.log(result);
-					point = result.pointSum;	// 쿼리 결과로 나온 1개 값을 point로 지정
-					
-				} else {
-					alert("포인트 조회 중 오류가 발생하였습니다.")
-				}
-			})
-			.catch(console.log)
+		} else {
+			fetch('getPointOneMember.do?memberId=' + memberId)
+				.then(resolve => resolve.json())
+				.then(result => {
+					if (result.point == '' || result.point == null || result.point == 0) {
+						alert("적용할 포인트가 없습니다.")
+					} else {
+						console.log("포인트 가져오기 성공: ");
+						point = result.point;	// 쿼리 결과로 나온 1개 값을 point로 지정
+						document.querySelector("#pointPrice").value = point;
+						calTotal();
+					}
+				})
+				.catch(console.log)
 		}
-		*/
-		
-		
-		point = 50000;
-			
-	}else {
-	    point = 0;
+
+	} else {
+		point = 0;
 	}
+
+
 	console.log("[pointCheck()] point: " + point)
 	document.querySelector("#pointPrice").value = point;
-	
+
 	calTotal();
 }
 
 function KGpay() {
-	
+
 	memId = document.querySelector("#memberid").value
 
 	if (memId == "" || memId == null) {
 		alert("회원만 예약을 진행할 수 있습니다.");
 		return false;
 	} else {
-		
+
 		//-------------------------------------------------
 		// [박진석 | 240925] 아이디와 현재 날짜와 시간을 결합하여 고유 결제번호("abc123_240925_2150")를 만듦
 		const now = new Date();
@@ -140,6 +142,7 @@ function KGpay() {
 		const orderId = `${memId}_${year}${month}${day}_${hours}${minutes}`;
 
 		console.log(orderId);
+		
 		// [박진석 | 240925] 고유 결제번호 만들기 끝
 		//---------------------------------------------------
 
@@ -151,8 +154,9 @@ function KGpay() {
 			pg: 'html5_inicis.INIpayTest',
 			pay_method: 'card',
 			merchant_uid: orderId,
-			name: '주문명:결제테스트',
+			name: document.querySelector("#roomName").value,
 			amount: 100,
+			//amount: document.querySelector("#totalPrice").value,
 			buyer_email: 'iamport@siot.do',
 			buyer_name: '구매자이름',
 			buyer_tel: '010-1234-5678',
@@ -167,7 +171,9 @@ function KGpay() {
 				let payMethod = rsp.pay_method;
 				let totalPaid = rsp.paid_amount;
 
-				console.log("[billing.js] 결제방법: " + payMethod + " | 결제액: " + totalPaid);
+				//alert("[billing.js] 결제방법: " + payMethod + " | 결제액: " + totalPaid);
+
+				document.querySelector("#paymentMethod").value = payMethod;
 
 				document.getElementById('reservSubmit').click();
 
@@ -179,6 +185,12 @@ function KGpay() {
 				console.log(rsp);
 			}
 		});
+		
+		
+		/*
+		document.querySelector("#paymentMethod").value = "card";
+		document.getElementById('reservSubmit').click();
+		*/
 	}
 }
 
@@ -186,17 +198,17 @@ function calRoomPrice() {
 	let checkin = document.querySelector("#checkin").value;
 	let checkout = document.querySelector("#checkout").value;
 	let roomPrice = document.querySelector("#roomPrice").value;
-	
+
 	if (checkin.indexOf("undefined")) {
 		console.log("UNDEFINED 출현!: " + checkin);
 		checkin = checkin.substring(10, 20);
 	}
-	
+
 	let inDate = new Date(checkin);
 	let outDate = new Date(checkout);
 	let sleepDate = (outDate - inDate) / (1000 * 60 * 60 * 24);	// 체크인, 체크아웃 날짜를 사용하여 n박을 계산
-	
-	console.log("쳌아웃-쳌인*방값: "  + (sleepDate * roomPrice));
+
+	console.log("쳌아웃-쳌인*방값: " + (sleepDate * roomPrice));
 }
 
 // "예약하기" 버튼 눌렀을 때 세부 input 값 지정하는 함수
@@ -214,7 +226,7 @@ function setReservInfo() {
 	console.log("inDate: " + inDate + " | outDate: " + outDate + " | n박: " + sleepDate);
 
 	if (checkinDate == "" || checkinDate == null || checkoutDate == "" || checkoutDate == null) {
-		alert("체크인 또는 체크아웃 날짜가 잘못되었습니다.")
+		alert("예약하기 전, '객실 검색'을 먼저 진행해주세요.")
 		return false;
 	}
 
@@ -233,52 +245,11 @@ function setReservInfo() {
 	document.querySelector("#checkout").value = checkoutDate;
 	document.querySelector("#headcount").value = headcountValue;
 	document.querySelector("#totalPrice").value = totalPrice
-	
+
 	console.log("==================================================");
 
-	// TODO n박, 최종 비용도 계산하기!	
 }
 
-// [24.09.27 | 박진석] 아코디언 관련 동작
-/*
-document.addEventListener('DOMContentLoaded', function() {
-  const tabsContainer = document.getElementById('tabs-container');
-  let activeTab = 'reservations';
-
-  function switchTab(tabValue) {
-	activeTab = tabValue;
-	updateTabStyles();
-	renderTabContent();
-  }
-
-  function updateTabStyles() {
-	const buttons = document.querySelectorAll('.tab-trigger');
-	buttons.forEach(button => {
-	  button.classList.toggle('active', button.dataset.tab === activeTab);
-	});
-  }
-
-  function renderTabContent() {
-	const contentContainer = document.getElementById('tab-content');
-	contentContainer.innerHTML = document.getElementById(`${activeTab}-content`).innerHTML;
-	initializeAccordions();
-  }
-
-  function initializeAccordions() {
-	document.querySelectorAll('.accordion-trigger').forEach(trigger => {
-	  trigger.addEventListener('click', function() {
-		const content = this.nextElementSibling;
-		content.style.display = content.style.display === 'none' ? 'block' : 'none';
-	  });
-	});
-  }
-
-  document.querySelectorAll('.tab-trigger').forEach(trigger => {
-	trigger.addEventListener('click', () => switchTab(trigger.dataset.tab));
-  });
-
-  renderTabContent();
-});*/
 
 function checkSearchValues() {
 	let inDate = searchForm.inDate.value;
@@ -300,11 +271,11 @@ function checkSearchValues() {
 
 // 날짜 형식을 변환(09/25/2024 -> 24-09-25)
 function convertDate(inputDate) {
-    const dateParts = inputDate.split('/');
-    
-    const year = dateParts[2];
-    const month = dateParts[0];
-    const day = dateParts[1];
-    
-    return `${year}-${month}-${day}`;
+	const dateParts = inputDate.split('/');
+
+	const year = dateParts[2];
+	const month = dateParts[0];
+	const day = dateParts[1];
+
+	return `${year}-${month}-${day}`;
 }

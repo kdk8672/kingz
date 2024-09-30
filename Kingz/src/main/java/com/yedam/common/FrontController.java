@@ -50,6 +50,7 @@ import com.yedam.payment.control.AddPayControl;
 import com.yedam.reservation.control.ReservControl;
 import com.yedam.review.AddReviewControl;
 import com.yedam.reservation.control.AddReservControl;
+import com.yedam.reservation.control.GetPointOneMemberControl;
 import com.yedam.reservation.control.ReservCompleteControl;
 import com.yedam.reservation.control.ReservControl;
 import com.yedam.review.AddReviewControl;
@@ -115,6 +116,8 @@ public class FrontController extends HttpServlet {
 		map.put("/reserv.do", new ReservControl());
 		map.put("/addReserv.do", new AddReservControl());
 		map.put("/reservComplete.do", new ReservCompleteControl());
+		map.put("/getPointOneMember.do", new GetPointOneMemberControl());
+
 		
 		// [박진석] 결제 관련
 		map.put("/addPay.do", new AddPayControl());

@@ -96,9 +96,9 @@
 					<div>
 						인원: <input name="inHeadcount" id="headcountPicker" type="number"
 							value="1">
-					</div>
+					</div><br>
 					<button
-						class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
+						class="genric-btn info radius"
 						type="submit">객실 검색</button>
 				</form>
 			</div>
@@ -124,10 +124,11 @@
                             <input name="roomName" id="roomName" value="${rl.roomName }" style='font-size:25px;' readonly><br>
                             <input name="roomId" id="roomId" value="${rl.roomId }" hidden="hedden">
                             <p>옵션: 조식 포함</p>
-                            <input name="checkin" id="checkin"> 체크인(히)
-                   			<input name="checkout" id="checkout" > 체크아웃(히)
-                   			<input name="headcount" id="headcount"> 인원(히)
-                   			<input name="memberid" id="memberid" value="giacopo0" hidden="hedden">
+                            <input name="checkin" id="checkin" hidden="hidden">
+                   			<input name="checkout" id="checkout" hidden="hidden" >
+                   			<input name="headcount" id="headcount" hidden="hidden">
+                   			<input name="paymentMethod" id="paymentMethod" hidden="hidden">
+                   			<input name="memberid" id="memberid" value="${id }"> memberid
                         </div>
                     </div>
                     

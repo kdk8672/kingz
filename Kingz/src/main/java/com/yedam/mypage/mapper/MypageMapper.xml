@@ -67,7 +67,7 @@
 	</update>
 	
 	<select id="myPoint" resultType="int" parameterType="string">
-		select SUM(point_use)
+		select NVL(SUM(point_use), 0)
         from point_history
         where member_id = #{memberId}
 	</select>
