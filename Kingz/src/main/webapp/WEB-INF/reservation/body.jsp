@@ -32,7 +32,6 @@
 	.pjs-rooms-form input {
 		border: 0;
 		outline: none;
-		background-color: rgb(245, 245, 245);
 	}
 	
 	
@@ -71,10 +70,7 @@
 				<h3 class="mb-30">객실 검색</h3>
 				<form action="reserv.do" name="searchForm" onsubmit="return checkSearchValues()">		<!-- 검색 전 유효성 검사 -->
 					<div class="input-group-icon mt-10">
-						<div class="icon">
-							<i class="fa fa-globe" aria-hidden="true"></i>
-						</div>
-						<div class="form-select" id="default-select">
+						<div class="form-select">
 							<select name="roomType" id="roomType">
 								<c:forEach var="rtl" items="${roomTypelist}">
 									<option value="${rtl.roomType }">${rtl.roomType }</option>
@@ -84,13 +80,8 @@
 					</div>
 
 					<!-- [박진석 | 24.09.24] 날짜 선택 폼 -->
-					<div class="col-xl-6">
 						<input name="inDate" id="datepicker" placeholder="Check in date">
-					</div>
-					<div class="col-xl-6">
-						<input name="outDate" id="datepicker2"
-							placeholder="Check out date">
-					</div>
+						<input name="outDate" id="datepicker2" placeholder="Check out date">
 					<!-- [박진석 | 24.09.24] 날짜 선택 폼 끝 -->
 
 					<div>
@@ -128,7 +119,7 @@
                    			<input name="checkout" id="checkout" hidden="hidden" >
                    			<input name="headcount" id="headcount" hidden="hidden">
                    			<input name="paymentMethod" id="paymentMethod" hidden="hidden">
-                   			<input name="memberid" id="memberid" value="${id }"> memberid
+                   			<input name="memberid" id="memberid" value="${id }" hidden="hidden">
                         </div>
                     </div>
                     
@@ -154,13 +145,13 @@
                     <!-- 상세정보 폼 묶음(콜랩스) 시작 -->
                     
                     <p>
-					  <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" 
-					  		role="button" aria-expanded="false" aria-controls="collapseExample" onclick="setReservInfo()" 
+					  <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample-${rl.roomId }" 
+					  		role="button" aria-expanded="false" aria-controls="collapseExample" onclick="setReservInfo(${rl.roomId })" 
 					  		style="float: right;">
 					    예약하기
 					  </a>
 					</p>
-					<div class="collapse" id="collapseExample">
+					<div class="collapse" id="collapseExample-${rl.roomId }">
 					  <div class="card card-body">
 					    <div class="pjs-first-col-detail" style="display: inline-block;">
             				<h3>옵션사항</h3><br>
