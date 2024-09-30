@@ -8,7 +8,7 @@
 <link href="css/member/login.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-	<div class="bradcam_area breadcam_bg_1">
+	<div class="bradcam_area breadcam_bg">
 		<h3>로그인</h3>
 	</div>
 	<!-- offers_area_start -->

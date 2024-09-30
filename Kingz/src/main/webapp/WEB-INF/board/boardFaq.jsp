@@ -30,9 +30,9 @@
 							</div>
 						</div>
 					</div>
-						<div class="row justify-content-center">
-							<!-- FAQ Area-->
-							<div class="col-12 col-sm-10 col-lg-8">
+					<div class="row justify-content-center">
+						<!-- FAQ Area-->
+						<div class="col-12 col-sm-10 col-lg-8">
 							<c:forEach var="board" items="${list }">
 								<div class="accordion faq-accordian" id="faqAccordion">
 									<div class="card border-0 wow fadeInUp" data-wow-delay="0.2s"
@@ -55,7 +55,9 @@
 							</c:forEach>
 							<!-- Support Button-->
 							</div>
+
 						</div>
+					</div>
 				</div>
 			</div>
 		</div>

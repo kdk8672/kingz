@@ -27,7 +27,10 @@
 			</div>
 
 			<div class="notice-footer">
-				<a href="boardNotice.do?boardType=공지사항" class="back-link">목록으로 돌아가기</a>
+				<c:if test="${logGrade eq '관리자'}">
+					<a href="removeBoard.do?boardId=${board.boardId}" id="delNotice">삭제</a>
+				</c:if>
+				<a href="boardNotice.do?boardType=NOTICE" class="back-link">목록으로 돌아가기</a>
 			</div>
 
 		</div>

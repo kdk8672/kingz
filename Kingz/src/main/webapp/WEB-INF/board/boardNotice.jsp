@@ -15,6 +15,9 @@
 	<!-- about_area_start -->
 	<div class="about_area">
 		<div class="container">
+			<c:if test="${logGrade eq '관리자'}">
+				<a href="addBoardForm.do" id="addNotice">공지사항 등록</a>
+			</c:if>
 			<table>
 				<thead>
 					<tr>
@@ -25,15 +28,26 @@
 					</tr>
 				</thead>
 				<tbody>
-				<c:forEach var="board" items="${list }"> 
-					<tr>
-						<td class="number">${board.boardId }</td>
-						<td><span class="category">${board.boardType }</span></td>
-						<td class="title"><a href="getNotice.do?id=${board.boardId}">${board.boardTitle }</a></td>
-						<td class="date"><fmt:formatDate value="${board.boardDate }"
-								pattern="yyyy.MM.dd" />
-					</tr>
-				</c:forEach>
+					<c:forEach var="board" items="${list }">
+						<tr>
+							<td class="number">${board.boardId }</td>
+							<td>
+								<span class="category">
+									<c:choose>
+										<c:when test="${board.boardType eq 'NOTICE'}">
+											공지사항
+										</c:when>
+										<c:otherwise>
+											${board.boardType }
+										</c:otherwise>
+									</c:choose>
+								</span>
+							</td>
+							<td class="title"><a href="getNotice.do?id=${board.boardId}">${board.boardTitle }</a></td>
+							<td class="date"><fmt:formatDate value="${board.boardDate }"
+									pattern="yyyy.MM.dd" />
+						</tr>
+					</c:forEach>
 				</tbody>
 			</table>
 		</div>

@@ -60,3 +60,17 @@
 	background-color: #007bff;
 	color: #fff;
 }
+
+#delNotice {
+	color: #ff0000;
+	text-decoration: none;
+	font-size: 14px;
+	border: 1px solid #ff0000;
+	padding: 8px 12px;
+	border-radius: 5px;
+}
+
+#delNotice:hover {
+	background-color: #ff0000;
+	color: #fff;
+}

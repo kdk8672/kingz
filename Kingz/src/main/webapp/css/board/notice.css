@@ -21,6 +21,7 @@ table {
 	width: 100%;
 	border-collapse: separate;
 	border-spacing: 0;
+	padding-top: 20px;
 }
 
 th, td {
@@ -71,4 +72,19 @@ tr:last-child td {
 	text-align: right;
 	color: #718096;
 	font-size: 0.875rem;
+}
+
+#addNotice {
+	color: #007bff;
+	text-decoration: none;
+	font-size: 14px;
+	border: 1px solid #007bff;
+	padding: 8px 12px;
+	border-radius: 5px;
+	float: right;
+}
+
+#addNotice:hover {
+	background-color: #007bff;
+	color: #fff;
 }
