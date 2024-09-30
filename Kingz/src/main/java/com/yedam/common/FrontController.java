@@ -46,6 +46,7 @@ import com.yedam.mypage.control.ModifyMypageControl;
 import com.yedam.mypage.control.MyReservationControl;
 import com.yedam.mypage.control.MyReviewInfoControl;
 import com.yedam.mypage.control.MypageControl;
+import com.yedam.mypage.control.reserveDeleteControl;
 import com.yedam.payment.control.AddPayControl;
 //github.com/kdk8672/kingz.git
 import com.yedam.reservation.control.ReservControl;
@@ -87,16 +88,10 @@ public class FrontController extends HttpServlet {
 		
 		// [승원] 마이페이지(첫화면 예약내용) 연결
 		map.put("/mypage.do", new MypageControl());
-		
 		// [승원] 내 정보 수정 연결
 		map.put("/modifymypage.do", new ModifyMypageControl());
-		map.put("/modifyform.do", new ModifyFormControl());
-		
-		// [승원] 예약내용 연결
-		map.put("/myreservation.do", new MyReservationControl());
-		
-		// [승원] 리뷰내역 연결
-		map.put("/reviewinfo.do", new MyReviewInfoControl());
+		// [승원] 예약 취소
+		map.put("/reserveDelete.do", new reserveDeleteControl());
 		
 		// [권혁태] 회원가입
 		map.put("/memberAddForm.do", new MemberAddFormControl()); // 회원가입 창 열기
