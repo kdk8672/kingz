@@ -154,13 +154,13 @@
                     <!-- 상세정보 폼 묶음(콜랩스) 시작 -->
                     
                     <p>
-					  <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" 
+					  <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapse${rl.roomId}"  
 					  		role="button" aria-expanded="false" aria-controls="collapseExample" onclick="setReservInfo()" 
 					  		style="float: right;">
 					    예약하기
 					  </a>
 					</p>
-					<div class="collapse" id="collapseExample">
+					<div class="collapse" id="collapse${rl.roomId}">
 					  <div class="card card-body">
 					    <div class="pjs-first-col-detail" style="display: inline-block;">
             				<h3>옵션사항</h3><br>
