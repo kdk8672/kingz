@@ -7,9 +7,8 @@
 <link href="css/member/addForm.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-	<div class="bradcam_area breadcam_bg_1">
+	<div class="bradcam_area breadcam_bg">
 		<h3>회원가입</h3>
-
 	</div>
 	<!-- offers_area_start -->
 	<div class="offers_area padding_top">

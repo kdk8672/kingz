@@ -25,15 +25,15 @@
 					</tr>
 				</thead>
 				<tbody>
-				<c:forEach var="board" items="${list }"> 
-					<tr>
-						<td class="number">${board.boardId }</td>
-						<td><span class="category">${board.boardType }</span></td>
-						<td class="title"><a href="getNotice.do?id=${board.boardId}">${board.boardTitle }</a></td>
-						<td class="date"><fmt:formatDate value="${board.boardDate }"
-								pattern="yyyy.MM.dd" />
-					</tr>
-				</c:forEach>
+					<c:forEach var="board" items="${list }">
+						<tr>
+							<td class="number">${board.boardId }</td>
+							<td><span class="category">${board.boardType }</span></td>
+							<td class="title"><a href="getNotice.do?id=${board.boardId}">${board.boardTitle }</a></td>
+							<td class="date"><fmt:formatDate value="${board.boardDate }"
+									pattern="yyyy.MM.dd" />
+						</tr>
+					</c:forEach>
 				</tbody>
 			</table>
 		</div>
