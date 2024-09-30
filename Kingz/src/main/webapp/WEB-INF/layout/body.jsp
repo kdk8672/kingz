@@ -29,33 +29,6 @@
 				</div>
 			</div>
 		</div>
-
-		<div
-			class="single_slider d-flex align-items-center justify-content-center slider_bg_1">
-			<div class="container">
-				<div class="row">
-					<div class="col-xl-12">
-						<div class="slider_text text-center">
-							<h3>KINGZ HOTEL</h3>
-							<p>welcome ${logName}</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div
-			class="single_slider  d-flex align-items-center justify-content-center slider_bg_2">
-			<div class="container">
-				<div class="row">
-					<div class="col-xl-12">
-						<div class="slider_text text-center">
-							<h3>Life is Beautiful</h3>
-							<p>Unlock to enjoy the view of Martine</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
 	</div>
 </div>
 <!-- slider_area_end -->
@@ -72,12 +45,8 @@
 							편안한 호텔 킹즈 <br> 지친 당신의 휴식처
 						</h3>
 					</div>
-					<p>Suscipit libero pretium nullam potenti. Interdum, blandit
-						phasellus consectetuer dolor ornare dapibus enim ut tincidunt
-						rhoncus tellus sollicitudin pede nam maecenas, dolor sem. Neque
-						sollicitudin enim. Dapibus lorem feugiat facilisi faucibus et.
-						Rhoncus.</p>
-					<a href="#" class="line-button">Learn More</a>
+					<p>호텔 KINGZ는 현대적 감각과 고급스러움이 어우러진 숙박 공간입니다. 다양한 타입의 세련된 객실과 세계 각국의 요리를 제공하는 레스토랑이 있습니다. 피트니스 센터와 스파 서비스로 편안함을 더하며, 비즈니스 회의에 적합한 회의실도 마련되어 있습니다. 주요 관광지와 가까워 편리한 위치를 자랑합니다. 지금 바로 예약하셔서 특별한 경험을 누려보세요!
+					</p>
 				</div>
 			</div>
 			<div class="col-xl-7 col-lg-7">
@@ -189,15 +158,11 @@
 					<div class="section_title mb-20px">
 						<span>조식</span>
 						<h3>
-							We Serve Fresh and <br> Delicious Food
+							Fresh &<br> Delicious Food
 						</h3>
 					</div>
-					<p>Suscipit libero pretium nullam potenti. Interdum, blandit
-						phasellus consectetuer dolor ornare dapibus enim ut tincidunt
-						rhoncus tellus sollicitudin pede nam maecenas, dolor sem. Neque
-						sollicitudin enim. Dapibus lorem feugiat facilisi faucibus et.
-						Rhoncus.</p>
-					<a href="#" class="line-button">Learn More</a>
+					<p>호텔 KINGZ의 조식은 다양한 메뉴로 풍성하게 준비됩니다. 뷔페 스타일로 계란 요리, 신선한 과일, 요거트 등 선택할 수 있습니다. 지역 특산물을 활용한 특별 메뉴도 제공됩니다. 갓 짠 주스와 다양한 커피 옵션으로 상쾌한 아침을 시작하세요. 편안한 분위기에서 맛있는 아침을 즐겨보세요!
+					</p>
 				</div>
 			</div>
 		</div>

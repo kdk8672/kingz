@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 <!-- [박진석 | 24.09.24] JQuery 및 결제 관련 js import 후 결제 API 작성 -->
@@ -69,13 +69,13 @@
 			<!-- [24.09.27 | 박진석] 왼쪽 레이아웃 영역 -->
 			<div class="col-lg-3 col-md-4 mt-sm-30 pjs-search-layout">
 				<h3 class="mb-30">객실 검색</h3>
-				<form action="reserv.do">
+				<form action="reserv.do" name="searchForm" onsubmit="return checkSearchValues()">		<!-- 검색 전 유효성 검사 -->
 					<div class="input-group-icon mt-10">
 						<div class="icon">
 							<i class="fa fa-globe" aria-hidden="true"></i>
 						</div>
 						<div class="form-select" id="default-select">
-							<select name="roomType">
+							<select name="roomType" id="roomType">
 								<c:forEach var="rtl" items="${roomTypelist}">
 									<option value="${rtl.roomType }">${rtl.roomType }</option>
 								</c:forEach>
@@ -96,9 +96,9 @@
 					<div>
 						인원: <input name="inHeadcount" id="headcountPicker" type="number"
 							value="1">
-					</div>
+					</div><br>
 					<button
-						class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
+						class="genric-btn info radius"
 						type="submit">객실 검색</button>
 				</form>
 			</div>
@@ -124,17 +124,18 @@
                             <input name="roomName" id="roomName" value="${rl.roomName }" style='font-size:25px;' readonly><br>
                             <input name="roomId" id="roomId" value="${rl.roomId }" hidden="hedden">
                             <p>옵션: 조식 포함</p>
-                            <input name="checkin" id="checkin" value="24-01-01" hidden="hedden">
-                   			<input name="checkout" id="checkout" value="24-01-01" hidden="hidden">
-                   			<input name="headcount" id="headcount" value="2" hidden="hedden">
-                   			<input name="memberid" id="memberid" value="giacopo0" hidden="hedden">
+                            <input name="checkin" id="checkin" hidden="hidden">
+                   			<input name="checkout" id="checkout" hidden="hidden" >
+                   			<input name="headcount" id="headcount" hidden="hidden">
+                   			<input name="paymentMethod" id="paymentMethod" hidden="hidden">
+                   			<input name="memberid" id="memberid" value="${id }"> memberid
                         </div>
                     </div>
                     
                     
                     <div class="text-right">
                         <p>1박 1객실</p>
-                        <input name="roomPrice" value="${rl.roomPrice }" style='font-size:20px; text-align:right;' readonly>원
+                        <input name="roomPrice" id="roomPrice" value="${rl.roomPrice }" style='font-size:20px; text-align:right;' readonly>원
                         <!-- 
                         <div class="accordion">
                             <button class="accordion-trigger">상세 내역</button>
@@ -163,16 +164,16 @@
 					  <div class="card card-body">
 					    <div class="pjs-first-col-detail" style="display: inline-block;">
             				<h3>옵션사항</h3><br>
-            				조식여부: <input name="breakfast" type="checkbox"><br>
-            				포인트 사용: <input name="usePoint" type="checkbox"><br>
+            				조식여부: <input name="breakfast" id="breakfast" type="checkbox" onclick="breakfastCheck(event)"><br>
+            				포인트 사용: <input name="usePoint" type="checkbox" onclick="pointCheck(event)"><br>
             				추가 요청사항:<br>
             				<textarea name="request"></textarea>
            				</div>
            				<div class="pjs-second-col-detail" style="display: inline-block;">
            					<h3>가격</h3><br>
-           					객실금액<input name="roomPrice" id="roomPrice" value="200000" style="text-align:right;" readonly>원<br>
+           					객실금액<input name="roomPrice2" id="roomPrice2" value="200000" style="text-align:right;" readonly>원<br>
            					<input name="sleepDay" id="sleepDay" value="1" style="text-align:right;"></input>박<br>
-           					<h4>옵션</h4><br>
+           					<h3>옵션</h3><br>
            					조식 <input name="breakfastPrice" id="breakfastPrice" value="0" style="text-align:right;" readonly>원<br>
            					포인트 <input name="pointPrice" id="pointPrice" value="0" style="text-align:right;" readonly>원<br>
            					<h2>총 예약금액</h2><input name="totalPrice" id="totalPrice" value="123000" style="text-align:right;" readonly>원

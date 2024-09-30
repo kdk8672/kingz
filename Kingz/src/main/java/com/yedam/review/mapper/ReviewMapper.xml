@@ -12,7 +12,7 @@
 		and 	ro.room_id = r.room_id
 		and 	r.room_id = #{roomId}
 	</select>
-	
+
 	<select id="selectReviewId" resultType="int">
 		select 	seq_review_id.nextval
 		from	dual

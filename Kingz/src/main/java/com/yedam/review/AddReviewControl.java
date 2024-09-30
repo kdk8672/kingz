@@ -34,7 +34,7 @@ public class AddReviewControl implements Control {
 		String memberId = (String) getMemberId;
 		String content = mr.getParameter("reviewContent");
 		String rating = mr.getParameter("rating");
-
+		
 		ReviewVO rvo = new ReviewVO();
 		rvo.setReviewId(reviewId);
 		rvo.setMemberId(memberId);
@@ -43,19 +43,30 @@ public class AddReviewControl implements Control {
 		rvo.setRating(Double.parseDouble(rating));
 		System.out.println(rvo);
 
-		String imageUrl = mr.getFilesystemName("imageUrl");
-
-		ImageVO ivo = new ImageVO();
-		ivo.setReviewId(reviewId);
-		ivo.setImageUrl(imageUrl);
+//		String imageUrl = mr.getFilesystemName("imageUrl");
+//		
+//		ImageVO ivo = new ImageVO();
+//		ivo.setReviewId(reviewId);
+//		ivo.setImageUrl(imageUrl);
 
 		HotelVO hvo = new HotelVO();
 		hvo.setRoomId(roomId);
-		System.out.println(ivo);
+//		System.out.println(ivo);
 
 		ReservVO rvvo = new ReservVO();
 		rvvo.setRoomId(Integer.parseInt(roomId));
 		rvvo.setMemberId(memberId);
+		
+//		List<String> imageUrls = new ArrayList<>();
+//        for (int i = 1; i <= 3; i++) {
+//            String imageUrl = mr.getFilesystemName("imageUrl" + i);
+//            if (imageUrl != null) {
+//                imageUrls.add("img/review/" + imageUrl);
+//                System.out.println("Saved Image URL: " + imageUrl);
+//            }
+//        }
+//        rvo.setImageUrls(imageUrls); 
+//        System.out.println(imageUrls);
 		
 		if (memberId == null) {
 			session.setAttribute("msg", "리뷰를 등록하기 위해 로그인해 주십시오."); // 로그인 여부 확인 (작동 성공)
@@ -75,7 +86,15 @@ public class AddReviewControl implements Control {
 			response.sendRedirect("roomDetail.do?roomId=" + roomId);	
 		} else {
 			if (svc.addReview(rvo)) { // 리뷰 등록 기능 (작동 성공)
-				svc.addImage(ivo); // 이미지 추가 기능 (작동 성공)
+				for (int i = 1; i < 4; i++) {
+					String imageUrl = mr.getFilesystemName("imageUrl");
+					if (imageUrl != null) {
+						ImageVO ivo = new ImageVO();
+						ivo.setReviewId(reviewId);
+						ivo.setImageUrl(imageUrl);
+						svc.addImage(ivo); // 이미지 추가 기능 (작동 성공)
+					}
+				}
 				session.setAttribute("msg", "리뷰가 등록되었습니다.");
 				System.out.println("리뷰가 등록되었습니다.");
 				response.sendRedirect("roomDetail.do?roomId=" + roomId);
