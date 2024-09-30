@@ -35,7 +35,7 @@ function setSearchParams() {
 	let searchParams = new URLSearchParams(location.search);
 
 	let roomType = searchParams.get('roomType');
-	let inDate = searchParams.get('inDate');
+	let inDate = searchParams.get('inDate'); // 09/30/2024
 	let outDate = searchParams.get('outDate');
 	let inHeadcount = searchParams.get('inHeadcount');
 
@@ -47,12 +47,13 @@ function setSearchParams() {
 	}
 
 	if (inDate != null || inDate != "") {
+		console.log(convertDate(inDate))
 		document.querySelector("#datepicker").value = convertDate(inDate);
 		document.querySelector("#checkin").value = convertDate(inDate);
 	}
 
 	if (outDate != null || outDate != "") {
-		document.querySelector("#datepicker").value = convertDate(outDate);
+		document.querySelector("#datepicker2").value = convertDate(outDate);
 		document.querySelector("#checkout").value = convertDate(outDate);
 	}
 
@@ -212,7 +213,10 @@ function calRoomPrice() {
 }
 
 // "예약하기" 버튼 눌렀을 때 세부 input 값 지정하는 함수
-function setReservInfo() {
+function setReservInfo(roomId) {
+	document.querySelector('#collapseExample-'+roomId).classList.add('show')	// 특정 묶음 영역만 Collaspe 하게 만들어줌.
+																				// TODO 이걸 응용해서 form 값 넘기는 것도 해보자
+	
 	let checkinDate = (document.querySelector("#checkin").value).replace(/\//g, "-");		// 왼쪽 레이아웃에서 체크인과 체크아웃 값을 Date 형식으로 가져오기
 	let checkoutDate = (document.querySelector("#checkout").value).replace(/\//g, "-");		// (2024/01/01 -> 2024-01-01)
 	let headcountValue = document.querySelector("#headcount").value;						// 왼쪽 레이아웃에서 인원 수를 가져오기
