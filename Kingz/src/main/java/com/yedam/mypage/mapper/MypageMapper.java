@@ -23,5 +23,9 @@ public interface MypageMapper {
 	//내 정보 업데이트
 	int modifymypage(MypageVO update);
 	
+	//예약 취소
+	int reserveUpdate(int reserveId);
+	int reserveDelete(int reserveId);
+	int reserveDeleteP(int reserveId);
 }
 

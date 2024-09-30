@@ -15,6 +15,7 @@
 		grade
 		from member
 	</select>
+	
 	<select id="selectreserv"
 		resultType="com.yedam.mypage.vo.ReservVO">
 		select DISTINCT re.reserve_id,
@@ -49,6 +50,7 @@
 		    LEFT JOIN review re ON ro.room_id = re.room_id
 		    LEFT JOIN review_image ri ON re.review_id = ri.review_id
 		    WHERE r.member_id = #{memberId }
+		    AND ro.room_id = re.room_id
 		    AND r.member_id = re.member_id
 		)
 		SELECT checkin, checkout, breakfast, headcount,
@@ -67,9 +69,28 @@
 	</update>
 	
 	<select id="myPoint" resultType="int" parameterType="string">
-		select SUM(point_use)
+		select COALESCE(SUM(point_use), 0)
         from point_history
         where member_id = #{memberId}
 	</select>
+	
+	<delete id="reserveDelete" parameterType="int">
+		DELETE payment 
+		where reserve_id = ${reserveId }
+	</delete>
+	<delete id="reserveDeleteP" parameterType="int">
+		DELETE reservation 
+		where reserve_id = ${reserveId }
+	</delete>
+	<update id="reserveUpdate" parameterType="int">
+		update point_history
+		set point_use = 0
+		where payment_id IN (
+			select COALESCE(payment_id, 0)
+			from payment
+			where reserve_id = #{reserveId }
+		)
+	</update>
+	
 	
 </mapper>
