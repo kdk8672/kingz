@@ -49,6 +49,7 @@ form.addEventListener('submit', function(e) {
 			.then((willDelete) => {
 				if (willDelete) {
 					 form.submit();
+					 
 				}
 			});
 
