@@ -24,9 +24,8 @@ public class AdminAddBoardControl implements Control {
 		board.setBoardContent(content);
 		
 		if(svc.addBoard(board)) {
-			request.getRequestDispatcher("admin/addNotice.tiles").forward(request, response);
+			response.sendRedirect("boardNotice.do?boardType=NOTICE");
 		} else {
-			request.getRequestDispatcher("admin/addNotice.tiles").forward(request, response);
 			System.out.println("등록 오류");
 		}
 	}

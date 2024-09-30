@@ -20,9 +20,8 @@ public class AdminRemoveBoardControl implements Control {
 		
 		if(svc.removeBoard(Integer.parseInt(boardId))){
 			// 게시판 목록으로 이동 rd 추가
-			System.out.println("게시판 삭제");
+			response.sendRedirect("boardNotice.do?boardType=NOTICE");
 		} else{
-			// 오류 메시지 전달
 			System.out.println("삭제 오류");
 		}
 

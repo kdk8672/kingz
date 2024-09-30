@@ -91,7 +91,7 @@
 			board_content,
 			board_type
 		)
-		values (seq_board_id.nextval, #{boardTitle}, #{boardContent}, '공지사항')
+		values (seq_board_id.nextval, #{boardTitle}, #{boardContent}, 'NOTICE')
 	</insert>
 	
 	<delete id="deleteBoard" parameterType="int">

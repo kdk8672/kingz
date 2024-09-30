@@ -5,8 +5,12 @@
 	.single-textarea {
 		height: 500px;
 	}
+	.col-lg-12.col-md-12{
+		padding-left: 10%;
+		padding-right: 10%;
+	}
 </style>
-<div class="bradcam_area breadcam_bg_1">
+<div class="bradcam_area breadcam_bg_2">
 	<h3>공지사항 작성</h3>
 </div>
 <div class="section-top-border text-center">
