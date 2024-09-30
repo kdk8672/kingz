@@ -40,8 +40,18 @@ form.addEventListener('submit', function(e) {
 	}
 
 	if (isValid) {
-		swal('회원가입을 진심으로 환영합니다.');
-		form.submit();
+		swal({
+			title: "회원가입을 축하합니다.",
+			text: "킹즈호텔과 함께해주셔서 감사합니다.",
+			icon: "success",
+			dangerMode: true,
+		})
+			.then((willDelete) => {
+				if (willDelete) {
+					 form.submit();
+				}
+			});
+
 	}
 
 });
