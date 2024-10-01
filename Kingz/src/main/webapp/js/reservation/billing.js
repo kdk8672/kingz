@@ -293,9 +293,6 @@ function checkSearchValues() {
 	} else if (date1 < today - 24 * 3600 * 1000) {
 		alert("오늘 이전의 날짜에 예약할 수 없습니다.");
 		return false;
-	} else if (date1 < today) {
-		alert("오늘 이전의 날짜에 예약할 수 없습니다.");
-		return false;
 	} else if (date2 - date1 <= 0) {
 		alert("체크인 날짜가 체크아웃 날짜보다 큽니다.");
 		return false;
