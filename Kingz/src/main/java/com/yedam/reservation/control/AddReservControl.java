@@ -3,6 +3,7 @@ package com.yedam.reservation.control;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 
 import javax.servlet.ServletException;
@@ -88,8 +89,7 @@ public class AddReservControl implements Control {
 		pvo.setPaymentPoint(pointPrice);
 		
 		System.out.println("[AddReservControl.java] pvo 객체: " + pvo);
-		
-		
+
 		ReservService reservSvc = new ReservServiceImpl();
 		if (reservSvc.addReserv(rvo, pvo)) {
 			System.out.println("[AddReservContol.java] addReserv 작업 성공");

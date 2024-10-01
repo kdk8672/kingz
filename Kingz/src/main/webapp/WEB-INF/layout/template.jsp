@@ -29,6 +29,7 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/rating.css">
 <!-- <link rel="stylesheet" href="css/responsive.css"> -->
+
 </head>
 
 <body>
@@ -52,7 +53,7 @@
 	<!-- form itself end-->
 	<form id="test-form" class="white-popup-block mfp-hide"
 		action="reserv.do">
-		<div class="popup_box ">
+		<div class="popup_box">
 			<div class="popup_inner">
 				<h3>예약하기</h3>
 				<div class="row">
@@ -63,7 +64,8 @@
 						<input id="datepicker2" name="outDate" placeholder="체크아웃">
 					</div>
 					<div class="col-xl-12">
-						<select class="form-select wide" id="default-select" name="inHeadcount">
+						<select class="form-select wide" id="default-select"
+							name="inHeadcount">
 							<option value="1">1</option>
 							<option value="2">2</option>
 							<option value="3">3</option>
@@ -72,9 +74,9 @@
 						</select>
 					</div>
 					<div class="col-xl-12">
-						<select class="form-select wide" id="default-select" name="roomType">
-							<option value="호텔">호텔</option>
-							<option value="리조트">리조트</option>
+						<select class="form-select wide" name="roomType">
+							<option value="호텔" style="font-size: 30px">호텔</option>
+							<option value="리조트" style="font-size: 30px">리조트</option>
 						</select>
 					</div>
 					<div class="col-xl-12">
