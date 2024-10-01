@@ -106,7 +106,7 @@
 				<c:forEach var="rl" items="${roomList}">
 				<!-- [24.09.27 | 박진석] 객실 하나 묶음 영역 -->
 				<div class="mb-4 border rounded-lg p-4 flex justify-between">
-				<form action="addReserv.do" method="post" class="pjs-rooms-form">
+				<form action="addReserv.do" method="post" class="pjs-rooms-form-${rl.roomId }">
                     <div class="flex">
                     	<div>
 	                        <img src="img/rooms/${rl.imageUrl }" alt="Room" class="w-24 h-24 object-cover rounded mr-4" style="width: 200px; float: left;"/>
@@ -116,7 +116,7 @@
                             <input name="roomId" id="roomId" value="${rl.roomId }" hidden="hedden">
                             <p>옵션: 조식 포함</p>
                             <input name="checkin" id="checkin" hidden="hidden">
-                   			<input name="checkout" id="checkout" hidden="hidden" >
+                   			<input name="checkout" id="checkout" hidden="hidden">
                    			<input name="headcount" id="headcount" hidden="hidden">
                    			<input name="paymentMethod" id="paymentMethod" hidden="hidden">
                    			<input name="memberid" id="memberid" value="${id }" hidden="hidden">

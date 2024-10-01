@@ -32,6 +32,7 @@ color: white;
 									<p>조식 ${breakfastPrice }</p>
 									<p>포인트 ${pointPrice }</p>
 									<p>총 결제금액 ${totalPrice }</p>
+									<p>${memberId }</p>
 								</div>
 							</div>
 						</div>
