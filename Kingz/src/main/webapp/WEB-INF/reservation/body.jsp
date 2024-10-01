@@ -33,7 +33,10 @@
 		border: 0;
 		outline: none;
 	}
-	
+  
+	.popup-with-form {
+	  display: none !important;
+  }
 	
 
 	
@@ -113,11 +116,11 @@
                     	</div>
                         <div style="width: 300px; float: left;">
                             <input name="roomName" id="roomName-${rl.roomId }" value="${rl.roomName }" style='font-size:25px;' readonly><br>
-                            <input name="roomId" id="roomId" value="${rl.roomId }" hidden="hedden">
+                            <input name="roomId" id="roomId" value="${rl.roomId }" hidden="hidden">
                             <p>옵션: 조식 포함</p>
-                            <input name="checkin" id="checkin" class="checkin">
-                   			<input name="checkout" id="checkout" class="checkout">
-                   			<input name="headcount" id="headcount" class="headcount">
+                            <input name="checkin" id="checkin" class="checkin" hidden="hidden">
+                   			<input name="checkout" id="checkout" class="checkout" hidden="hidden">
+                   			<input name="headcount" id="headcount" class="headcount" hidden="hidden">
                    			<input name="paymentMethod" id="paymentMethod" hidden="hidden">
                    			<input name="memberid" id="memberid" value="${id }" hidden="hidden">
                         </div>

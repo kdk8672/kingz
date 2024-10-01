@@ -13,14 +13,18 @@
 	margin-bottom: 20px;
 }
 
+.star.filled {
+	color: #ff7009;
+}
+
 .star.half-filled {
-	color: ff7009;
+	color: #ff7009;
 	position: relative;
 }
 
 .star.half-filled:before {
 	content: '\2605';
-	color: ff7009;
+	color:# ff7009;
 	position: absolute;
 	left: 0;
 	width: 50%;
@@ -173,7 +177,7 @@
 							</div>
 						</div>
 						<br>
-						<p class="date" style="text-align: right">${review.reviewDate}</p>
+						<p class="date" style="text-align: right; font-size: 19px;"><fmt:formatDate pattern="yyyy-MM-dd hh:mm:ss" value="${review.reviewDate}"/></p>
 					</div>
 					</c:if>
 				</c:forEach>

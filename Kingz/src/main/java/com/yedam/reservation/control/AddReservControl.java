@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.yedam.common.Control;
-import com.yedam.payment.service.PaymentService;
-import com.yedam.payment.service.PaymentServiceImpl;
 import com.yedam.payment.vo.PaymentVO;
 import com.yedam.reservation.service.ReservService;
 import com.yedam.reservation.service.ReservServiceImpl;
