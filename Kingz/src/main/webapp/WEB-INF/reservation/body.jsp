@@ -33,7 +33,10 @@
 		border: 0;
 		outline: none;
 	}
-	
+  
+	.popup-with-form {
+	  display: none !important;
+  }
 	
 
 	
@@ -106,18 +109,18 @@
 				<c:forEach var="rl" items="${roomList}">
 				<!-- [24.09.27 | 박진석] 객실 하나 묶음 영역 -->
 				<div class="mb-4 border rounded-lg p-4 flex justify-between">
-				<form action="addReserv.do" method="post" class="pjs-rooms-form">
+				<form action="addReserv.do" method="post" class="pjs-rooms-form-${rl.roomId }">
                     <div class="flex">
                     	<div>
 	                        <img src="img/rooms/${rl.imageUrl }" alt="Room" class="w-24 h-24 object-cover rounded mr-4" style="width: 200px; float: left;"/>
                     	</div>
                         <div style="width: 300px; float: left;">
-                            <input name="roomName" id="roomName" value="${rl.roomName }" style='font-size:25px;' readonly><br>
-                            <input name="roomId" id="roomId" value="${rl.roomId }" hidden="hedden">
+                            <input name="roomName" id="roomName-${rl.roomId }" value="${rl.roomName }" style='font-size:25px;' readonly><br>
+                            <input name="roomId" id="roomId" value="${rl.roomId }" hidden="hidden">
                             <p>옵션: 조식 포함</p>
-                            <input name="checkin" id="checkin" hidden="hidden">
-                   			<input name="checkout" id="checkout" hidden="hidden" >
-                   			<input name="headcount" id="headcount" hidden="hidden">
+                            <input name="checkin" id="checkin" class="checkin" hidden="hidden">
+                   			<input name="checkout" id="checkout" class="checkout" hidden="hidden">
+                   			<input name="headcount" id="headcount" class="headcount" hidden="hidden">
                    			<input name="paymentMethod" id="paymentMethod" hidden="hidden">
                    			<input name="memberid" id="memberid" value="${id }" hidden="hidden">
                         </div>
@@ -126,7 +129,7 @@
                     
                     <div class="text-right">
                         <p>1박 1객실</p>
-                        <input name="roomPrice" id="roomPrice" value="${rl.roomPrice }" style='font-size:20px; text-align:right;' readonly>원
+                        <input name="roomPrice" id="roomPrice-${rl.roomId }" value="${rl.roomPrice }" style='font-size:20px; text-align:right;' readonly>원
                         <!-- 
                         <div class="accordion">
                             <button class="accordion-trigger">상세 내역</button>
@@ -156,21 +159,21 @@
 					  <div class="card card-body">
 					    <div class="pjs-first-col-detail" style="display: inline-block;">
             				<h3>옵션사항</h3><br>
-            				조식여부: <input name="breakfast" id="breakfast" type="checkbox" onclick="breakfastCheck(event)"><br>
-            				포인트 사용: <input name="usePoint" type="checkbox" onclick="pointCheck(event)"><br>
+            				조식여부: <input name="breakfast" id="breakfast-${rl.roomId }" type="checkbox" onclick="breakfastCheck(event, ${rl.roomId })"><br>
+            				포인트 사용: <input name="usePoint" id="usePoint-${rl.roomId }" type="checkbox" onclick="pointCheck(event, ${rl.roomId })"><br>
             				추가 요청사항:<br>
-            				<textarea name="request"></textarea>
+            				<textarea name="request-${rl.roomId }"></textarea>
            				</div>
            				<div class="pjs-second-col-detail" style="display: inline-block;">
            					<h3>가격</h3><br>
-           					객실금액<input name="roomPrice2" id="roomPrice2" value="200000" style="text-align:right;" readonly>원<br>
-           					<input name="sleepDay" id="sleepDay" value="1" style="text-align:right;"></input>박<br>
+           					객실금액<input name="roomPrice2" id="roomPrice2-${rl.roomId }" value="200000" style="text-align:right;" readonly>원<br>
+           					<input name="sleepDay" id="sleepDay-${rl.roomId }" value="1" style="text-align:right;"></input>박<br>
            					<h3>옵션</h3><br>
-           					조식 <input name="breakfastPrice" id="breakfastPrice" value="0" style="text-align:right;" readonly>원<br>
-           					포인트 <input name="pointPrice" id="pointPrice" value="0" style="text-align:right;" readonly>원<br>
-           					<h2>총 예약금액</h2><input name="totalPrice" id="totalPrice" value="123000" style="text-align:right;" readonly>원
-           					<a class="genric-btn info circle" onclick='KGpay("giacopo0")'>결제하기</a>
-           					<input type="submit" id="reservSubmit" value="예약확정" hidden="hidden">
+           					조식 <input name="breakfastPrice" id="breakfastPrice-${rl.roomId }" value="0" style="text-align:right;" readonly>원<br>
+           					포인트 <input name="pointPrice" id="pointPrice-${rl.roomId }" value="0" style="text-align:right;" readonly>원<br>
+           					<h2>총 예약금액</h2><input name="totalPrice" id="totalPrice-${rl.roomId }" value="123000" style="text-align:right;" readonly>원
+           					<a class="genric-btn info circle" onclick='KGpay(${rl.roomId})'>결제하기</a>
+           					<input type="submit" id="reservSubmit" value="예약확정">
            				</div>
 					  </div>
 					</div>

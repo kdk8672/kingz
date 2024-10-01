@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.yedam.common.Control;
-import com.yedam.payment.service.PaymentService;
-import com.yedam.payment.service.PaymentServiceImpl;
 import com.yedam.payment.vo.PaymentVO;
 import com.yedam.reservation.service.ReservService;
 import com.yedam.reservation.service.ReservServiceImpl;
@@ -21,14 +19,14 @@ public class AddReservControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy");
+		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
 		System.out.println("[AddReservControl.java 호출 완료!");
 		
 		String memberId = request.getParameter("memberid");
 		int roomId = Integer.parseInt(request.getParameter("roomId"));
 		Date checkin = new Date();
 		Date checkout = new Date();
-		
+				
 		try {
 			checkin = sdf.parse(request.getParameter("checkin"));		// "01-01-24" String 형식을
 			checkout = sdf.parse(request.getParameter("checkout"));		// Date가 알아먹을 수 있게 변환(SimpleDateFormat)
@@ -56,6 +54,8 @@ public class AddReservControl implements Control {
 		int totalPrice = Integer.parseInt(request.getParameter("totalPrice"));
 		
 		System.out.print("[AddReservContol.java] sleepDay: " + sleepDay);
+		System.out.print(" | checkin: " + checkin);
+		System.out.print(" | checkout: " + checkout);
 		System.out.print(" | roomPrice: " + roomPrice);
 		System.out.print(" | breakfastPrice: " + breakfastPrice);
 		System.out.print(" | pointPrice: " + pointPrice);
@@ -95,6 +95,7 @@ public class AddReservControl implements Control {
 			System.out.println("[AddReservContol.java] addReserv 작업 성공");
 			
 			request.setAttribute("roomId", roomId);
+			request.setAttribute("memberId", memberId);
 			
 			request.setAttribute("status", "reservSuccess");
 			request.setAttribute("message", "예약이 완료되었습니다.");

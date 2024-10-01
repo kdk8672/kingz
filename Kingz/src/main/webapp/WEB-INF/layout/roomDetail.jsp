@@ -13,14 +13,18 @@
 	margin-bottom: 20px;
 }
 
+.star.filled {
+	color: #ff7009;
+}
+
 .star.half-filled {
-	color: ff7009;
+	color: #ff7009;
 	position: relative;
 }
 
 .star.half-filled:before {
 	content: '\2605';
-	color: ff7009;
+	color:# ff7009;
 	position: absolute;
 	left: 0;
 	width: 50%;
@@ -173,7 +177,7 @@
 							</div>
 						</div>
 						<br>
-						<p class="date" style="text-align: right">${review.reviewDate}</p>
+						<p class="date" style="text-align: right; font-size: 19px;"><fmt:formatDate pattern="yyyy-MM-dd hh:mm:ss" value="${review.reviewDate}"/></p>
 					</div>
 					</c:if>
 				</c:forEach>
@@ -257,18 +261,6 @@
 								accept="image/*" class="form-control">
 						</div>
 					</div>
-					<!-- <div class="col-12">
-						<div class="form-group">
-							<input type="file" id="imageUrl2" name="imageUrl2"
-								accept="image/*" class="form-control">
-						</div>
-					</div>
-					<div class="col-12">
-						<div class="form-group">
-							<input type="file" id="imageUrl3" name="imageUrl3"
-								accept="image/*" class="form-control">
-						</div>
-					</div> -->
 				</div>
 				<div class="form-group">
 					<button type="submit" value="submit"
