@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kingz - My Page</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <div class="bradcam_area breadcam_bg_2"></div>
 <body>
@@ -122,7 +123,7 @@
                     <thead>
                         <tr>
                             <th style="width: 125px">평점</th>
-                            <th></th>
+                            <th>사진</th>
                             <th style="width: 350px">내용</th>
                             <th style="width: 220px">Check In/Out</th>
                             <th style="width: 180px">작성일</th>
@@ -178,27 +179,31 @@
                 <h3 class="card-title">나의 정보관리</h3>
             </div>
             <div class="card-content">
-                <form class="space-y-4" action="modifymypage.do" method="POST">
+                <form class="space-y-4" action="modifymypage.do" method="POST" onsubmit="return validateForm()">
                 <input type="hidden" value="${id }" name="memberId">
                     <div class="form-group">
-                        <label class="form-label" for="id">아이디</label>
+                        <label class="form-label" for="id" style="font-weight:bold; color:black;">아이디</label>
                         <p>${id }</p>
                     </div>
                     <div class="form-group">
-                        <label class="form-label" for="password">비밀번호</label>
-                        <input id="password" name="pass" class="form-input" type="password" />
+                        <label class="form-label" for="password" style="font-weight:bold; color:black;">비밀번호</label>
+                        <input id="password" name="pass" class="form-input" type="password" required/>
                     </div>
                     <div class="form-group">
-                        <label class="form-label" for="name">이름</label>
+                        <label class="form-label" for="password" style="font-weight:bold; color:black;">비밀번호확인</label>
+                        <input id="passwordCheck" name="pass" class="form-input" type="password" required/>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="name" style="font-weight:bold; color:black;">이름</label>
                         <p>${logName }</p>
                     </div>
                     <div class="form-group">
-                        <label class="form-label" for="email">이메일</label>
+                        <label class="form-label" for="email" style="font-weight:bold; color:black;">이메일</label>
                         <input id="email" name="email" class="form-input" type="email"/>
                     </div>
                     <div class="form-group">
-                        <label class="form-label" for="phone">전화번호</label>
-                        <input id="phone" name="phone" class="form-input" />
+                        <label class="form-label" for="phone" style="font-weight:bold; color:black;">전화번호</label>
+                        <input id="phone" name="phone" class="form-input"  pattern="010-\d{4}-\d{4}$"/>
                     </div>
                     <button type="submit" class="button">정보 수정</button>
                 </form>
