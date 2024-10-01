@@ -7,7 +7,7 @@ window.onload = function() {
 
 // 조식, 포인트 사용할 때 마다 최종 금액 계산해주는 함수
 function calTotal(roomId) {
-	console.log("calTotal - 값 바뀜!");
+	console.log("calTotal - 값 바뀜!" + roomId);
 
 	console.log("document.querySelector(`#roomPrice2-${" + roomId + "}`).value; 값: " + document.querySelector(`#roomPrice2-${roomId}`).value);
 	let roomPrice = document.querySelector(`#roomPrice2-${roomId}`).value;
@@ -119,7 +119,7 @@ function pointCheck(event, roomId) {
 						console.log("포인트 가져오기 성공: ");
 						point = result.point;	// 쿼리 결과로 나온 1개 값을 point로 지정
 						document.querySelector(`#pointPrice-${roomId}`).value = point;
-						calTotal();
+						//calTotal(roomId);
 					}
 				})
 				.catch(console.log)
@@ -255,6 +255,7 @@ function setReservInfo(roomId) {
 
 	if (checkinDate == "" || checkinDate == null || checkoutDate == "" || checkoutDate == null) {
 		alert("예약하기 전, '객실 검색'을 먼저 진행해주세요.")
+		document.querySelector('#collapseExample').classList.remove('show');
 		return false;
 	}
 
@@ -308,3 +309,18 @@ function convertDate(inputDate) {
 
 	return `${year}-${month}-${day}`;
 }
+
+
+function reserveFormSubmit(roomId) {
+	  let roomNameVal = document.querySelector('#roomName-' + roomId).value;
+	  let checkinVal = document.querySelector('#checkin').value;
+	  let checkoutVal = document.querySelector('#checkout').value;
+	  
+	  document.reserveForm.roomName.value = roomNameVal;
+	  document.reserveForm.roomId.value = roomId;
+	  document.reserveForm.checkin.value = checkinVal;
+	  document.reserveForm.checkout.value = checkoutVal;
+	  
+	  document.reserveForm.submit();
+	  
+  }
