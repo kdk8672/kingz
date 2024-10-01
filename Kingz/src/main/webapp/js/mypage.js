@@ -174,3 +174,25 @@ function validateForm() {
 
 	
 }
+
+
+function deleteReserve(reserveId, memberId) {
+    Swal.fire({
+        title: "취소 하시겠습니까?",
+        text: "취소 후 다시 예약 해주셔야 합니다.",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire({
+                title: "삭제완료!!",
+                icon: "success"
+            }).then(() => {
+               location.href = `reserveDelete.do?reserveId=${reserveId}&memberId=${memberId}`;
+            });
+        }
+    });
+};
