@@ -33,10 +33,11 @@
 		border: 0;
 		outline: none;
 	}
-  
+
 	.popup-with-form {
 	  display: none !important;
-  }
+  	}
+
 	
 
 	
