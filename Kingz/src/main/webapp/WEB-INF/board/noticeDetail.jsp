@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<% pageContext.setAttribute("replaceChar", "\n"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,7 +25,7 @@
 			</div>
 
 			<div class="notice-body">
-				<p>${board.boardContent }</p>
+				<p>${fn:replace(board.boardContent, replaceChar, "<br/>")}</p>
 			</div>
 
 			<div class="notice-footer">
