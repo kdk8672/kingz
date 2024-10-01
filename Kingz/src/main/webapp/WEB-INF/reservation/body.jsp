@@ -90,7 +90,7 @@
 
 					<div>
 						인원: <input name="inHeadcount" id="headcountPicker" type="number"
-							value="1">
+							value="1" min=1 max=5>
 					</div><br>
 					<button
 						class="genric-btn info radius"
