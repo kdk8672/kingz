@@ -35,5 +35,6 @@
     <mapper resource="com/yedam/reservation/mapper/ReservMapper.xml"/>
     <mapper resource="com/yedam/member/mapper/MemberMapper.xml"/>
     <mapper resource="com/yedam/board/mapper/BoardMapper.xml" />
+    <mapper resource="com/yedam/payment/mapper/PaymentMapper.xml" />
   </mappers>
 </configuration>
