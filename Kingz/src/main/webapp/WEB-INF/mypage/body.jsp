@@ -9,7 +9,9 @@
     <title>Kingz - My Page</title>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
-<div class="bradcam_area breadcam_bg_2"></div>
+<div class="bradcam_area breadcam_bg_2">
+	<h1 style="color:white;">MY PAGE</h1>
+</div>
 <body>
     <div class="container">
         <div class="welcome-section">
@@ -30,7 +32,6 @@
         </div>
         
     </div>
-    
     <template id="reservations-content">
         <div class="card">
             <div class="card-header">
@@ -43,7 +44,7 @@
                 </div>
                 <c:forEach var="reserve" items="${reserve }">
 	                <div class="mb-4 border rounded-lg p-4 flex justify-between">
-	                
+	                	<p>예약일: ${reserve.paymentDate}</p>
 	                    <div class="flex">
 	                        <p class="w-24 h-24 object-cover rounded mr-4"><img src="img/rooms/${reserve.imageUrl }" style="width:30%; height:30%"></p>
 	                        <div>
@@ -103,7 +104,7 @@
 		                            		<p  style="font-weight:bold">실제 결제금액: ${reserve.roomPrice + reserve.paymentPoint }원</p>
 		                            	</c:otherwise>
 	                                </c:choose>
-	                                <button onclick="location.href='reserveDelete.do?reserveId=${reserve.reserveId}&memberId=${reserve.memberId }'">예약 취소</button>
+	                                <button onclick="deleteReserve('${reserve.reserveId}', '${reserve.memberId}')">예약 취소</button>
 	                            </div>
 	                        </div>
 	                    </div>
@@ -123,7 +124,7 @@
                     <thead>
                         <tr>
                             <th style="width: 125px">평점</th>
-                            <th>사진</th>
+                            <th></th>
                             <th style="width: 350px">내용</th>
                             <th style="width: 220px">Check In/Out</th>
                             <th style="width: 180px">작성일</th>
@@ -159,11 +160,11 @@
 	                            			<p></p>
 	                            		</c:when>
 	                            		<c:otherwise>
-			                            	<img src="img/review/${review.imageUrl }" style="width:50%; height:50%">
+			                            	<a href="roomDetail.do?roomId=${review.roomId }#roomDetailM"><img src="img/review/${review.imageUrl }" style="width:50%; height:50%"></a>
 	                            		</c:otherwise>
 	                            	</c:choose>
 	                            </td>
-	                            <td>${review.reviewContent }</td>
+	                            <td><a href="roomDetail.do?roomId=${review.roomId }#roomDetailM">${review.reviewContent }</a></td>
 	                            <td>${review.checkIn } ~ ${review.checkOut }</td>
 	                            <td>${review.reviewDate }</td>
 	                        </tr>

@@ -54,7 +54,7 @@
 		<div class="popup_box ">
 			<div class="popup_inner">
 				<h3>예약하기</h3>
-				<form action="#">
+				<form action="reserv.do">
 					<div class="row">
 						<div class="col-xl-6">
 							<input id="datepicker" placeholder="체크인">
@@ -73,15 +73,13 @@
 						</div>
 						<div class="col-xl-12">
 							<select class="form-select wide" id="default-select" class="">
-								<option data-display="룸 선택">룸 선택</option>
-								<option value="1">Laxaries Rooms</option>
-								<option value="2">Deluxe Room</option>
-								<option value="3">Signature Room</option>
-								<option value="4">Couple Room</option>
+								<option data-display="룸 선택">호텔 & 리조트 선택</option>
+								<option value="1">호텔</option>
+								<option value="2">리조트</option>
 							</select>
 						</div>
 						<div class="col-xl-12">
-							<button type="submit" class="boxed-btn3">예약하기</button>
+							<button type="submit" class="boxed-btn3">검색</button>
 						</div>
 					</div>
 				</form>

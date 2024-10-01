@@ -13,4 +13,5 @@ public class ReviewVO {
 	private String roomType;
 	private String roomName;
 	private String imageUrl;
+	private int roomId;
 }

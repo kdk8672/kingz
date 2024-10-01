@@ -128,9 +128,9 @@
 		</div>
 
 		<div class="whole-wrap">
-			<div class="container box_1170">
+			<div class="container box_1170" id="roomDetailM">
 				<h2 class="mb-30">객실 리뷰</h2>
-				<c:forEach var="review" items="${list}" varStatus="status">
+				<c:forEach var="review" items="${list}" varStatus="status" >
 				 <c:if test="${status.first || review.reviewId != list[status.index - 1].reviewId}">
 					<div class="section-top-border">
 						<div class="d-flex justify-content-between"

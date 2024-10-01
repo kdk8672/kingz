@@ -20,4 +20,5 @@ public class ReservVO {
 	private int paymentPoint;
 	private int night;
 	private int pointUse;
+	private String paymentDate;
 }
