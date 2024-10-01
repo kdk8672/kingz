@@ -214,10 +214,10 @@ function calRoomPrice() {
 
 // "예약하기" 버튼 눌렀을 때 세부 input 값 지정하는 함수
 function setReservInfo(roomId) {
+	document.querySelector('#collapseExample-'+roomId).classList.add('show');	// 특정 묶음 영역만 Collaspe 하게 만들어줌. TODO 닫히는것도 할 것.
+			
 	if (document.querySelector('#collapseExample-'+roomId).classList.contains('show')) {
 		document.querySelector('#collapseExample-'+roomId).classList.remove('show');	
-	} else {
-		document.querySelector('#collapseExample-'+roomId).classList.add('show');	// 특정 묶음 영역만 Collaspe 하게 만들어줌. TODO 닫히는것도 할 것.	
 	}
 	
 	let headcountValue = document.querySelector("#headcount").value;						// 왼쪽 레이아웃에서 인원 수를 가져오기
