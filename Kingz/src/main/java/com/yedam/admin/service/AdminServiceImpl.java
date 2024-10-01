@@ -22,11 +22,15 @@ public class AdminServiceImpl implements AdminService{
 	// 회원 탈퇴
 	@Override
 	public boolean deleteUser(String memberId) {
-		mapper.deletePointHistory(memberId);
-		mapper.deletePayment(memberId);
-		mapper.deletePointHistory(memberId);
-		mapper.deleteReviewImage(memberId);
-		mapper.deleteReview(memberId);
+		if(mapper.selectPointHistory(memberId) != 0) {
+			mapper.deletePointHistory(memberId);
+			mapper.deletePayment(memberId);
+			mapper.deleteReservation(memberId);
+		}
+		if(mapper.selectReview(memberId) != 0) {
+			mapper.deleteReviewImage(memberId);
+			mapper.deleteReview(memberId);
+		}
 		return mapper.deleteUser(memberId) == 1;
 	}
 	
