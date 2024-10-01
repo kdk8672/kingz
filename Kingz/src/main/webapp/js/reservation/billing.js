@@ -314,12 +314,51 @@ function convertDate(inputDate) {
 function reserveFormSubmit(roomId) {
 	  let roomNameVal = document.querySelector('#roomName-' + roomId).value;
 	  let checkinVal = document.querySelector('#checkin').value;
-	  let checkoutVal = document.querySelector('#checkout').value;
+	  let checkoutVal = document.querySelector(`#checkout`).value;
+	  let headcountVal = document.querySelector(`#headcount`).value;
+	  let paymentMethodVal = document.querySelector(`#paymentMethod`).value;
+	  let memberidVal = document.querySelector(`#memberid`).value;
+	  let roomPriceVal = document.querySelector(`#roomPrice-${roomId}`).value;
+	  let breakfastVal = document.querySelector(`#breakfast-${roomId}`).value;
+	  let usePointVal = document.querySelector(`#usePoint-${roomId}`).value;
+	  let requestVal = document.querySelector(`#request-${roomId}`).value;
+	  let roomPrice2Val = document.querySelector(`#roomPrice2-${roomId}`).value;
+	  let sleepDayVal = document.querySelector(`#sleepDay-${roomId}`).value;
+	  let breakfastPriceVal = document.querySelector(`#breakfastPrice-${roomId}`).value;
+	  let pointPriceVal = document.querySelector(`#pointPrice-${roomId}`).value;
+	  let totalPriceVal = document.querySelector(`#totalPrice-${roomId}`).value;
+	  
+	  
+	  console.log();
+	  console.log("▼▼▼▼ [billing.js] reservFormSubmit() ▼▼▼▼");
+	  console.log(`roomNameVal: ${roomNameVal} | checkinVal: ${checkinVal} | checkoutVal: ${checkoutVal} `)
+	  console.log(`headcountVal: ${headcountVal} | paymentMethodVal: ${paymentMethodVal} | memberidVal: ${memberidVal} `)
+	  console.log(`roomPriceVal: ${roomPriceVal} | breakfastVal: ${breakfastVal} | usePointVal: ${usePointVal} `)
+	  console.log(`requestVal: ${requestVal} | roomPrice2Val: ${roomPrice2Val} | sleepDayVal: ${sleepDayVal} `)
+	  console.log(`breakfastPriceVal: ${breakfastPriceVal} | pointPriceVal: ${pointPriceVal} | totalPriceVal: ${totalPriceVal} `)
+	  console.log("▲▲▲▲ [billing.js] reservFormSubmit() ▲▲▲▲");
+	  console.log();
+	  
+		
 	  
 	  document.reserveForm.roomName.value = roomNameVal;
 	  document.reserveForm.roomId.value = roomId;
 	  document.reserveForm.checkin.value = checkinVal;
 	  document.reserveForm.checkout.value = checkoutVal;
+	  document.reserveForm.headcount.value = headcountVal;
+	  document.reserveForm.paymentMethod.value = paymentMethodVal;
+	  document.reserveForm.memberid.value = memberidVal;
+	  document.reserveForm.roomPrice.value = roomPriceVal;
+	  document.reserveForm.breakfast.value = breakfastVal;
+	  document.reserveForm.usepoint.value = usePointVal;
+	  document.reserveForm.request.value = requestVal;
+	  document.reserveForm.roomPrice2.value = roomPrice2Val;
+	  document.reserveForm.sleepDay.value = sleepDayVal;
+	  document.reserveForm.breakfastPrice.value = breakfastPriceVal;
+	  document.reserveForm.pointPrice.value = pointPriceVal;
+	  document.reserveForm.totalPrice.value = totalPriceVal;
+	  
+	  alert("[billing.js] reservFormSubmit() - form 업데이트 완료! ");
 	  
 	  document.reserveForm.submit();
 	  

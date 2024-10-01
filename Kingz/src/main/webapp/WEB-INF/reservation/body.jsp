@@ -109,6 +109,19 @@
 				   <input type="hidden" name="roomId" value="">
 				   <input type="hidden" name="checkin" value="">
 				   <input type="hidden" name="checkout" value="">
+				   <input type="hidden" name="headcount" value="">
+				   <input type="hidden" name="paymentMethod" value="">
+				   <input type="hidden" name="memberid" value="">
+				   <input type="hidden" name="roomPrice" value="">
+				   <input type="hidden" name="breakfast" value="">
+				   <input type="hidden" name="usepoint" value="">
+				   <textarea hidden="hidden" name="request" value=""></textarea>
+				   <input type="hidden" name="roomPrice2" value="">
+				   <input type="hidden" name="sleepDay" value="">
+				   <input type="hidden" name="breakfastPrice" value="">
+				   <input type="hidden" name="pointPrice" value="">
+				   <input type="hidden" name="totalPrice" value="">
+				   
 				</form>
 				
 				
@@ -156,7 +169,7 @@
             				조식여부: <input name="breakfast" id="breakfast-${rl.roomId }" type="checkbox" onclick="breakfastCheck(event, ${rl.roomId })"><br>
             				포인트 사용: <input name="usePoint" id="usePoint-${rl.roomId }" type="checkbox" onclick="pointCheck(event, ${rl.roomId })"><br>
             				추가 요청사항:<br>
-            				<textarea name="request-${rl.roomId }"></textarea>
+            				<textarea name="request" id="request-${rl.roomId }"></textarea>
            				</div>
            				<div class="pjs-second-col-detail" style="display: inline-block;">
            					<h3>가격</h3><br>
@@ -167,7 +180,7 @@
            					포인트 <input name="pointPrice" id="pointPrice-${rl.roomId }" value="0" style="text-align:right;" readonly>원<br>
            					<h2>총 예약금액</h2><input name="totalPrice" id="totalPrice-${rl.roomId }" value="123000" style="text-align:right;" readonly>원
            					<a class="genric-btn info circle" onclick='KGpay(${rl.roomId})'>결제하기</a>
-           					<input type="submit" id="reservSubmit" value="예약확정" hidden="hiddnen" onclick="reserveFormSubmit(${rl.roomId })">
+           					<input type="button" id="reservSubmit" value="예약확정" hidden="hiddnen" onclick="reserveFormSubmit(${rl.roomId })">
            				</div>
 					  </div>
 					</div>
