@@ -257,18 +257,6 @@
 								accept="image/*" class="form-control">
 						</div>
 					</div>
-					<!-- <div class="col-12">
-						<div class="form-group">
-							<input type="file" id="imageUrl2" name="imageUrl2"
-								accept="image/*" class="form-control">
-						</div>
-					</div>
-					<div class="col-12">
-						<div class="form-group">
-							<input type="file" id="imageUrl3" name="imageUrl3"
-								accept="image/*" class="form-control">
-						</div>
-					</div> -->
 				</div>
 				<div class="form-group">
 					<button type="submit" value="submit"

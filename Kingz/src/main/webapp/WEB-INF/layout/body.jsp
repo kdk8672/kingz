@@ -10,7 +10,7 @@
 					<div class="col-xl-12">
 						<div class="slider_text text-center">
 							<h3>KINGZ HOTEL</h3>
-							<p>welcome ${logName}</p>
+							<p>Welcome ${logName}</p>
 						</div>
 					</div>
 				</div>
@@ -23,7 +23,7 @@
 					<div class="col-xl-12">
 						<div class="slider_text text-center">
 							<h3>KINGZ HOTEL</h3>
-							<p>welcome ${logName}</p>
+							<p>Welcome ${logName}</p>
 						</div>
 					</div>
 				</div>
