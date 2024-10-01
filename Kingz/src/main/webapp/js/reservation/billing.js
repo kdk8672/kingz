@@ -221,10 +221,14 @@ function setReservInfo(roomId) {
 	}
 	
 	let headcountValue = document.querySelector("#headcount").value;						// 왼쪽 레이아웃에서 인원 수를 가져오기
-	let checkinDate = (document.querySelector("#checkin").value).replace(/\//g, "-");		// 왼쪽 레이아웃에서 체크인과 체크아웃 값을 Date 형식으로 가져오기
-	let checkoutDate = (document.querySelector("#checkout").value).replace(/\//g, "-");		// (2024/01/01 -> 2024-01-01)
+	//let checkinDate = (document.querySelector("#checkin").value).replace(/\//g, "-");		// 왼쪽 레이아웃에서 체크인과 체크아웃 값을 Date 형식으로 가져오기
+	//let checkoutDate = (document.querySelector("#checkout").value).replace(/\//g, "-");		// (2024/01/01 -> 2024-01-01)
+	let checkinDate = (document.querySelector("#checkin").value);
+	let checkoutDate = (document.querySelector("#checkout").value);
 
-	let inDate = new Date(checkinDate);
+
+
+	let inDate = new Date(checkinDate);		// n박 계산하기 위해 Date 객체 변환
 	let outDate = new Date(checkoutDate);
 	let sleepDate = (outDate - inDate) / (1000 * 60 * 60 * 24);	// 체크인, 체크아웃 날짜를 사용하여 n박을 계산
 

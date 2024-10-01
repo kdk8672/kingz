@@ -115,9 +115,9 @@
                             <input name="roomName" id="roomName" value="${rl.roomName }" style='font-size:25px;' readonly><br>
                             <input name="roomId" id="roomId" value="${rl.roomId }" hidden="hedden">
                             <p>옵션: 조식 포함</p>
-                            <input name="checkin" id="checkin"> checkin
-                   			<input name="checkout" id="checkout" > checkout
-                   			<input name="headcount" id="headcount"> headcount
+                            <input name="checkin" id="checkin" hidden="hidden">
+                   			<input name="checkout" id="checkout" hidden="hidden">
+                   			<input name="headcount" id="headcount" hidden="hidden">
                    			<input name="paymentMethod" id="paymentMethod" hidden="hidden">
                    			<input name="memberid" id="memberid" value="${id }" hidden="hidden">
                         </div>
