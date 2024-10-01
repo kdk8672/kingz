@@ -13,14 +13,18 @@
 	margin-bottom: 20px;
 }
 
+.star.filled {
+	color: #ff7009;
+}
+
 .star.half-filled {
-	color: ff7009;
+	color: #ff7009;
 	position: relative;
 }
 
 .star.half-filled:before {
 	content: '\2605';
-	color: ff7009;
+	color:# ff7009;
 	position: absolute;
 	left: 0;
 	width: 50%;
