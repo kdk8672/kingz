@@ -29,8 +29,14 @@ public class ReservControl implements Control {
 		int headcount;
 		
 		// 첫 페이지 호출일 경우, 검색 초기값을 설정 설정. 아니면 form에서 가져온 값을 검색값으로 설정
-		if (request.getParameter("inHeadcount") == null || request.getParameter("roomType") == null) {
+		if (request.getParameter("inHeadcount") == null && request.getParameter("roomType") == null) {
 			roomType = "호텔";
+			headcount = 1;
+		} else if (request.getParameter("roomType") == null) {
+			roomType = "리조트";
+			headcount = Integer.parseInt(request.getParameter("inHeadcount"));
+		} else if (request.getParameter("inHeadcount") == null) {
+			roomType = request.getParameter("roomType");
 			headcount = 1;
 		} else {
 			roomType = request.getParameter("roomType");
