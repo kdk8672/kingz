@@ -338,7 +338,7 @@
 						<div class="footer_widget">
 							<h3 class="footer_title">address</h3>
 							<p class="footer_text">
-								200, Green road, Mongla, <br> New York City USA
+								Joongang Daero 403, Yedam <br> Joong Gu, Daegu City, Korea
 							</p>
 							<a href="#" class="line-button">Get Direction</a>
 						</div>
