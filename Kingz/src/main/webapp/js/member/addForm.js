@@ -7,21 +7,24 @@ const passwordError = document.getElementById('passwordError');
 const phoneInput = document.getElementById('phone');
 const phoneError = document.getElementById('phoneError');
 let isIdChecked = false;
+let isValid = true;
 
 function validatePhone(phone) {
 	const phoneRegex = /^010-\d{4}-\d{4}$/;
 	return phoneRegex.test(phone);
 }
 
-let isValid = true;
+
 form.addEventListener('submit', function(e) {
 	e.preventDefault();
 
 	if (passwordInput.value !== passwordConfirmInput.value) {
 		passwordError.classList.remove('mf-hidden');
 		isValid = false;
+
 	} else {
 		passwordError.classList.add('mf-hidden');
+		isValid = true;
 	}
 
 	if (!validatePhone(phoneInput.value)) {
@@ -32,16 +35,26 @@ form.addEventListener('submit', function(e) {
 	}
 
 	if (!isIdChecked) {
-		alert('아이디 중복 확인을 해주세요.');
+		swal('중복확인 버튼을 클릭해주세요.');
 		isValid = false;
 	}
 
 	if (isValid) {
-		alert('회원가입을 진심으로 환영합니다.')
-		form.submit();
-	} else {
-		alert('아아디가 중복 되었습니다.')
+		swal({
+			title: "회원가입을 축하합니다.",
+			text: "킹즈호텔과 함께해주셔서 감사합니다.",
+			icon: "success",
+			dangerMode: true,
+		})
+			.then((willDelete) => {
+				if (willDelete) {
+					 form.submit();
+					 
+				}
+			});
+
 	}
+
 });
 
 function checkId(e) {
@@ -51,10 +64,10 @@ function checkId(e) {
 	fetch('checkId.do?id=' + userId)
 		.then(resolve => resolve.json())
 		.then(result => {
+			console.log(result);
 			if (result.retCode == 'OK') {
 				document.querySelector('#idCheckResult').innerHTML = '<font color=red>중복된 ID 입니다.</font>'
 				isIdChecked = true;
-				isValid = false;
 
 			} else {
 				document.querySelector('#idCheckResult').innerHTML = '<font color=green>사용가능한 ID 입니다.</font>'

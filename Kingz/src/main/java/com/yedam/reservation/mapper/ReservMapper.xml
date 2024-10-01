@@ -62,5 +62,28 @@
 		    		, #{paymentPoint})
 		SELECT * FROM dual 
 	</update>
+	
+	<insert id="insertPaymemtInfo" parameterType="com.yedam.payment.vo.PaymentVO">
+		<selectKey order="BEFORE" keyProperty="paymentId" resultType="int">
+			select SEQ_RESERVE_ID.currval from dual
+		</selectKey>
+		INSERT INTO payment (payment_id
+	    					, reserve_id
+	    					, payment_amount
+	    					, payment_method
+	    					, payment_date
+	    					, payment_point)
+		    VALUES (  SEQ_PAYMENT_ID.NEXTVAL
+		    		, #{paymentId}
+		    		, #{paymentAmount}
+		    		, #{paymentMethod}
+		    		, SYSDATE
+		    		, #{paymentPoint})
+	</insert>
+	
+	<select id="selectRecentReservId" resultType="int">
+	SELECT 	MAX(reserve_id) 
+	FROM 	reservation
+	</select>
 
 </mapper>

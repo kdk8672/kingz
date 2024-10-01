@@ -45,4 +45,12 @@ public class MypageServiceImpl implements MypageService{
 	}
 
 
+	@Override
+	public boolean reserveDelete(int reserveId) {
+		mapper.reserveUpdate(reserveId);
+		mapper.reserveDelete(reserveId);
+		return mapper.reserveDeleteP(reserveId) == 1;
+	}
+
+
 }

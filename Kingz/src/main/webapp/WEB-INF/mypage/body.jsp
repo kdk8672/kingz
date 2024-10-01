@@ -60,7 +60,6 @@
 	                        </div>
 	                    </div>
 	                    <div class="text-right">
-	                        
 	                        <p style="font-weight:bolder">숙박 일수: ${reserve.night }박 ${reserve.night + 1 }일</p>
 	                        <c:choose>
 		                        <c:when test="${reserve.breakfast eq 1 }">
@@ -86,8 +85,14 @@
 		                            		<p>조식: 0원<p>
 		                            	</c:otherwise>
 	                                </c:choose>
-	                                
-	                                <p>포인트: ${reserve.paymentPoint }점
+	                                <c:choose>
+	                                	<c:when test="${reserve.paymentPoint eq 0 }">
+			                                <p>포인트: 0점</p>
+	                                	</c:when>
+	                                	<c:otherwise>
+	                                		<p>포인트: ${reserve.paymentPoint }점</p>
+	                                	</c:otherwise>
+	                                </c:choose>
 	                                <p>------------------------------------</p>
 	                                <c:choose>
 	                                	<c:when test="${reserve.breakfast eq 1 }">
@@ -97,7 +102,7 @@
 		                            		<p  style="font-weight:bold">실제 결제금액: ${reserve.roomPrice + reserve.paymentPoint }원</p>
 		                            	</c:otherwise>
 	                                </c:choose>
-	                                <button class="text-right">예약 취소</button>
+	                                <button onclick="location.href='reserveDelete.do?reserveId=${reserve.reserveId}&memberId=${reserve.memberId }'">예약 취소</button>
 	                            </div>
 	                        </div>
 	                    </div>
@@ -116,16 +121,47 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>평점</th>
-                            <th>내용</th>
-                            <th>Check In/Out</th>
-                            <th>작성일</th>
+                            <th style="width: 125px">평점</th>
+                            <th></th>
+                            <th style="width: 350px">내용</th>
+                            <th style="width: 220px">Check In/Out</th>
+                            <th style="width: 180px">작성일</th>
                         </tr>
                     </thead>
                     <c:forEach var="review" items="${review }">
 	                    <tbody>
 	                        <tr>
-	                            <td>${review.rating }</td>
+	                            <td>
+	                            	<div class="star-rating"
+			                            style="display: inline-block; margin-right: 2.5px">
+			                            <c:forEach var="i" begin="1" end="5">
+			                                <c:if test="${i <= review.rating}">
+			                                    <span class="star filled">&#9733;</span>
+			                                    <!-- Filled star -->
+			                                </c:if>
+			                                <c:if test="${i > review.rating}">
+			                                    <c:if test="${review.rating >= (i - 0.5)}">
+			                                        <span class="star half-filled">&#9734;</span>
+			                                        <!-- Half-filled star -->
+			                                    </c:if>
+			                                    <c:if test="${review.rating < (i - 0.5)}">
+			                                        <span class="star">&#9734;</span>
+			                                        <!-- Empty star -->
+			                                    </c:if>
+			                                </c:if>
+			                            </c:forEach>
+                   				     </div>
+	                            </td>
+	                            <td>
+	                            	<c:choose>
+	                            		<c:when test="${empty review.imageUrl }">
+	                            			<p></p>
+	                            		</c:when>
+	                            		<c:otherwise>
+			                            	<img src="img/review/${review.imageUrl }" style="width:50%; height:50%">
+	                            		</c:otherwise>
+	                            	</c:choose>
+	                            </td>
 	                            <td>${review.reviewContent }</td>
 	                            <td>${review.checkIn } ~ ${review.checkOut }</td>
 	                            <td>${review.reviewDate }</td>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yedam.payment.mapper.PaymentMapper">
+
+<insert id="insertPayment" parameterType="com.yedam.payment.vo.PaymentVO">
+	INSERT INTO payment (payment_id
+	    				, reserve_id
+	    				, payment_amount
+	    				, payment_method
+	    				, payment_date
+	    				, payment_point)
+		    VALUES (  SEQ_PAYMENT_ID.NEXTVAL
+		    		, SEQ_RESERVE_ID.CURRVAL
+		    		, #{paymentAmount}
+		    		, #{paymentMethod}
+		    		, SYSDATE
+		    		, #{paymentPoint})
+
+</insert>
+
+
+</mapper>
