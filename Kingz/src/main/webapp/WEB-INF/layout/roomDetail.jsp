@@ -177,7 +177,7 @@
 							</div>
 						</div>
 						<br>
-						<p class="date" style="text-align: right">${review.reviewDate}</p>
+						<p class="date" style="text-align: right; font-size: 19px;"><fmt:formatDate pattern="yyyy-MM-dd hh:mm:ss" value="${review.reviewDate}"/></p>
 					</div>
 					</c:if>
 				</c:forEach>
