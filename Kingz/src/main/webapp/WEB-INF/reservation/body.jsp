@@ -32,7 +32,6 @@
 	.pjs-rooms-form input {
 		border: 0;
 		outline: none;
-		background-color: rgb(245, 245, 245);
 	}
 	
 	
@@ -71,10 +70,7 @@
 				<h3 class="mb-30">객실 검색</h3>
 				<form action="reserv.do" name="searchForm" onsubmit="return checkSearchValues()">		<!-- 검색 전 유효성 검사 -->
 					<div class="input-group-icon mt-10">
-						<div class="icon">
-							<i class="fa fa-globe" aria-hidden="true"></i>
-						</div>
-						<div class="form-select" id="default-select">
+						<div class="form-select">
 							<select name="roomType" id="roomType">
 								<c:forEach var="rtl" items="${roomTypelist}">
 									<option value="${rtl.roomType }">${rtl.roomType }</option>
@@ -84,13 +80,8 @@
 					</div>
 
 					<!-- [박진석 | 24.09.24] 날짜 선택 폼 -->
-					<div class="col-xl-6">
 						<input name="inDate" id="datepicker" placeholder="Check in date">
-					</div>
-					<div class="col-xl-6">
-						<input name="outDate" id="datepicker2"
-							placeholder="Check out date">
-					</div>
+						<input name="outDate" id="datepicker2" placeholder="Check out date">
 					<!-- [박진석 | 24.09.24] 날짜 선택 폼 끝 -->
 
 					<div>
@@ -115,7 +106,7 @@
 				<c:forEach var="rl" items="${roomList}">
 				<!-- [24.09.27 | 박진석] 객실 하나 묶음 영역 -->
 				<div class="mb-4 border rounded-lg p-4 flex justify-between">
-				<form action="addReserv.do" method="post" class="pjs-rooms-form">
+				<form action="addReserv.do" method="post" class="pjs-rooms-form-${rl.roomId }">
                     <div class="flex">
                     	<div>
 	                        <img src="img/rooms/${rl.imageUrl }" alt="Room" class="w-24 h-24 object-cover rounded mr-4" style="width: 200px; float: left;"/>
@@ -125,10 +116,10 @@
                             <input name="roomId" id="roomId" value="${rl.roomId }" hidden="hedden">
                             <p>옵션: 조식 포함</p>
                             <input name="checkin" id="checkin" hidden="hidden">
-                   			<input name="checkout" id="checkout" hidden="hidden" >
+                   			<input name="checkout" id="checkout" hidden="hidden">
                    			<input name="headcount" id="headcount" hidden="hidden">
                    			<input name="paymentMethod" id="paymentMethod" hidden="hidden">
-                   			<input name="memberid" id="memberid" value="${id }"> memberid
+                   			<input name="memberid" id="memberid" value="${id }" hidden="hidden">
                         </div>
                     </div>
                     
@@ -154,13 +145,14 @@
                     <!-- 상세정보 폼 묶음(콜랩스) 시작 -->
                     
                     <p>
-					  <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" 
-					  		role="button" aria-expanded="false" aria-controls="collapseExample" onclick="setReservInfo()" 
+					  <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample-${rl.roomId }" 
+					  		role="button" aria-expanded="false" aria-controls="collapseExample" onclick="setReservInfo(${rl.roomId })" 
 					  		style="float: right;">
 					    예약하기
 					  </a>
 					</p>
-					<div class="collapse" id="collapseExample">
+					<div class="collapse" id="collapseExample-${rl.roomId }">
+
 					  <div class="card card-body">
 					    <div class="pjs-first-col-detail" style="display: inline-block;">
             				<h3>옵션사항</h3><br>

@@ -60,8 +60,8 @@
 
                                             <li><a href="#">고객센터<i class="ti-angle-down"></i></a>
                                         	<ul class="submenu">
-                                                <li><a href="#">FAQ</a></li>
-												<li><a href="#">공지사항</a></li>
+                                                <li><a href="boardFaq.do?boardType=FAQ">FAQ</a></li>
+												<li><a href="boardNotice.do?boardType=NOTICE">공지사항</a></li>
                                             </ul>
                                         </li>
                                         </ul>

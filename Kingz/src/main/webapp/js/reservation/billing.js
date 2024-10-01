@@ -1,12 +1,8 @@
 console.log("[reserv.jsp] 화면 도착");
 
-
-
 window.onload = function() {
 	setSearchParams();
 }
-
-
 
 
 // 조식, 포인트 사용할 때 마다 최종 금액 계산해주는 함수
@@ -35,7 +31,7 @@ function setSearchParams() {
 	let searchParams = new URLSearchParams(location.search);
 
 	let roomType = searchParams.get('roomType');
-	let inDate = searchParams.get('inDate');
+	let inDate = searchParams.get('inDate'); // 09/30/2024
 	let outDate = searchParams.get('outDate');
 	let inHeadcount = searchParams.get('inHeadcount');
 
@@ -47,13 +43,18 @@ function setSearchParams() {
 	}
 
 	if (inDate != null || inDate != "") {
-		document.querySelector("#datepicker").value = convertDate(inDate);
-		document.querySelector("#checkin").value = convertDate(inDate);
+		console.log(convertDate(inDate))
+		// document.querySelector("#datepicker").value = convertDate(inDate);
+		// document.querySelector("#checkin").value = convertDate(inDate);
+		document.querySelector("#datepicker").value = inDate;
+		document.querySelector("#checkin").value = inDate;
 	}
 
 	if (outDate != null || outDate != "") {
-		document.querySelector("#datepicker").value = convertDate(outDate);
-		document.querySelector("#checkout").value = convertDate(outDate);
+		// document.querySelector("#datepicker2").value = convertDate(outDate);
+		// document.querySelector("#checkout").value = convertDate(outDate);
+		document.querySelector("#datepicker2").value = outDate;
+		document.querySelector("#checkout").value = outDate;
 	}
 
 	if (inHeadcount != null || inHeadcount != "") {
@@ -212,12 +213,22 @@ function calRoomPrice() {
 }
 
 // "예약하기" 버튼 눌렀을 때 세부 input 값 지정하는 함수
-function setReservInfo() {
-	let checkinDate = (document.querySelector("#checkin").value).replace(/\//g, "-");		// 왼쪽 레이아웃에서 체크인과 체크아웃 값을 Date 형식으로 가져오기
-	let checkoutDate = (document.querySelector("#checkout").value).replace(/\//g, "-");		// (2024/01/01 -> 2024-01-01)
+function setReservInfo(roomId) {
+	if (document.querySelector('#collapseExample-'+roomId).classList.contains('show')) {
+		document.querySelector('#collapseExample-'+roomId).classList.remove('show');	
+	} else {
+		document.querySelector('#collapseExample-'+roomId).classList.add('show');	// 특정 묶음 영역만 Collaspe 하게 만들어줌. TODO 닫히는것도 할 것.	
+	}
+	
 	let headcountValue = document.querySelector("#headcount").value;						// 왼쪽 레이아웃에서 인원 수를 가져오기
+	//let checkinDate = (document.querySelector("#checkin").value).replace(/\//g, "-");		// 왼쪽 레이아웃에서 체크인과 체크아웃 값을 Date 형식으로 가져오기
+	//let checkoutDate = (document.querySelector("#checkout").value).replace(/\//g, "-");		// (2024/01/01 -> 2024-01-01)
+	let checkinDate = (document.querySelector("#checkin").value);
+	let checkoutDate = (document.querySelector("#checkout").value);
 
-	let inDate = new Date(checkinDate);
+
+
+	let inDate = new Date(checkinDate);		// n박 계산하기 위해 Date 객체 변환
 	let outDate = new Date(checkoutDate);
 	let sleepDate = (outDate - inDate) / (1000 * 60 * 60 * 24);	// 체크인, 체크아웃 날짜를 사용하여 n박을 계산
 

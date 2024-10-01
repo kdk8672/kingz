@@ -36,6 +36,7 @@
 		JOIN room_image r ON ro.room_id = r.room_id
 		JOIN payment p On re.reserve_id = p.reserve_id
 		where re.member_id = #{memberId}
+		order by re.reserve_id desc
 	</select>
 	
 	<select id="reviewList" resultType="com.yedam.mypage.vo.ReviewVO">
@@ -62,9 +63,9 @@
 	
 	<update id="modifymypage" parameterType="com.yedam.mypage.vo.MypageVO">
 		update member
-		set password = #{password},
-		    email = #{email},
-		    phone = #{phone} 
+		set password = ${password},
+		    email = CASE WHEN #{email} IS NOT NULL THEN #{email} ELSE email END,
+		    phone = CASE WHEN #{phone} IS NOT NULL THEN #{phone} ELSE phone END 
 		where member_id = #{memberId}
 	</update>
 	
