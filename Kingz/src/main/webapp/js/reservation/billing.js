@@ -51,7 +51,7 @@ function setSearchParams() {
 	} 
 	
 	if (roomType == null) {
-		document.querySelector(".nice-select span").innerHTML = "호텔";
+		document.querySelector(".nice-select span").innerHTML = "리조트";
 	}
 
 	if (inDate != null || inDate != "") {
