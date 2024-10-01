@@ -164,7 +164,7 @@
            				<div class="pjs-second-col-detail" style="display: inline-block;">
            					<h3>가격</h3><br>
            					객실금액<input name="roomPrice2" id="roomPrice2" value="200000" style="text-align:right;" readonly>원<br>
-           					<input name="sleepDay" id="sleepDay" value="1" style="text-align:right;"></input>박<br>
+           					<input name="sleepDay" id="sleepDay" value="1" style="text-align:right;" readonly></input>박<br>
            					<h3>옵션</h3><br>
            					조식 <input name="breakfastPrice" id="breakfastPrice" value="0" style="text-align:right;" readonly>원<br>
            					포인트 <input name="pointPrice" id="pointPrice" value="0" style="text-align:right;" readonly>원<br>
