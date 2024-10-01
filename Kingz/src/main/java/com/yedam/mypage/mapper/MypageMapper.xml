@@ -62,9 +62,9 @@
 	
 	<update id="modifymypage" parameterType="com.yedam.mypage.vo.MypageVO">
 		update member
-		set password = #{password},
-		    email = #{email},
-		    phone = #{phone} 
+		set password = ${password},
+		    email = CASE WHEN #{email} IS NOT NULL THEN #{email} ELSE email END,
+		    phone = CASE WHEN #{phone} IS NOT NULL THEN #{phone} ELSE phone END 
 		where member_id = #{memberId}
 	</update>
 	
