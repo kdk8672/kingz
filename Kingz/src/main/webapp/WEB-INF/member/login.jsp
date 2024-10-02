@@ -12,7 +12,7 @@
 		<h3>로그인</h3>
 	</div>
 	<!-- offers_area_start -->
-	<div class="offers_area padding_top">
+	<div class="">
 		<div class="container">
 			<div class="row">
 				<div class="col-xl-12"></div>
