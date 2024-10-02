@@ -243,14 +243,14 @@ function setReservInfo(roomId) {
 
 	let checkinDate = (document.querySelector("#checkin").value);
 	let checkoutDate = (document.querySelector("#checkout").value);
-	let reservBtn = document.querySelector(".pjs-rooms-form-10 #collapseExample-10");
-	let collapse = document.querySelector(".pjs-rooms-form-10 a");
+	let href = event.target.parentElement.querySelector('a').getAttribute('href');
+	let collapse = ".mb-4.border form " + href;
+	let reservBtn = document.querySelector(collapse);
 	
 	document.querySelector('#collapseExample-'+roomId).classList.add('show');
 	
 	if (checkinDate == "" || checkinDate == null || checkoutDate == "" || checkoutDate == null) {
 		alert("예약하기 전, '객실 검색'을 먼저 진행해주세요.");
-		collapse.setAttribute('aria-expanded', 'false');
 		reservBtn.style.display = 'none';
 	} else if (document.querySelector('#collapseExample-'+roomId).classList.contains('show')) {
 		document.querySelector('#collapseExample-'+roomId).classList.remove('show');	
