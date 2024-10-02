@@ -253,6 +253,7 @@ function setReservInfo(event, roomId) {
 	if (checkinDate == "" || checkinDate == null || checkoutDate == "" || checkoutDate == null) {
 		alert("예약하기 전, '객실 검색'을 먼저 진행해주세요.");
 		reservBtn.style.display = 'none';
+		return false;
 	} else if (document.querySelector('#collapseExample-'+roomId).classList.contains('show')) {
 		document.querySelector('#collapseExample-'+roomId).classList.remove('show');	
 	}
