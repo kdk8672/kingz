@@ -128,7 +128,7 @@ function pointCheck(event, roomId) {
 						console.log("포인트 가져오기 성공: ");
 						point = result.point;	// 쿼리 결과로 나온 1개 값을 point로 지정
 						document.querySelector(`#pointPrice-${roomId}`).value = point;
-						//calTotal(roomId);
+						calTotal(roomId);
 					}
 				})
 				.catch(console.log)
@@ -242,6 +242,8 @@ function calRoomPrice() {
 // "예약하기" 버튼 눌렀을 때 세부 input 값 지정하는 함수
 function setReservInfo(event, roomId) {
 
+	console.log(roomId);
+	
 	let checkinDate = (document.querySelector("#checkin").value);
 	let checkoutDate = (document.querySelector("#checkout").value);
 	let href = event.target.parentElement.querySelector('a').getAttribute('href');
@@ -259,7 +261,8 @@ function setReservInfo(event, roomId) {
 		reservBtn.style.display = 'none';
 		return false;
 	} else if (document.querySelector('#collapseExample-'+roomId).classList.contains('show')) {
-		document.querySelector('#collapseExample-'+roomId).classList.remove('show');	
+		document.querySelector('#collapseExample-'+roomId).classList.remove('show');
+		return false;	
 	}
 	
 	
