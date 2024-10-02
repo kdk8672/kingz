@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <!-- footer -->
 <footer class="footer">
@@ -10,7 +11,7 @@
 					<div class="footer_widget">
 						<h3 class="footer_title">address</h3>
 						<p class="footer_text">
-							200, Dong road, Yedam, <br> Daegu City Korea
+							Joongang Daero 403, Yedam <br> Joong Gu, Daegu City, Korea
 						</p>
 						<a href="contact.do" class="line-button">Get Direction</a>
 					</div>

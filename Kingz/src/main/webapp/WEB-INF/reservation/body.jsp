@@ -33,7 +33,11 @@
 		border: 0;
 		outline: none;
 	}
-	
+
+	.popup-with-form {
+	  display: none !important;
+  	}
+
 	
 
 	
@@ -86,7 +90,7 @@
 
 					<div>
 						인원: <input name="inHeadcount" id="headcountPicker" type="number"
-							value="1">
+							value="1" min=1 max=5>
 					</div><br>
 					<button
 						class="genric-btn info radius"
@@ -136,7 +140,7 @@
                     	</div>
                         <div style="width: 300px; float: left;">
                             <input name="roomName" id="roomName-${rl.roomId }" value="${rl.roomName }" style='font-size:25px;' readonly><br>
-                            <input name="roomId" id="roomId" value="${rl.roomId }" hidden="hedden">
+                            <input name="roomId" id="roomId" value="${rl.roomId }" hidden="hidden">
                             <p>옵션: 조식 포함</p>
                             <input name="checkin" id="checkin" class="checkin" hidden="hidden">
                    			<input name="checkout" id="checkout" class="checkout" hidden="hidden">
@@ -156,7 +160,7 @@
                     
                     <p>
 					  <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample-${rl.roomId }" 
-					  		role="button" aria-expanded="false" aria-controls="collapseExample" onclick="setReservInfo(${rl.roomId })" 
+					  		role="button" aria-expanded="false" aria-controls="collapseExample" onclick="setReservInfo(event, ${rl.roomId })" 
 					  		style="float: right;">
 					    예약하기
 					  </a>

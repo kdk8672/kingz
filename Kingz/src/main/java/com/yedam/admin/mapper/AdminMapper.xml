@@ -108,5 +108,17 @@
 		delete from review_image
 		where review_id = #{reviewId}
 	</delete>
+	
+	<select id="selectPointHistory" resultType="int" parameterType="string">
+		select count(1)
+		from point_history
+		where member_id = #{memberId}
+	</select>
+	
+	<select id="selectReview" resultType="int" parameterType="string">
+		select count(1)
+		from review
+		where member_id = #{memberId}
+	</select>
   
 </mapper>

@@ -45,6 +45,13 @@ fetch('roomReserveList.do')
 			responsive: true,
 			maintainAspectRatio: false,
 			scales: {
+				xAxes: [
+					{
+						ticks: {
+								display: false,
+						},
+					}
+				],
 				yAxes: [
 					{
 						ticks: {

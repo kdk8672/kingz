@@ -94,7 +94,6 @@ public class FrontController extends HttpServlet {
 		map.put("/login.do", new LoginControl()); // 로그인 기능
 		map.put("/loginVer.do", new LoginVerControl()); // 로그인 검증
 		map.put("/logout.do", new LogoutControl());
-		
 		// [권혁태] 공지사항
 		map.put("/boardNotice.do", new BoardNoticeControl());
 		map.put("/getNotice.do", new GetBoardNoticeControl());

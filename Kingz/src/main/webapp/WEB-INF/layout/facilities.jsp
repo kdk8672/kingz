@@ -92,8 +92,8 @@
 
                                             <li><a href="#">고객센터<i class="ti-angle-down"></i></a>
                                         	<ul class="submenu">
-                                                <li><a href="#">FAQ</a></li>
-												<li><a href="#">공지사항</a></li>
+                                                <li><a href="boardFaq.do?boardType=FAQ">FAQ</a></li>
+												<li><a href="boardNotice.do?boardType=NOTICE">공지사항</a></li>
                                             </ul>
                                         </li>
                                         </ul>
@@ -102,7 +102,7 @@
 
 								</div>
 								<div class="book_btn d-none d-lg-block">
-									<a class="popup-with-form" href="#test-form">예약하기</a>
+									<a href="reserv.do">예약하기</a>
 								</div>
 							</div>
 						</div>
@@ -338,7 +338,7 @@
 						<div class="footer_widget">
 							<h3 class="footer_title">address</h3>
 							<p class="footer_text">
-								200, Green road, Mongla, <br> New York City USA
+								Joongang Daero 403, Yedam <br> Joong Gu, Daegu City, Korea
 							</p>
 							<a href="#" class="line-button">Get Direction</a>
 						</div>
@@ -411,7 +411,7 @@
 							</select>
 						</div>
 						<div class="col-xl-12">
-							<button type="submit" class="boxed-btn3">예약하기</button>
+							<button type="submit" class="boxed-btn3">검색</button>
 						</div>
 					</div>
 				</form>

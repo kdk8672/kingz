@@ -1,1 +1,1 @@
-# kingz
+# 프로젝트명 : kingz

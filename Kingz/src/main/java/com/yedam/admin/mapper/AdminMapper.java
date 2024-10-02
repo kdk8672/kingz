@@ -34,4 +34,8 @@ public interface AdminMapper {
 	int deleteReviewOne(int reviewId);
 	int deleteReviewImageOne(int reviewId);
 	
+	// 탈퇴시 내역 검증
+	int selectPointHistory(String memberId);
+	int selectReview(String memberId);
+	
 }

@@ -30,12 +30,14 @@
 						ro.room_price,
 						r.image_url,
 						p.payment_amount,
-						p.payment_point
+						p.payment_point,
+						TO_CHAR(p.payment_date, 'yyyy-mm-dd') AS paymentDate
 		from reservation re
 		JOIN room ro ON re.room_id = ro.room_id
 		JOIN room_image r ON ro.room_id = r.room_id
 		JOIN payment p On re.reserve_id = p.reserve_id
 		where re.member_id = #{memberId}
+		AND   re.checkout >= sysdate
 		order by re.reserve_id desc
 	</select>
 	
@@ -43,7 +45,7 @@
 		WITH ranked_reviews AS (
 		    SELECT TO_CHAR(r.checkin, 'YYYY-MM-DD') as checkIn, TO_CHAR(r.checkOut, 'YYYY-MM-DD') as checkOut, r.breakfast, r.headcount,
 		           re.review_content, re.rating, re.review_id, re.review_date,
-		           ro.room_type, ro.room_name,
+		           ro.room_id, ro.room_type, ro.room_name,
 		           ri.image_url,
 		           ROW_NUMBER() OVER (PARTITION BY re.review_id ORDER BY re.review_id) AS rn
 		    FROM reservation r
@@ -56,16 +58,16 @@
 		)
 		SELECT checkin, checkout, breakfast, headcount,
 		       review_content, rating, review_id, review_date,
-		       room_type, room_name, image_url
+		       room_id, room_type, room_name, image_url
 		FROM ranked_reviews
 		WHERE rn = 1
 	</select>
 	
 	<update id="modifymypage" parameterType="com.yedam.mypage.vo.MypageVO">
 		update member
-		set password = #{password},
-		    email = #{email},
-		    phone = #{phone} 
+		set password = ${password},
+		    email = CASE WHEN #{email} IS NOT NULL THEN #{email} ELSE email END,
+		    phone = CASE WHEN #{phone} IS NOT NULL THEN #{phone} ELSE phone END 
 		where member_id = #{memberId}
 	</update>
 	
