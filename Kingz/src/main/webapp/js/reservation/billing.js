@@ -240,7 +240,7 @@ function calRoomPrice() {
 
 
 // "예약하기" 버튼 눌렀을 때 세부 input 값 지정하는 함수
-function setReservInfo(roomId) {
+function setReservInfo(event, roomId) {
 
 	let checkinDate = (document.querySelector("#checkin").value);
 	let checkoutDate = (document.querySelector("#checkout").value);
