@@ -169,7 +169,7 @@
 							<c:if test="${not empty review.imageUrl}">
 									<div class="col-md-3">
 										<img src="img/review/${review.imageUrl}" alt=""
-											class="img-fluid">
+											class="img-fluid" style="height: 230px; width: auto;">
 									</div>
 							</c:if>
 							<div class="col-md-9 mt-sm-20">

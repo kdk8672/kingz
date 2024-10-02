@@ -248,7 +248,11 @@ function setReservInfo(roomId) {
 	
 	document.querySelector('#collapseExample-'+roomId).classList.add('show');
 	
-	if (checkinDate == "" || checkinDate == null || checkoutDate == "" || checkoutDate == null) {
+	if (memId == "" || memId == null) {
+		alert("로그인 후 상세정보를 조회할 수 있습니다.");
+		collapse.setAttribute('aria-expanded', 'false');
+		reservBtn.style.display = 'none';
+	} else if (checkinDate == "" || checkinDate == null || checkoutDate == "" || checkoutDate == null) {
 		alert("예약하기 전, '객실 검색'을 먼저 진행해주세요.");
 		collapse.setAttribute('aria-expanded', 'false');
 		reservBtn.style.display = 'none';
