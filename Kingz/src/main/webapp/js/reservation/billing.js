@@ -191,8 +191,9 @@ function KGpay(roomId) {
 				//alert("[billing.js] 결제방법: " + payMethod + " | 결제액: " + totalPaid);
 
 				document.querySelector("#paymentMethod").value = payMethod;
+				
+				reserveFormSubmit(roomId);
 
-				document.getElementById('reservSubmit').click();
 
 			} else {
 				var msg = '결제에 실패하였습니다.';
@@ -331,6 +332,7 @@ function reserveFormSubmit(roomId) {
 	  
 	  console.log();
 	  console.log("▼▼▼▼ [billing.js] reservFormSubmit() ▼▼▼▼");
+	  console.log(`roomId: ${roomId}`)
 	  console.log(`roomNameVal: ${roomNameVal} | checkinVal: ${checkinVal} | checkoutVal: ${checkoutVal} `)
 	  console.log(`headcountVal: ${headcountVal} | paymentMethodVal: ${paymentMethodVal} | memberidVal: ${memberidVal} `)
 	  console.log(`roomPriceVal: ${roomPriceVal} | breakfastVal: ${breakfastVal} | usePointVal: ${usePointVal} `)
@@ -358,7 +360,7 @@ function reserveFormSubmit(roomId) {
 	  document.reserveForm.pointPrice.value = pointPriceVal;
 	  document.reserveForm.totalPrice.value = totalPriceVal;
 	  
-	  alert("[billing.js] reservFormSubmit() - form 업데이트 완료! ");
+	  // alert("[billing.js] reservFormSubmit() - form 업데이트 완료! ");
 	  
 	  document.reserveForm.submit();
 	  

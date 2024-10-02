@@ -7,10 +7,15 @@
 .h4, p {
 color: white;
 }
+
+table{
+	margin : auto;
+    width : 80%;
 </style>
 
 <c:choose>
 	<c:when test="${status eq 'reservSuccess' }">
+		<%-- <jsp:forward page="mypage.do?memberId=${memberId }" /> --%>
 		<div class="slider_area">
 			<div class="slider_active owl-carousel">
 				<div
@@ -18,7 +23,7 @@ color: white;
 					<div class="container">
 						<div class="row">
 							<div class="col-xl-12">
-								<div class="slider_text text-center">
+								<div class="slider_text text-center" style="text-align: center;">
 									<table>
 										<tr>
 											<td colspan="2"><h3>결제 완료</h3></td>
