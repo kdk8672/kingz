@@ -68,7 +68,7 @@
                                     </nav>
                                 </div>
                                 <div class="book_btn d-none d-lg-block">
-                                    <a class="popup-with-form" href="#test-form">예약하기</a>
+                                    <a href="reserv.do">예약하기</a>
                                 </div>
                             </div>
                         </div>

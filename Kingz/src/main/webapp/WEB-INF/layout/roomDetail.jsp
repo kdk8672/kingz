@@ -13,14 +13,18 @@
 	margin-bottom: 20px;
 }
 
+.star.filled {
+	color: #ff7009;
+}
+
 .star.half-filled {
-	color: ff7009;
+	color: #ff7009;
 	position: relative;
 }
 
 .star.half-filled:before {
 	content: '\2605';
-	color: ff7009;
+	color:# ff7009;
 	position: absolute;
 	left: 0;
 	width: 50%;
@@ -128,9 +132,9 @@
 		</div>
 
 		<div class="whole-wrap">
-			<div class="container box_1170">
+			<div class="container box_1170" id="roomDetailM">
 				<h2 class="mb-30">객실 리뷰</h2>
-				<c:forEach var="review" items="${list}" varStatus="status">
+				<c:forEach var="review" items="${list}" varStatus="status" >
 				 <c:if test="${status.first || review.reviewId != list[status.index - 1].reviewId}">
 					<div class="section-top-border">
 						<div class="d-flex justify-content-between"
@@ -173,7 +177,7 @@
 							</div>
 						</div>
 						<br>
-						<p class="date" style="text-align: right">${review.reviewDate}</p>
+						<p class="date" style="text-align: right; font-size: 19px;"><fmt:formatDate pattern="yyyy-MM-dd hh:mm:ss" value="${review.reviewDate}"/></p>
 					</div>
 					</c:if>
 				</c:forEach>

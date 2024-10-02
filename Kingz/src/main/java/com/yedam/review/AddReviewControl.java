@@ -52,20 +52,18 @@ public class AddReviewControl implements Control {
 
 		if (memberId == null) {
 			session.setAttribute("msg", "리뷰를 등록하기 위해 로그인해 주십시오."); // 로그인 여부 확인 (작동 성공)
-			System.out.println("리뷰를 등록하기 위해 로그인해 주십시오.");
 			response.sendRedirect("roomDetail.do?roomId=" + roomId);
 		} else if (svc.getReserveCnt(rvo.getMemberId(), rvo.getRoomId()) == 0) {
 			session.setAttribute("msg", "예약 경력이 없습니다.");
-			System.out.println("예약 경력이 없습니다.");
 			response.sendRedirect("roomDetail.do?roomId=" + roomId);
 		} else if (svc.reviewCheck(rvvo.getRoomId(), rvvo.getMemberId()) != 0) {
 			session.setAttribute("msg", "체크아웃 후 리뷰를 등록할 수 있습니다."); // 예약 경력 중, 체크아웃을 완료한 경력이 있는지 확인 (작동 성공)
-			System.out.println("체크아웃 후 리뷰를 등록할 수 있습니다.");
 			response.sendRedirect("roomDetail.do?roomId=" + roomId);
-		} else if (svc.getReserveCnt(rvo.getMemberId(), rvo.getRoomId()) == svc.getReviewCnt(rvo.getMemberId(),
-				rvo.getRoomId())) { // 예약 횟수와 리뷰 개수를 비교하여 같을 시 리뷰 등록 불가 확인 (작동 성공)
+		} else if (svc.getReserveCnt(rvo.getMemberId(), rvo.getRoomId()) == svc.getReviewCnt(rvo.getMemberId(), rvo.getRoomId())) { // 예약 횟수와 리뷰 개수를 비교하여 같을 시 리뷰 등록 불가 확인 (작동 성공)
 			session.setAttribute("msg", "리뷰는 체크아웃 당 한번 등록할 수 있습니다.");
-			System.out.println("리뷰는 체크아웃 당 한번 등록할 수 있습니다.");
+			response.sendRedirect("roomDetail.do?roomId=" + roomId);
+		} else if (content == null || content.isEmpty()) {
+			session.setAttribute("msg", "리뷰 내용을 입력해 주십시오.");
 			response.sendRedirect("roomDetail.do?roomId=" + roomId);
 		} else {
 			if (svc.addReview(rvo)) { // 리뷰 등록 기능 (작동 성공)
@@ -77,7 +75,6 @@ public class AddReviewControl implements Control {
 					svc.addImage(ivo); // 이미지 추가 기능 (작동 성공)
 				}
 				session.setAttribute("msg", "리뷰가 등록되었습니다.");
-				System.out.println("리뷰가 등록되었습니다.");
 				response.sendRedirect("roomDetail.do?roomId=" + roomId);
 			}
 		}
