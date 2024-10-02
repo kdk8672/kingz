@@ -257,8 +257,7 @@ function setReservInfo(event, roomId) {
 		reservBtn.style.display = 'none';
 		return false;
 	} else if (document.querySelector('#collapseExample-'+roomId).classList.contains('show')) {
-		document.querySelector('#collapseExample-'+roomId).classList.remove('show');
-		return false;	
+		document.querySelector('#collapseExample-'+roomId).classList.remove('show');	
 	}
 	
 	
