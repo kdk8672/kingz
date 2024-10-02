@@ -40,7 +40,7 @@
 							<p id="errorMessage" class="lf-error-message"
 								style="display: none;"></p>
 							<div class="lf-text-center">
-								계정이 없으신가요? <a href="/signup" class="lf-link">회원가입</a>
+								계정이 없으신가요? <a href="memberAddForm.do" class="lf-link">회원가입</a>
 							</div>
 						</div>
 					</div>

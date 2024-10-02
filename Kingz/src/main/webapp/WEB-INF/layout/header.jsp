@@ -51,7 +51,7 @@
                                             		<li><a href="userList.do">관리페이지</a></li>
                                             	</c:when>
                                             	<c:when test="${empty id }">
-                                            		<li><a href="login.do">마이페이지</a></li>
+                                            		<li><a href="javascript:void(0);" onclick="alert('로그인 후 이용이 가능합니다'); window.location.href='login.do';">마이페이지</a></li>
                                             	</c:when>
                                             	<c:otherwise> 
                                             		<li><a href="mypage.do?memberId=${id }">마이페이지</a></li>
