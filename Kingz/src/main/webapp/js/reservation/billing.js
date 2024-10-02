@@ -7,7 +7,7 @@ window.onload = function() {
 
 // 조식, 포인트 사용할 때 마다 최종 금액 계산해주는 함수
 function calTotal(roomId) {
-	console.log("calTotal - 값 바뀜!");
+	console.log("calTotal - 값 바뀜!" + roomId);
 
 	let roomPrice = document.querySelector(`#roomPrice2-${roomId}`).value;
 	
@@ -128,7 +128,7 @@ function pointCheck(event, roomId) {
 						console.log("포인트 가져오기 성공: ");
 						point = result.point;	// 쿼리 결과로 나온 1개 값을 point로 지정
 						document.querySelector(`#pointPrice-${roomId}`).value = point;
-						calTotal();
+						//calTotal(roomId);
 					}
 				})
 				.catch(console.log)
@@ -200,8 +200,9 @@ function KGpay(roomId) {
 				//alert("[billing.js] 결제방법: " + payMethod + " | 결제액: " + totalPaid);
 
 				document.querySelector("#paymentMethod").value = payMethod;
+				
+				reserveFormSubmit(roomId);
 
-				document.getElementById('reservSubmit').click();
 
 			} else {
 				var msg = '결제에 실패하였습니다.';
@@ -269,6 +270,18 @@ function setReservInfo(roomId) {
 	console.log("checkinDate: " + checkinDate + " | checkoutDate: " + checkoutDate + " | headcountValue: " + headcountValue);
 	console.log("inDate: " + inDate + " | outDate: " + outDate + " | n박: " + sleepDate);
 
+
+	if (checkinDate == "" || checkinDate == null || checkoutDate == "" || checkoutDate == null) {
+		alert("예약하기 전, '객실 검색'을 먼저 진행해주세요.")
+		document.querySelector('#collapseExample').classList.remove('show');
+		return false;
+	}
+
+	if (sleepDate < 1) {
+		alert("체크인 날짜가 체크아웃 날짜보다 늦습니다.")
+		return false;
+	}
+
 	let roomPrice = document.querySelector(`#roomPrice-${roomId}`).value
 	let totalPrice = roomPrice * sleepDate;
 	console.log("totalPrice: " + totalPrice);
@@ -317,3 +330,58 @@ function convertDate(inputDate) {
 
 	return `${year}-${month}-${day}`;
 }
+
+
+function reserveFormSubmit(roomId) {
+	  let roomNameVal = document.querySelector('#roomName-' + roomId).value;
+	  let checkinVal = document.querySelector('#checkin').value;
+	  let checkoutVal = document.querySelector(`#checkout`).value;
+	  let headcountVal = document.querySelector(`#headcount`).value;
+	  let paymentMethodVal = document.querySelector(`#paymentMethod`).value;
+	  let memberidVal = document.querySelector(`#memberid`).value;
+	  let roomPriceVal = document.querySelector(`#roomPrice-${roomId}`).value;
+	  let breakfastVal = document.querySelector(`#breakfast-${roomId}`).value;
+	  let usePointVal = document.querySelector(`#usePoint-${roomId}`).value;
+	  let requestVal = document.querySelector(`#request-${roomId}`).value;
+	  let roomPrice2Val = document.querySelector(`#roomPrice2-${roomId}`).value;
+	  let sleepDayVal = document.querySelector(`#sleepDay-${roomId}`).value;
+	  let breakfastPriceVal = document.querySelector(`#breakfastPrice-${roomId}`).value;
+	  let pointPriceVal = document.querySelector(`#pointPrice-${roomId}`).value;
+	  let totalPriceVal = document.querySelector(`#totalPrice-${roomId}`).value;
+	  
+	  
+	  console.log();
+	  console.log("▼▼▼▼ [billing.js] reservFormSubmit() ▼▼▼▼");
+	  console.log(`roomId: ${roomId}`)
+	  console.log(`roomNameVal: ${roomNameVal} | checkinVal: ${checkinVal} | checkoutVal: ${checkoutVal} `)
+	  console.log(`headcountVal: ${headcountVal} | paymentMethodVal: ${paymentMethodVal} | memberidVal: ${memberidVal} `)
+	  console.log(`roomPriceVal: ${roomPriceVal} | breakfastVal: ${breakfastVal} | usePointVal: ${usePointVal} `)
+	  console.log(`requestVal: ${requestVal} | roomPrice2Val: ${roomPrice2Val} | sleepDayVal: ${sleepDayVal} `)
+	  console.log(`breakfastPriceVal: ${breakfastPriceVal} | pointPriceVal: ${pointPriceVal} | totalPriceVal: ${totalPriceVal} `)
+	  console.log("▲▲▲▲ [billing.js] reservFormSubmit() ▲▲▲▲");
+	  console.log();
+	  
+		
+	  
+	  document.reserveForm.roomName.value = roomNameVal;
+	  document.reserveForm.roomId.value = roomId;
+	  document.reserveForm.checkin.value = checkinVal;
+	  document.reserveForm.checkout.value = checkoutVal;
+	  document.reserveForm.headcount.value = headcountVal;
+	  document.reserveForm.paymentMethod.value = paymentMethodVal;
+	  document.reserveForm.memberid.value = memberidVal;
+	  document.reserveForm.roomPrice.value = roomPriceVal;
+	  document.reserveForm.breakfast.value = breakfastVal;
+	  document.reserveForm.usepoint.value = usePointVal;
+	  document.reserveForm.request.value = requestVal;
+	  document.reserveForm.roomPrice2.value = roomPrice2Val;
+	  document.reserveForm.sleepDay.value = sleepDayVal;
+	  document.reserveForm.breakfastPrice.value = breakfastPriceVal;
+	  document.reserveForm.pointPrice.value = pointPriceVal;
+	  document.reserveForm.totalPrice.value = totalPriceVal;
+	  
+	  // alert("[billing.js] reservFormSubmit() - form 업데이트 완료! ");
+	  
+	  document.reserveForm.submit();
+	  
+  }
