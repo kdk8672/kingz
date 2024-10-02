@@ -81,7 +81,6 @@
 			</div>
 		</div>
 	</div>
-
 	<!-- offers_area_end -->
 	<script src="js/member/addForm.js"></script>
 </body>
