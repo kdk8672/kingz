@@ -150,7 +150,7 @@
                     
                     <p>
 					  <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample-${rl.roomId }" 
-					  		role="button" aria-expanded="false" aria-controls="collapseExample" onclick="setReservInfo(${rl.roomId })" 
+					  		role="button" aria-expanded="false" aria-controls="collapseExample" onclick="setReservInfo(event, ${rl.roomId })" 
 					  		style="float: right;">
 					    예약하기
 					  </a>
