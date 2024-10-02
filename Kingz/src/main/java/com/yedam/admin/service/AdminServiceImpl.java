@@ -22,7 +22,7 @@ public class AdminServiceImpl implements AdminService{
 	// 회원 탈퇴
 	@Override
 	public boolean deleteUser(String memberId) {
-		if(mapper.selectPointHistory(memberId) != 0) {
+		if(mapper.selectReservation(memberId) != 0) {
 			mapper.deletePointHistory(memberId);
 			mapper.deletePayment(memberId);
 			mapper.deleteReservation(memberId);
