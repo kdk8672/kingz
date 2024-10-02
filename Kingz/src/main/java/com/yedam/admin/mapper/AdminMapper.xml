@@ -99,18 +99,14 @@
 		where board_id = #{boardId}
 	</delete>
 	
-	<delete id="deleteReviewOne" parameterType="string">
+	<delete id="deleteReviewOne" parameterType="int">
 		delete from review
-		where member_id = #{memberId}
+		where review_id = #{reviewId}
 	</delete>
-	
-	<delete id="deleteReviewImageOne" parameterType="string">
+
+	<delete id="deleteReviewImageOne" parameterType="int">
 		delete from review_image
-		where review_id in (
-		    select review_id
-		    from review
-		    where member_id = #{memberId}
-		)
+		where review_id = #{reviewId}
 	</delete>
 	
 	<select id="selectReservation" resultType="int" parameterType="string">
